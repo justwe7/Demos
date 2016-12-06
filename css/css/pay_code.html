@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>二维码支付</title>
+		<!--设置初始比例（1：1像素还原）-->
+		<script>
+			var iScale = 1 / window.devicePixelRatio;
+			document.write('<meta name="viewport" content="width=device-width,initial-scale='+iScale+',minimum-scale='+iScale+',maximum-scale='+iScale+',user-scalable=no"/>');
+		</script>
+		<!--动态设置html字体大小-->
+		<script>
+			var iWidth = document.documentElement.clientWidth;
+			document.getElementsByTagName('html')[0].style.fontSize = iWidth / 15 + 'px';
+			window.onresize = function(){
+				var iWidth = document.documentElement.clientWidth;
+				document.getElementsByTagName('html')[0].style.fontSize = iWidth / 15 + 'px';
+			}
+		</script>
+		<meta name="format-detection" content="telephone=no" />
+		<link rel="stylesheet" type="text/css" href="/Content/public.css" />
+		<link rel="stylesheet" type="text/css" href="/Content/tool.css"/>
+		<link rel="stylesheet" type="text/css" href="/Content/order.css"/>
+	</head>
+	<body>
+		<section>
+			<header>
+				<div class="head">
+					<a class="head_link" onclick="javascript: history.go(-1);">
+						<span class="icon_img"></span>
+					</a>
+					<h2>二维码支付</h2>
+				</div>
+			</header>
+			<section class="code_content">
+				<div class="code_bar">
+					<div class="code_box">
+						<img src="/images/code.png"/>
+					</div>
+					<p class="code_text">请截屏然后到微信扫一扫中识别截图中的二维码支付</p>
+				</div>
+				<div class="code_link">
+					<a class="sucess_link" href="#">成功</a>
+					<a class="fail_link" href="#">失败</a>
+				</div>
+			</section>
+		</section>
+	</body>
+</html>

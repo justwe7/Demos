@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>首页</title>
+		<!--设置初始比例（1：1像素还原）-->
+		<script>
+			var iScale = 1 / window.devicePixelRatio;
+			document.write('<meta name="viewport" content="width=device-width,initial-scale='+iScale+',minimum-scale='+iScale+',maximum-scale='+iScale+',user-scalable=no"/>');
+		</script>
+		<!--动态设置html字体大小-->
+		<script>
+			var iWidth = document.documentElement.clientWidth;
+			document.getElementsByTagName('html')[0].style.fontSize = iWidth / 15 + 'px';
+			window.onresize = function(){
+				var iWidth = document.documentElement.clientWidth;
+				document.getElementsByTagName('html')[0].style.fontSize = iWidth / 15 + 'px';
+			}
+		</script>
+		<meta name="format-detection" content="telephone=no" />
+		<link rel="stylesheet" type="text/css" href="/Content/public.css" />
+		<link rel="stylesheet" type="text/css" href="/Content/home.css" />
+	</head>
+	<body>
+		<section>
+			<header>
+				<div class="head center lineheight">
+					<span class="location icon_img"></span>
+					<h2 class="loca_ad">配送至：东直门内国华投资大厦</h2>
+					<span class="downsel icon_img"></span>
+				</div>
+			</header>
+			<section class="home_content">
+				<section class="banner_bar">
+					<ul class="banner_img_bar">
+						<li class="banner_img_item">
+							<img src="/images/home_banner1.png"/>
+						</li>
+						<li class="banner_img_item">
+							<img src="/images/home_banner1.png"/>
+						</li>
+					</ul>
+					<ul class="banner_icon_bar">
+						<li></li>
+						<li class="activeba"></li>
+						<li></li>
+						<li></li>
+					</ul>
+				</section>
+				<section class="entrance_bar">
+					<ul class="entrance_list clearfix">
+						<li class="entrance_item fl">
+							<a class="entrance_link" href="###">
+								<img src="/images/bk_icon.png"/>
+								<p>爆款</p>
+							</a>
+						</li>
+						<li class="entrance_item fl">
+							<a class="entrance_link" href="###">
+								<img src="/images/ms_icon.png"/>
+								<p>秒杀</p>
+							</a>
+						</li>
+						<li class="entrance_item fl">
+							<a class="entrance_link" href="###">
+								<img src="/images/lw_icon.png"/>
+								<p>礼盒</p>
+							</a>
+						</li>
+						<li class="entrance_item fl">
+							<a class="entrance_link" href="###">
+								<img src="/images/hb_icon.png"/>
+								<p>红包</p>
+							</a>
+						</li>
+					</ul>
+				</section>
+				<section class="homegoods_bar">
+					<div class="single_bar">
+						<div class="view_bar">
+							<span class="single_icon icon_img"></span>
+							<p>单品类</p>
+						</div>
+						<ul class="homegoods_list">
+							<li class="homegoods_item clearfix">
+								<div class="homegoods_left fl">
+									<img src="/images/goods_img.png"/>
+								</div>
+								<div class="homegoods_right fr">
+									<h2 class="homegoods_title fr">羔羊前腱</h2>
+									<p class="homegoods_text fr">科尔沁羊业  全天然放养全天然放养</p>
+									<p class="homegoods_weight fr">1400g</p>
+									<div class="homegoods_price fr">
+										<p class="new fr">
+											¥<span>168</span>
+										</p>
+										<del class="old fr">¥<span>218</span></del>
+									</div>
+									<a class="homegoods_buy fr" href="###">立即购买</a>
+								</div>
+							</li>
+							<li class="homegoods_item clearfix">
+								<div class="homegoods_left fl">
+									<img src="/images/goods_img.png"/>
+								</div>
+								<div class="homegoods_right fr">
+									<h2 class="homegoods_title fr">羔羊前腱</h2>
+									<p class="homegoods_text fr">科尔沁羊业  全天然放养全天然放养</p>
+									<p class="homegoods_weight fr">1400g</p>
+									<div class="homegoods_price fr">
+										<p class="new fr">
+											¥<span>168</span>
+										</p>
+										<del class="old fr">¥<span>218</span></del>
+									</div>
+									<a class="homegoods_buy fr" href="###">立即购买</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="gift_bar">
+						<div class="view_bar">
+							<span class="gift_icon icon_img"></span>
+							<p>礼盒类</p>
+						</div>
+						<ul class="homegoods_list">
+							<li class="homegoods_item clearfix">
+								<div class="homegoods_left fl">
+									<img src="/images/goods_img.png"/>
+								</div>
+								<div class="homegoods_right fr">
+									<h2 class="homegoods_title fr">羔羊前腱</h2>
+									<p class="homegoods_text fr">科尔沁羊业  全天然放养全天然放养</p>
+									<p class="homegoods_weight fr">1400g</p>
+									<div class="homegoods_price fr">
+										<p class="new fr">
+											¥<span>168</span>
+										</p>
+										<del class="old fr">¥<span>218</span></del>
+									</div>
+									<a class="homegoods_buy fr" href="###">立即购买</a>
+								</div>
+							</li>
+							<li class="homegoods_item clearfix">
+								<div class="homegoods_left fl">
+									<img src="/images/goods_img.png"/>
+								</div>
+								<div class="homegoods_right fr">
+									<h2 class="homegoods_title fr">羔羊前腱</h2>
+									<p class="homegoods_text fr">科尔沁羊业  全天然放养全天然放养</p>
+									<p class="homegoods_weight fr">1400g</p>
+									<div class="homegoods_price fr">
+										<p class="new fr">
+											¥<span>168</span>
+										</p>
+										<del class="old fr">¥<span>218</span></del>
+									</div>
+									<a class="homegoods_buy fr" href="###">立即购买</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div class="sales_bar">
+						<div class="view_bar">
+							<span class="sales_icon icon_img"></span>
+							<p>礼盒类</p>
+						</div>
+						<ul class="homegoods_list">
+							<li class="homegoods_item clearfix">
+								<div class="homegoods_left fl">
+									<img src="/images/goods_img.png"/>
+								</div>
+								<div class="homegoods_right fr">
+									<h2 class="homegoods_title fr">羔羊前腱</h2>
+									<p class="homegoods_text fr">科尔沁羊业  全天然放养全天然放养</p>
+									<p class="homegoods_weight fr">1400g</p>
+									<div class="homegoods_price fr">
+										<p class="new fr">
+											¥<span>168</span>
+										</p>
+										<del class="old fr">¥<span>218</span></del>
+									</div>
+									<a class="homegoods_buy fr" href="###">立即购买</a>
+								</div>
+							</li>
+							<li class="homegoods_item clearfix">
+								<div class="homegoods_left fl">
+									<img src="/images/goods_img.png"/>
+								</div>
+								<div class="homegoods_right fr">
+									<h2 class="homegoods_title fr">羔羊前腱</h2>
+									<p class="homegoods_text fr">科尔沁羊业  全天然放养全天然放养</p>
+									<p class="homegoods_weight fr">1400g</p>
+									<div class="homegoods_price fr">
+										<p class="new fr">
+											¥<span>168</span>
+										</p>
+										<del class="old fr">¥<span>218</span></del>
+									</div>
+									<a class="homegoods_buy fr" href="###">立即购买</a>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</section>
+				<section class="copyright_bar">
+					<p class="all">
+						<a href="###">登陆</a>
+						<span>｜</span>
+						<a href="###">注册</a>
+						<span>｜</span>
+						<a class="activecolor" href="###">触摸板</span>
+						<span>｜</span>
+						<a href="###">PC版</a>
+					</p>
+					<p class="copyright">Copyright © 2015 All Reserved 版权所有 科羊云牧</p>
+				</section>
+				<section class="up_bar">
+					<span class="up_icon icon_img"></span>
+				</section>
+			</section>
+			<section class="null coloreff"></section>
+			<footer class="footer_bar">
+				<ul class="clearfix">
+					<li class="footer_item fl">
+						<a class="footer_item_link" href="###">
+							<img src="/images/home_icon.png"/>
+							<span>首页</span>
+						</a>
+					</li>
+					<li class="footer_item fl">
+						<a class="footer_item_link" href="###">
+							<img src="/images/menu_icon.png"/>
+							<span>菜谱</span>
+						</a>
+					</li>
+					<li class="footer_item fl">
+						<a class="footer_item_link" href="###">
+							<span class="buy_bar">
+								<img src="/images/buy_icon.png"/>
+							</span>
+						</a>
+					</li>
+					<li class="footer_item fl">
+						<a class="footer_item_link" href="###">
+							<img src="/images/order_icon.png"/>
+							<span>订单</span>
+						</a>
+					</li>
+					<li class="footer_item fl">
+						<a class="footer_item_link" href="###">
+							<img src="/images/my_icon_new.png"/>
+							<span>我的</span>
+						</a>
+					</li>
+				</ul>
+			</footer>
+		</section>
+	</body>
+</html>

@@ -1,0 +1,91 @@
+/*manage start*/
+.content{
+	width: 100%;
+	height: 100%;
+}
+.content .add_class_bar{
+	width:100%;
+	background-color:#fff;
+	box-shadow:0 5px 5px rgba(0,0,0,0.1);
+	padding: 0.24rem 0;
+	margin-bottom: 0.4rem;
+}
+.add_class_bar .add_class{
+	width:7.92rem;
+	border-radius: 5px;
+	border: 2px solid #4e9f35;
+	margin: 0 auto;
+}
+.add_class .add_class_item{
+	width: 3.96rem;
+	height: 1.12rem;
+	font-size:0.48rem;
+	line-height: 1.12rem;
+	text-align:center;
+	color: #4E9F35;
+}
+.add_class_item.active{
+	color: #fff;
+	background-color:#4E9F35;
+}
+.content .add_adress_bar{
+	width: 100%;
+}
+.add_adress_bar .add_adress{
+	display:block;
+	width: 14.12rem;
+	height: 1.68rem;
+	border:2px solid #4E9F35;
+	border-radius:0.2rem;
+	text-align: center;
+	line-height: 1.72rem;
+	color: #4E9F35;
+	margin: 1.3rem auto 0;
+	font-size:0;
+} 
+.add_adress span:nth-of-type(1){
+	display: inline-block;
+	width: 0.6rem;
+	height: 0.6rem;
+	background-position: -0.6rem -0.5rem;
+	margin-right: 0.52rem;
+}
+.add_adress span:nth-of-type(2){
+	font-size:0.64rem;
+}
+.content .adress_box{
+	width: 100%;
+}
+.adress_box .adress_item{
+	background-color: #fff;
+	border-bottom: 1px solid #eeeeee;
+	margin-bottom: 0.4rem;
+	padding: 0 0.48rem;
+}
+.adress_item .adress_item_left{
+	width: 12.4rem;
+}
+.adress_item_left p:nth-of-type(1){
+	line-height: 0.2rem;
+	font-size: 0.6rem;
+	font-weight: 500;
+	color: #333333;
+	margin: 0.52rem 0;
+}
+.adress_item_left p:nth-of-type(2){
+	line-height: 0.6rem;
+	font-size: 0.48rem;
+	color: #666666;
+	margin-bottom: 0.52rem;
+}
+.adress_item .adress_item_right{
+	width: 0.96rem;
+}
+.adress_item_right a{
+	display: block;
+}
+.adress_item_right img{
+	width: 0.96rem;
+	height: 0.96rem;
+}
+/*manage end*/

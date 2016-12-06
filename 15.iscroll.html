@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script src="js/jquery-3.0.0.min.js"></script>
+    </head>
+    <body>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+        </ul>
+        <div class="aa">
+            ddd
+        </div>
+        <script type="text/javascript">
+            $('ul').click(function(event) {
+                var st = '<p>的吊吊的都得<b class="bb">BBBBB</b>生生世世<b class="bb">BBBBB</b></p>'
+                $('.aa').append(st)
+                console.log($('.bb'))
+                $('.bb').eq(0).css('color', 'red');
+            });
+        </script>
+    </body>
+</html>

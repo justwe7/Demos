@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css" media="screen">
+            body{
+                margin: 0;
+            }
+            iframe{
+                width: 100%;
+                /*height: 100vh;*/
+                padding: 0;
+                margin: 0;
+                border: none;
+            }
+        </style>
+        <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
+    </head>
+    <body>
+        <div id="status"></div>
+        <iframe src="3.color.html"></iframe>
+        <!-- <iframe src="http://www.rabbitpre.com/template/preview/d76baab6-42ba-48f7-81a6-0dd360ab260c?lc=1&sui=fgODuSON&mobile=1#from=share"></iframe> -->
+        <script type="text/javascript">
+            var a = document.getElementsByTagName('iframe')[0];
+            // console.log(a)
+            // console.log(a.contentWindow.document.getElementById('page-inner-0-0'))
+            setTimeout(function () {
+                // console.log($('iframe').contents().height())
+                // console.log($('iframe').contents().find('#ddd').height())
+                console.log($('iframe').contents().find('html').height())
+
+            }, 2000)
+            if (window.DeviceMotionEvent) {
+                window.addEventListener('devicemotion', deviceMotionHandler, false);
+            } else {
+                alert('本设备不支持devicemotion事件');
+            }
+            function deviceMotionHandler(eventData) {
+                var acceleration = eventData.accelerationIncludingGravity,
+                    x, y, z;
+                x = acceleration.x;
+                y = acceleration.y;
+                z = acceleration.z;
+                document.getElementById("status").innerHTML = "x:"+x+"<br />y:"+y+"<br />z:"+z;
+            }
+
+            $(document).bind("touchstart",function(ev) {
+                ev.preventDefault();
+                startX = ev.originalEvent.changedTouches[0].pageX;
+                startY = ev.originalEvent.changedTouches[0].pageY;
+                console.log(startX)
+                // curLeft = parseInt($(ob).css("left"));
+            });
+            $(document).bind("touchmove",function(ev) {
+                ev.preventDefault();
+                endX = ev.originalEvent.changedTouches[0].pageX;
+                endY = ev.originalEvent.changedTouches[0].pageY;
+                X = (endX - startX) / 1.5;
+            });
+        </script>
+    </body>
+</html>

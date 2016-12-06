@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>会员信息</title>
+		<!--设置初始比例（1：1像素还原）-->
+		<script>
+			var iScale = 1 / window.devicePixelRatio;
+			document.write('<meta name="viewport" content="width=device-width,initial-scale='+iScale+',minimum-scale='+iScale+',maximum-scale='+iScale+',user-scalable=no"/>');
+		</script>
+		<!--动态设置html字体大小-->
+		<script>
+			var iWidth = document.documentElement.clientWidth;
+			document.getElementsByTagName('html')[0].style.fontSize = iWidth / 15 + 'px';
+			window.onresize = function(){
+				var iWidth = document.documentElement.clientWidth;
+				document.getElementsByTagName('html')[0].style.fontSize = iWidth / 15 + 'px';
+			}
+		</script>
+		<meta name="format-detection" content="telephone=no" />
+		<link rel="stylesheet" type="text/css" href="/Content/public.css" />
+		<link rel="stylesheet" type="text/css" href="/Content/tool.css"/>
+	</head>
+	<body>
+		<section>
+			<header>
+				<div class="head">
+					<a class="head_link" href="##">
+						<span class="icon_img"></span>
+					</a>
+					<h2>会员信息</h2>
+				</div>
+			</header>
+			<section class="content">
+				<div class="member_bg">
+					<ul class="grade_bar">
+						<li class="grade_one">
+							<img src="/images/people_icon1.png"/>
+							<div class="grade_info activeback">
+								<p>0-298</p>
+							</div>
+							<div class="crown_one">
+								<img src="/images/crown_icon.png"/>
+							</div>
+						</li>
+						<li class="grade_two">
+							<img src="/images/people_icon2.png"/>
+							<div class="grade_info">
+								<p>298-998</p>
+							</div>
+							<div class="crown_two">
+								<img src="/images/crown_icon.png"/>
+							</div>
+						</li>
+						<li class="grade_three">
+							<img src="/images/people_icon3.png"/>
+							<div class="grade_info">
+								<p>999-6998</p>
+							</div>
+							<div class="crown_three">
+								<img src="/images/crown_icon.png"/>
+							</div>
+						</li>
+						<li class="grade_four">
+							<img src="/images/people_icon4.png"/>
+							<div class="grade_info">
+								<p>6999-9999</p>
+							</div>
+							<div class="crown_four">
+								<img src="/images/crown_icon.png"/>
+							</div>
+						</li>
+					</ul>
+					
+				</div>
+				<div class="rule_bar">
+					<div class="rule_title">
+						<span class="vline"></span>
+						<span class="vround"></span>
+						<span class="text">会员规则</span>
+						<span class="vround"></span>
+						<span class="vline"></span>
+					</div>
+					<div class="rule_info">
+						<p>1、充值卡需要购买，购买请联系客服。</p>
+						<p>2、钱包为您在羊客的账户，余额可用于支付订单。</p>
+					</div>
+				</div>
+				<div class="rule_bar">
+					<div class="rule_title">
+						<span class="vline"></span>
+						<span class="vround"></span>
+						<span class="text">会员升级</span>
+						<span class="vround"></span>
+						<span class="vline"></span>
+					</div>
+					<div class="rule_info">
+						<p class="rule_item clearfix">
+							<span class="icon_img fl"></span>
+							<span class="f1">吃货：0-298积分</span>
+						</p>
+						<p class="rule_item clearfix">
+							<span class="icon_img fl"></span>
+							<span class="f1">美食达人：299-998积分</span>
+						</p>
+						<p class="rule_item clearfix">
+							<span class="icon_img fl"></span>
+							<span class="f1">美食品鉴师：999-6998积分</span>
+						</p>
+						<p class="rule_item clearfix">
+							<span class="icon_img fl"></span>
+							<span class="f1">资深美食家：6999积分</span>
+						</p>
+					</div>
+				</div>
+			</section>
+			<section class="null"></section>
+			<footer class="footer_bar">
+				<ul class="clearfix">
+					<li class="footer_item fl">
+						<a class="footer_item_link" href="###">
+							<img src="/images/home_icon.png"/>
+							<span>首页</span>
+						</a>
+					</li>
+					<li class="footer_item fl">
+						<a class="footer_item_link" href="###">
+							<img src="/images/menu_icon.png"/>
+							<span>菜谱</span>
+						</a>
+					</li>
+					<li class="footer_item fl">
+						<a class="footer_item_link" href="###">
+							<span class="buy_bar">
+								<img src="/images/buy_icon.png"/>
+							</span>
+						</a>
+					</li>
+					<li class="footer_item fl">
+						<a class="footer_item_link" href="###">
+							<img src="/images/order_icon.png"/>
+							<span>订单</span>
+						</a>
+					</li>
+					<li class="footer_item fl">
+						<a class="footer_item_link" href="###">
+							<img src="/images/my_icon_new.png"/>
+							<span>我的</span>
+						</a>
+					</li>
+				</ul>
+			</footer>
+		</section>
+	</body>
+</html>

@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>确认订单</title>
+		<!--设置初始比例（1：1像素还原）-->
+		<script>
+			var iScale = 1 / window.devicePixelRatio;
+			document.write('<meta name="viewport" content="width=device-width,initial-scale='+iScale+',minimum-scale='+iScale+',maximum-scale='+iScale+',user-scalable=no"/>');
+		</script>
+		<!--动态设置html字体大小-->
+		<script>
+			var iWidth = document.documentElement.clientWidth;
+			document.getElementsByTagName('html')[0].style.fontSize = iWidth / 15 + 'px';
+			window.onresize = function(){
+				var iWidth = document.documentElement.clientWidth;
+				document.getElementsByTagName('html')[0].style.fontSize = iWidth / 15 + 'px';
+			}
+		</script>
+		<meta name="format-detection" content="telephone=no" />
+		<link rel="stylesheet" type="text/css" href="/Content/public.css" />
+		<link rel="stylesheet" type="text/css" href="/Content/tool.css"/>
+		<link rel="stylesheet" type="text/css" href="/Content/order.css"/>
+	</head>
+	<body class="cart_box">
+		<section>
+			<header>
+				<div class="head">
+					<a class="head_link" onclick="javascript: history.go(-1);">
+						<span class="icon_img"></span>
+					</a>
+					<h2>确认订单</h2>
+				</div>
+			</header>
+			<section class="confirm_content">
+				<section class="confirm_address_bar">
+					<!--没有地址显示-->
+					<div class="confirm_no_address clearfix" style="display: none;">
+						<div class="no_address_icon_bar fl">
+							<img src="/images/sheep_icon.png"/>
+						</div>
+						<div class="no_address_info fr">
+							<div class="no_address_left fl">
+								<p>您还没有收货地址，点我进行选择！</p>
+							</div>
+							<a class="no_address_right fr" href="#">
+								<span class="no_address_icon icon_img"></span>
+							</a>
+						</div>
+					</div>
+					<!--有地址的时候显示-->
+					<div class="confirm_address clearfix">
+						<div class="confirm_address_info fl">
+							<p class="confirm_address_text">
+								<span>侯春杰</span>
+								<span>18600908848</span>
+							</p>
+							<p class="confirm_address_ad">
+								<span>北京朝阳区北苑路180号安慧北里-10号楼 602北京朝阳区北苑路180号安慧北里-10号楼 602</span>
+							</p>
+						</div>
+						<a class="confirm_address_link fr" href="#">
+							<span class="no_address_icon icon_img"></span>
+						</a>
+						</div>
+					</div>
+				</section>
+				<section class="confirm_goods_bar">
+					<div class="confirm_goods_back clearfix">
+						<a class="back_text fr activecol" href="#">返回购物车修改</a>
+					</div>
+					<ul class="confirm_goods_list">
+						<li class="confirm_goods_item clearfix">
+							<div class="confirm_goods_left fl">
+								<img src="/images/goods_img.png"/>
+							</div>
+							<div class="confirm_goods_right fr">
+								<div class="confirm_goods_title fr">
+									<p class="confirm_goods_text fr">
+										<span>羔羊排块</span>
+										<span>0.7kg*2袋羔羊排块0.7kg*2袋</span>
+									</p>
+								</div>
+								<div class="confirm_goods_price_bar fr">
+									<p class="confirm_goods_price fr">
+										<span>￥99</span>
+									</p>
+								</div>
+								<div class="confirm_goods_num_bar fr">
+									<p class="confirm_goods_num fr">
+										x<span>1</span>
+									</p>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</section>
+				<section class="note_bar">
+					<div class="note_item clearfix">
+						<p class="note_title fl">优惠券</p>
+						<div class="note_coupon fr">
+							<p>暂无可用</p>
+							<span class="icon_img"></span>
+						</div>
+					</div>
+					<div class="note_item clearfix">
+						<p class="note_title fl">
+							运费<span>(满100包邮)</span>
+						</p>
+						<div class="note_coupon fr">
+							<p class="fr">￥0</p>
+						</div>
+					</div>
+					<div class="note_item clearfix">
+						<p class="note_title fl">备注</p>
+						<div class="note_text fl">
+							<form action="" method="post">
+								<input type="text" placeholder="请填写您的特殊要求"/>
+							</form>
+						</div>
+					</div>
+				</section>
+				<div class="cartnull"></div>
+				<div class="settlement_bar clearfix">
+					<div class="settlement_content fl">
+						<p>合计:<span>￥297</span></p>
+					</div>
+					<div class="settlement_right fr">
+						<a class="settlement_link" href="#">提交订单</a>
+					</div>
+				</div>
+			</section>
+		</section>
+	</body>
+</html>

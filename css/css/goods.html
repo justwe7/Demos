@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>商品详情</title>
+		<!--设置初始比例（1：1像素还原）-->
+		<script>
+			var iScale = 1 / window.devicePixelRatio;
+			document.write('<meta name="viewport" content="width=device-width,initial-scale='+iScale+',minimum-scale='+iScale+',maximum-scale='+iScale+',user-scalable=no"/>');
+		</script>
+		<!--动态设置html字体大小-->
+		<script>
+			var iWidth = document.documentElement.clientWidth;
+			document.getElementsByTagName('html')[0].style.fontSize = iWidth / 15 + 'px';
+			window.onresize = function(){
+				var iWidth = document.documentElement.clientWidth;
+				document.getElementsByTagName('html')[0].style.fontSize = iWidth / 15 + 'px';
+			}
+		</script>
+		<meta name="format-detection" content="telephone=no" />
+		<link rel="stylesheet" type="text/css" href="/Content/public.css" />
+		<link rel="stylesheet" type="text/css" href="/Content/home.css" />
+	</head>
+	<body>
+		<section>
+			<header>
+				<div class="head">
+					<a class="head_link" href="##">
+						<span class="icon_img"></span>
+					</a>
+					<div class="goods_tab">
+						<a class="activetab" href="###">商品</a>
+						<a href="###">详情</a>
+					</div>
+				</div>
+			</header>
+			<section class="goods_content">
+				<section class="goods_show_bar displayblock">
+					<div class="goods_img_show_bar">
+						<ul class="goods_img_show_list">
+							<li class="goods_img_show_item">
+								<img src="/images/goods_img.png"/>
+							</li>
+							<li class="goods_img_show_item">
+								<img src="/images/goods_img.png"/>
+							</li>
+						</ul>
+					</div>
+					<div class="goods_title_bar">
+						<p class="new">¥<span>99</span></p>
+						<p class="old">商品参考价：¥<span>189</span></p>
+					</div>
+					<div class="goods_num_bar">
+						<p>羔羊排块0.7kg*2袋</p>
+					</div>
+					<div class="goods_parameter_bar">
+						<h2>商品参数</h2>
+						<dl class="goods_parameter_list">
+							<dt>规格</dt>
+							<dd>0.7kg*2袋</dd>
+							<dt>产地</dt>
+							<dd>山西 有余</dd>
+							<dt>保质期</dt>
+							<dd>12个月</dd>
+							<dt>储藏条件</dt>
+							<dd>－18</dd>
+							<dt>配送范围</dt>
+							<dd>仅限北京、天津、河北地区</dd>
+						</dl>
+					</div>
+					<section class="getmore_bar">
+						<a class="getmore_link" href="">
+							<p class="getmore_icon_bar">
+								<span class="getmore_icon icon_img"></span>
+							</p>
+							<p><span class="getmore_text">继续拖动，查看图文详情</span></p>
+						</a>
+					</section>
+					<section class="null_goods"></section>
+				</section>
+				<section class="goods_list_bar">
+					<div class="goods_list_box">
+						<img src="/images/list_img.png"/>
+					</div>
+				</section>
+				<section class="cart_bar">
+					<a class="cart_link" href="###">
+						<span>加入购物车</span>
+					</a>
+					<p class="cart_icon_bar">
+						<span class="cart_icon icon_img"></span>
+					</p>
+				</section>
+				
+				
+				
+			</section>
+			
+		</section>
+	</body>
+</html>

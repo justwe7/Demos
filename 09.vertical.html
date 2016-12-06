@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script>
+            var iScale = 1 / window.devicePixelRatio;
+            document.write('<meta name="viewport" content="width=device-width,initial-scale='+iScale+',minimum-scale='+iScale+',maximum-scale='+iScale+',user-scalable=no"/>');
+        </script>
+        <!--动态设置html字体大小-->
+        <script>
+            var iWidth = document.documentElement.clientWidth;
+            document.getElementsByTagName('html')[0].style.fontSize = iWidth / 15 + 'px';
+            window.onresize = function(){
+                var iWidth = document.documentElement.clientWidth;
+                document.getElementsByTagName('html')[0].style.fontSize = iWidth / 15 + 'px';
+            }
+        </script>
+        <style type="text/css">
+            *{
+                padding: 0;
+                margin: 0;
+            }
+            div{
+                width: 10rem;
+                height: 5rem;
+                margin: 50px auto;
+                border: 1px solid #f22;
+                line-height: 5rem;
+            }
+            div :first-child{
+                /*font-size: 1.8rem;*/
+                transform: scale(2);
+                -webkit-transform: scale(2);
+            }
+            div span{
+                height: 1rem;
+                line-height: 1rem;
+                font-size: 0.8rem;
+                display: inline-block;
+                vertical-align: middle;
+            }
+        </style>
+    </head>
+    <body>
+
+        <div>
+            <span class="ic">+</span>
+            <span>顶顶顶顶顶顶</span>
+            <a href="6.xScroll.html" title="">dddd</a>
+        </div>
+    </body>
+</html>

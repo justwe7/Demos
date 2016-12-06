@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+         <link rel="stylesheet" href="http://cache.amap.com/lbs/static/main1119.css"/>
+        <style type="text/css" media="screen">
+            #container {width:700px; height: 400px; margin: 50px auto;}
+             #panel {
+            position: absolute;
+            background-color: white;
+            max-height: 90%;
+            overflow-y: auto;
+            top: 10px;
+            right: 10px;
+            width: 280px;
+        }
+        </style>
+    </head>
+    <body>
+        <div id="container"></div>
+        <div id="panel"></div>
+        <input id="calc" type="button" class="button" value="计算两点间距离"/>
+        <div id='container'></div>
+        <div id="tip"></div>
+        <script type="text/javascript" src="http://webapi.amap.com/maps?v=1.3&key=7d148b3a3e9657bf10a067f5d77a5254"></script>
+         <!-- <script type="text/javascript" src="http://cache.amap.com/lbs/static/addToolbar.js"></script> -->
+        <script type="text/javascript">
+            /*var map = new AMap.Map('container',{
+                zoom: 10,
+                center: [116.39,39.9]
+            });*/
+             /*var map = new AMap.Map("container", {
+                resizeEnable: true
+            });
+            AMap.service(["AMap.PlaceSearch"], function() {
+                var placeSearch = new AMap.PlaceSearch({ //构造地点查询类
+                    pageSize: 80,
+                    pageIndex: 1,
+                    city: "010", //城市
+                    map: map,
+                    panel: "panel"
+                });
+                //关键字查询
+                placeSearch.search('金凤成祥', function(status, result) {
+                    console.log(result.poiList)
+                });
+            });
+
+             var map = new AMap.Map("container", {
+                resizeEnable: true
+            });
+            AMap.service(["AMap.PlaceSearch"], function() {
+                var placeSearch = new AMap.PlaceSearch({ //构造地点查询类
+                    pageSize: 9,
+                    //type: '餐饮服务',
+                    pageIndex: 1,
+                    city: "010", //城市
+                    map: map,
+                    panel: "panel"
+                });
+
+                var cpoint = [116.405467, 39.907761]; //中心点坐标
+                placeSearch.searchNearBy('金凤成祥', cpoint,6000, function(status, result) {
+
+                });
+            });
+             map.setLimitBounds(map.getBounds());*/
+
+
+              /*var map = new AMap.Map("container", {
+                    resizeEnable: true,
+                    zoom: 13
+                });
+                new AMap.Marker({
+                    map: map,
+                    position: [116.368904, 39.923423]
+                });
+                new AMap.Marker({
+                    map: map,
+                    position: [116.387271, 39.922501]
+                });
+                map.setFitView();
+                var lnglat = new AMap.LngLat(116.368904, 39.923423);
+                AMap.event.addDomListener(document.getElementById('calc'), 'click', function() {
+                    alert('两点间距离为：' + lnglat.distance([116.387271, 39.922501]) + '米');
+                });*/
+
+                mapObj = new AMap.Map('container');
+                mapObj.plugin('AMap.Geolocation', function () {
+                    geolocation = new AMap.Geolocation({
+                        enableHighAccuracy: true,//是否使用高精度定位，默认:true
+                        timeout: 10000,          //超过10秒后停止定位，默认：无穷大
+                        maximumAge: 0,           //定位结果缓存0毫秒，默认：0
+                        convert: true,           //自动偏移坐标，偏移后的坐标为高德坐标，默认：true
+                        showButton: true,        //显示定位按钮，默认：true
+                        buttonPosition: 'LB',    //定位按钮停靠位置，默认：'LB'，左下角
+                        buttonOffset: new AMap.Pixel(10, 20),//定位按钮与设置的停靠位置的偏移量，默认：Pixel(10, 20)
+                        showMarker: true,        //定位成功后在定位到的位置显示点标记，默认：true
+                        showCircle: true,        //定位成功后用圆圈表示定位精度范围，默认：true
+                        panToLocation: true,     //定位成功后将定位到的位置作为地图中心点，默认：true
+                        zoomToAccuracy:true      //定位成功后调整地图视野范围使定位位置及精度范围视野内可见，默认：false
+                    });
+                    mapObj.addControl(geolocation);
+                    AMap.event.addListener(geolocation, 'complete', onComplete);//返回定位信息
+                    AMap.event.addListener(geolocation, 'error', onError);      //返回定位出错信息
+                });
+        </script>
+    </body>
+</html>

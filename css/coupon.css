@@ -1,0 +1,90 @@
+/*coupon start*/
+.content{
+	width: 100%;
+	height: 100%;
+}
+.content .coupon_tab_bar{
+	width: 100%;
+	background-color: #fff;
+	border-bottom: 1px solid #eeeeee;
+}
+.coupon_tab_bar li{
+	width: 24.7%;
+	height: 1.8rem;
+	border-right: 1px solid #eeeeee;
+	text-align: center;
+	color: #999999;
+	font-size:0.6rem;
+}
+
+.coupon_tab_bar p{
+	display: inline-block;
+	line-height: 1.64rem;
+	padding: 0.08rem 0.2rem 0;
+	border-bottom: 0.08rem solid #fff;
+}
+.coupon_tab_bar .active{
+	color: #4E9F35;
+	border-bottom-color: #4E9F35;
+}
+.content .nocoupon_bar{
+	width: 100%;
+	height: 50%;
+	text-align: center;
+}
+.nocoupon_bar .con_icon_bar{
+	width: 4.8rem;
+	height: 4.8rem;
+	background-color: #4E9F35;
+	border-radius:50%;
+	margin: 2rem auto 1rem;
+}
+.con_icon_bar img{
+	width: 2.8rem;
+	height: 1.8rem;
+	margin-top: 1.5rem;
+}
+.nocoupon_bar p{
+	color: #999999;
+	font-size: 0.6rem;
+}
+.content .coupon_img_bar{
+	padding: 0.4rem;
+}
+.coupon_img_item{
+	width: 100%;
+	height: 100%;
+	background-color: #fff;
+	margin-bottom: 0.4rem;
+	position: relative;
+}
+.coupon_img_item img{
+	width: 100%;
+}
+.coupon_img_item .coupon_info{
+	padding: 0 0.84rem;
+	height: 1.6rem;
+	line-height: 1.6rem;
+	border:1px solid #eeeeee;
+	color: #999999;
+	border-bottom-left-radius: 0.2rem;
+	border-bottom-right-radius: 0.2rem;
+	font-size: 0.48rem;
+}
+.coupon_info .noused{
+	color: #d64515;
+}
+.coupon_info .coupon_text{
+	font-size: 0.6rem;
+}
+.coupon_img_item .overdue_icon{
+	display: block;
+	width: 2.28rem;
+	height: 1.84rem;
+	background: url(../img/overdue_icon.png) no-repeat;
+	background-size: 2.28rem 1.84rem; 
+	position: absolute;
+	right:0.6rem;
+	bottom: 1.2rem;
+}
+/*coupon end*/

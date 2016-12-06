@@ -1,0 +1,127 @@
+/*wallet start*/
+.content{
+	width: 100%;
+	height: 100%;
+	background-color:#f6f7f6;
+	margin-bottom: 3rem;
+}
+.content .wallet_bar{
+	width:100%;
+	height:12rem;
+	background:url(../img/wallet_bg.png) no-repeat;
+	background-size: contain;
+	margin-bottom: 0.4rem;
+	text-align: center;
+}
+.wallet_bar p:nth-of-type(1){
+	color: #fff;
+	font-size: 2.4rem;
+	font-weight: bold;
+	padding-top: 2.6rem;
+}
+.wallet_bar p:nth-of-type(2){
+	color: #fff;
+	font-size: 0.48rem;
+	padding-top: 0.5rem;
+}
+.content .recharge_bar{
+	width: 100%;	
+	height: 1.8rem;
+	background-color:#fff;
+	border-top:1px solid #eeeeee;
+	line-height:1.8rem;
+	color:#333333;
+	font-size: 0.6rem;
+	margin-bottom: 0.4rem;
+}
+.recharge_bar p{
+	display: inline-block;
+	padding: 0 0.84rem;
+}
+.recharge_bar form{
+	display: inline-block;
+}
+.recharge_bar input{
+	display: inline-block;
+	width: 11.2rem;
+	height: 1.8rem;
+	font-size: 0.6rem;
+}
+.content .recha_num_bar{
+	padding: 0 0.4rem 0.8rem;
+}
+.recha_num_bar a{
+	display: inline-block;
+	width: 30%;
+	height: 1.56rem;
+	line-height: 1.56rem;
+	background-color: #fff;
+	border-radius: 5px;
+	border:1px solid #4E9F35;
+	font-size: 0.6rem;
+	text-align: center;
+	color: #4E9F35;
+	margin-right: 0.188rem;
+}
+.recha_num_bar .active{
+	background-color: #4E9F35;
+	color: #fff;
+}
+.sale_button{
+	width: 100%;
+	height: 1.9rem;
+}
+.sale_button .sale_btn{
+	display: block;
+	width: 14.12rem;
+	height: 1.68rem;
+	border:2px solid #cccccc;
+	border-radius: 3px;
+	background-color: #f6f7f6;
+	color: #cccccc;
+	font-size: 0.62rem;
+	margin: 0 auto;
+}
+.sale_button .active{
+	border-color: #4E9F35;
+	color: #4E9F35;
+}
+.content .rule_bar{
+	width:100%;
+	/*background-color: #fff;*/
+	border-top:1px solid #eeeeee;
+	color:#999999;
+	font-size:0.6rem;
+}
+.rule_bar .rule_title{
+	text-align: center;
+	font-size: 0;
+	margin: 0.8rem 0;
+}
+.rule_title .vline{
+	display: inline-block;
+	width: 5.2rem;
+	border-bottom: 1px solid #4E9F35;
+	margin-bottom: 0.2rem;
+}
+.rule_title .vround{
+	display: inline-block;
+	width: 0.16rem;
+	height: 0.16rem;
+	border: 1px solid #4E9F35;
+	border-radius:50%;
+	margin-bottom: 0.1rem;
+}
+.rule_title .text{
+	font-size:0.6rem;
+	margin: 0 0.52rem;
+	color: #4E9F35;
+}
+.rule_bar .rule_info{
+	padding-left: 0.64rem;
+	padding-bottom: 0.3rem;
+}
+.rule_info p:nth-of-type(1){
+	margin-bottom: 0.1rem;
+}
+/*wallet end*/

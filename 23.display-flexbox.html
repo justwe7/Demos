@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+        <style type="text/css" media="screen">
+            *{
+                margin: 0;
+            }
+            .wrap{
+                width:100%;
+                height:100vh;
+                display:-moz-box;
+                display:-webkit-box;
+                display:box;
+                -moz-box-align: center;
+                -webkit-box-align: center;
+                -o-box-align: center;
+                box-align: center;
+                /* box-orient: vertical;
+                -webkit-box-orient: vertical; */
+            }
+            .sectionOne{
+                background:orange;
+                -moz-box-flex:3;
+                -webkit-box-flex:3;
+                box-flex:3;
+                height: 100px;
+                overflow: hidden;
+            }
+            .sectionTwo{
+                background:purple;
+                -moz-box-flex:2;
+                -webkit-box-flex:2;
+                box-flex:2;
+            }
+            .sectionThree{
+                -moz-box-flex:1;
+                -webkit-box-flex:1;
+                box-flex:1;
+                background:green;
+            }
+
+
+            .box2{
+                display: -webkit-box;
+                display: -webkit-flex;
+                display: -moz-box;
+                display: -moz-flex;
+                display: -ms-flexbox;
+                display: flex;
+                width: 100%;
+                height: 300px;
+                background-color: #77f;
+
+                 /* 水平居中*/
+                -webkit-box-align: center;
+                -moz-box-align: center;
+                -ms-flex-pack:center;/* IE 10 */
+
+                -webkit-justify-content: center;
+                -moz-justify-content: center;
+                justify-content: center;/* IE 11+,Firefox 22+,Chrome 29+,Opera 12.1*/
+
+                /* 垂直居中 */
+                -webkit-box-pack: center;
+                -moz-box-pack: center;
+                -ms-flex-align:center;/* IE 10 */
+
+                -webkit-align-items: center;
+                -moz-align-items: center;
+                align-items: center;
+            }
+            .item1{
+                width: 100px;
+                height: 100px;
+                background-color: #887;
+            }
+
+        </style>
+    </head>
+    <body>
+        <article class="wrap">
+            <section class="sectionOne">01sssssssssssssssssss</section>
+            <section class="sectionTwo">02</section>
+            <section class="sectionThree">03</section>
+        </article>
+        <!-- <article class="box2">
+            <div class="item1">
+                item1
+            </div>
+        </article> -->
+        <script src="js/jquery1.82.min.js"></script>
+        <script type="text/javascript">
+
+        </script>
+        <script type="text/javascript">
+
+        </script>
+    </body>
+</html>

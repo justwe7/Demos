@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script src="js/jquery1.82.min.js"></script>
+    </head>
+    <body>
+        <!-- <form action="post_file.php" method="post" enctype="multipart/form-data"> -->
+            <input type="file" name="file" id="oFile" value="" />
+            <input type="button" name="" id="oBtn" value="按钮" />
+            <!-- <input type="submit" value="提交"/> -->
+        <!-- </form> -->
+        <img src="" alt="" id="img">
+    </body>
+    <script type="text/javascript">
+        $('input[type=file]').change(function(){
+            var file=this.files[0];
+            var reader=new FileReader();
+            reader.onload=function(){
+                // 通过 reader.result 来访问生成的 DataURL
+                var url=reader.result;
+                document.getElementById('img').src = url;//写入图片
+                $('#oBtn').click(function(event) {
+                    var ajax = new XMLHttpRequest();
+                    ajax.open('post','post_file.php',true);
+                    ajax.upload.onprogress = function(ev){//监测进度
+                        var scale = ev.loaded / ev.total;
+                        console.log(scale)
+                    }
+                    var fromData = new FormData();
+                    fromData.append('file',file);
+                    console.log(fromData)
+                    ajax.send(fromData);
+                });
+            };
+            reader.readAsDataURL(file);//写入图片
+        });
+
+    </script>
+</html>

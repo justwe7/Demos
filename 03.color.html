@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css" media="screen">
+            input{
+                padding: 0;
+                border: none;
+                width: 500px;
+                height: 100px;
+                background-color: #007aff;
+                transition: 1s;
+                    -webkit-user-select: none;
+            }
+            .ac{
+                -webkit-animation:fadeout 1s;
+            }
+
+            @-webkit-keyframes fadeout{
+                0% {
+                    background-color: #007aff;
+                }
+                100% {
+                    background-color: #0062cc;
+                }
+            }
+            @keyframes fadeout{
+                0% {
+                    background-color: #007aff;
+                }
+                100% {
+                    background-color: #0062cc;
+                }
+            }
+
+            .unac{
+                -webkit-animation:un 1s;
+            }
+
+            @-webkit-keyframes un{
+                0% {
+                    background-color: #0062cc;
+                }
+                100% {
+                    background-color: #007aff;
+                }
+            }
+            @keyframes un{
+                0% {
+                    background-color: #0062cc;
+                }
+                100% {
+                    background-color: #007aff;
+                }
+            }
+            article{
+                width: 100%;
+                height: 20000px;
+                background-color: #ff8;
+                position: fixed;
+                left: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div>
+            <input type="button" name="" value="" id="ddd">
+        </div>
+        <article>
+
+        </article>
+    </body>
+    <script type="text/javascript">
+        var oBtn = document.getElementsByTagName('input')[0];
+        oBtn.addEventListener('touchstart', function (ev) {
+            var ev = ev || window.event;
+            oBtn.style.backgroundColor = '#0062cc';
+            // oBtn.className = 'ac';
+            ev.preventDefault();
+        }, false)
+        oBtn.addEventListener('touchend', function () {
+            oBtn.style.backgroundColor = '#007aff';
+            // oBtn.className = 'unac';
+        }, false)
+    </script>
+</html>

@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-cmn-Hans">
+	<head>
+		<meta charset="utf-8" />
+		<title>title</title>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+		<meta name="viewport" content="initial-scale=1, maximum-scale=3, minimum-scale=1, user-scalable=no">
+		<link rel="stylesheet" href="iSlider.css">
+		<style type="text/css" media="screen">
+			*{
+				margin: 0;
+				padding: 0;
+				font-family: 'Helvetica Neue','Microsoft YaHei',Helvetica,sans-serif;
+			}
+			.bg_area{
+				background-color: #f98;
+				width: 100%;
+				height: 60px;
+				line-height: 60px;
+				text-align: center;
+			}
+			.bg_area p{
+				font-size: 32px;
+				font-weight: 500;
+				color: #000;
+			}
+			.bg_area p span{
+				font-size: 24px;
+				font-weight: normal;
+				color: #C3D6F0;
+			}
+			body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        #iSlider-wrapper {
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            overflow: hidden;
+        }
+
+        .content {
+            padding: 10%;
+            height: 100%;
+            width: 100%;
+            -webkit-box-sizing: border-box;
+        }
+
+        .content h1 {
+            margin: 2em 0;
+        }
+
+        .content h2 {
+            margin: 2em 0;
+        }
+
+        .content p {
+            margin: 1em 0;
+        }
+
+        .item1 {
+            background-color: #F5A8A8;
+            color: #FFF;
+        }
+
+        .item2 {
+            background-color: #90FFB7;
+        }
+
+        .item3 {
+            background-color: #90ABFF;
+            color: #FFF;
+        }
+
+        .item4 {
+            background-color: #FCFF90;
+        }
+
+        .item5 {
+            background-color: #E390FF;
+            color: #FFF;
+        }
+		</style>
+	</head>
+	<body>
+		<div id="iSlider-wrapper"></div>
+		<section class="bg_area">
+			<p style="font-size: 32px;font-weight: 500;color: #000;">已回执<span style="font-size: 24px;font-weight: normal;color: #C3D6F0;">(可修改)</span></p>
+		</section>
+		<script src="js/jquery-3.0.0.min.js"></script>
+		<script src="iSlider.min.js"></script>
+		<script type="text/javascript">
+		// console.log($('.bg_area').wrap('<h3></h3>'))
+
+			var list = [{
+	        'content': '<div class="content home"><h1>Home</h1><h2>This is home item</h2><p>home is pretty awsome</p><div>'
+	    },
+	        {
+	            'content': '<div class="content item1">'+$('.bg_area').html()+'<div>'
+	        },
+	        {
+	            'content': '<div class="content item2"><h1>Page2</h1><h2>This is Page2</h2><p>Page2 is pretty awsome</p><div>'
+	        },
+	        {
+	            'content': '<div class="content item3"><h1>Page3</h1><h2>This is Page3</h2><p>Page3 is pretty awsome</p><div>'
+	        },
+	        {
+	            'content': '<div class="content item4"><h1>Page4</h1><h2>This is Page4</h2><p>Page4 is pretty awsome</p><div>'
+	        },
+	        {
+	            'content': '<div class="content item5"><h1>Page5</h1><h2>This is item5</h2><p>item5 is pretty awsome</p><div>'
+	        }];
+	    var islider = new iSlider({
+	        data: list,
+	        dom: document.getElementById("iSlider-wrapper"),
+	        duration: 1000,
+	        isVertical: true
+	    });
+		</script>
+	</body>
+</html>

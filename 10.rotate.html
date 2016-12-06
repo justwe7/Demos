@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+            #ff{
+                width: 500px;
+                height: 300px;
+                background-color: red;
+            }
+            .div{
+                width: 500px;
+                height: 300px;
+                background: url(chrome.png) no-repeat left top fixed;
+            }
+            body{
+                height: 2000px;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="div"></div>
+        <img src="chrome.png" alt="" id="ff">
+    </body>
+    <script src="js/jquery-1.10.2.min.js"></script>
+    <script src="js/jQueryRotate.js"></script>
+    <script type="text/javascript">
+        $('#ff').rotate(45)
+    </script>
+</html>

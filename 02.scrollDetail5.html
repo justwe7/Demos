@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>商品详情</title>
+        <!--设置初始比例（1：1像素还原）-->
+        <script>
+            var iScale = 1 / window.devicePixelRatio;
+            document.write('<meta name="viewport" content="width=device-width,initial-scale='+iScale+',minimum-scale='+iScale+',maximum-scale='+iScale+',user-scalable=no"/>');
+        </script>
+        <!--动态设置html字体大小-->
+        <script>
+            var iWidth = document.documentElement.clientWidth;
+            document.getElementsByTagName('html')[0].style.fontSize = iWidth / 15 + 'px';
+            window.onresize = function(){
+                var iWidth = document.documentElement.clientWidth;
+                document.getElementsByTagName('html')[0].style.fontSize = iWidth / 15 + 'px';
+            }
+        </script>
+        <meta name="format-detection" content="telephone=no" />
+        <style type="text/css">
+            *{
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+            #header{
+                width: 100%;
+                height: 1.76rem;
+                background-color: #df8;
+                position: absolute;
+                top: 0;
+                left: 0;
+                z-index: 1;
+            }
+            #footer{
+                width: 100%;
+                height: 1.76rem;
+                background-color: #f88;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+            }
+            #wrapper{
+                width: 100%;
+                position: absolute;
+                top: 1.76rem;
+                bottom: 1.76rem;
+            }
+            .con1{
+
+            }
+            .con2{
+                height: 40rem;
+                background-color: #77a;
+                display: none;
+            }
+            .ani{
+                -webkit-animation: fadein 300ms;
+                animation: fadein 300ms;
+            }
+            @-webkit-keyframes fadein{
+                0%{
+                    -webkit-transform: translateY(-100%);
+                    transform: translateY(-100%);
+                }
+                100%{
+                    -webkit-transform: translateY(0);
+                    transform: translateY(0);
+                }
+            }
+            @keyframes fadein{
+                0%{
+                    -webkit-transform: translateY(-100%);
+                    transform: translateY(-100%);
+                }
+                100%{
+                    -webkit-transform: translateY(0);
+                    transform: translateY(0);
+                }
+            }
+        </style>
+        </head>
+        <body onload="loaded()">
+            <header id="header" class="">
+                我是头
+            </header><!-- /header -->
+            <section id="wrapper">
+                <div id="scroller">
+                    <ul class="con1">
+                        <li>内容1</li>
+                        <li>内容2</li>
+                        <li>
+                            <a href="javascript:myScroll.scrollToElement(document.querySelector('.con2'))" title="">跳</a>
+                        </li>
+                        <li>内容3</li>
+                        <li>内容4</li>
+                        <li>内容5</li>
+                        <li>内容6</li>
+                        <li>内容7</li>
+                        <li>内容8</li>
+                        <li>内容9</li>
+                        <li>内容10</li>
+                        <li>内容11</li>
+                        <li>内容12</li>
+                        <li>内容13</li>
+                        <li>内容14</li>
+                        <li>内容15</li>
+                        <li>内容16</li>
+                        <li>内容17</li>
+                        <li>内容18</li>
+                        <li>内容19</li>
+                        <li>内容20</li>
+                        <li>内容21</li>
+                        <li>内容22</li>
+                        <li>内容23</li>
+                        <li>内容24</li>
+                        <li>靠靠靠靠靠1</li>
+                        <li>靠靠靠靠靠2</li>
+                        <li>靠靠靠靠靠3</li>
+                        <li>靠靠靠靠靠4</li>
+                        <li>靠靠靠靠靠5</li>
+                        <li>靠靠靠靠靠6</li>
+                        <li>靠靠靠靠靠7</li>
+                        <li>靠靠靠靠靠8</li>
+                        <li>靠靠靠靠靠9</li>
+                        <li>靠靠靠靠靠10</li>
+                        <li>靠靠靠靠靠11</li>
+                        <li>靠靠靠靠靠12</li>
+                        <li>靠靠靠靠靠13</li>
+                        <li>靠靠靠靠靠14</li>
+                        <li>靠靠靠靠靠15</li>
+                        <li>靠靠靠靠靠16</li>
+                        <li>靠靠靠靠靠17</li>
+                        <li>靠靠靠靠靠18</li>
+                        <li>靠靠靠靠靠19</li>
+                        <li>靠靠靠靠靠20</li>
+                        <li>让我加载</li>
+                    </ul>
+                    <div class="con2">
+                        <p>1</p>
+                        <p>2</p>
+                        <p>3</p>
+                        <p>4</p>
+                        <p>5</p>
+                        <p>6</p>
+                        <p>7</p>
+                        <p>8</p>
+                        <p>9</p>
+                        <p>10</p>
+                    </div>
+                </div>
+            </section>
+            <footer id="footer">
+                我是底部
+            </footer>
+            <script src="js/jquery1.82.min.js"></script>
+            <script src="js/iscroll5.js"></script>
+            <script type="text/javascript">
+                var myScroll;
+                var onOff = false;
+                var onOff2 = false;
+                var nWindowH = $(window).height() - $('#header').height() - $('#footer').height();
+                function loaded () {
+                    myScroll = new IScroll('#wrapper', {
+                        // scrollbars: true,
+                        useTransition: true,
+                        mouseWheel: true,
+                        // fadeScrollbars: true,
+                        click: true
+                    });
+                    myScroll.on('scrollEnd', function () {//滚动完全完成之后
+                        /*if (nWindowH + Math.abs(this.y) >= $('.con1').height() ) {
+                            onOff = true;
+                        }*/
+                        // nWindowH + Math.abs(this.y) >= $('.con1').height() && onOff = true;
+                        onOff = nWindowH + Math.abs(this.y) >= $('.con1').height() ? true : false;
+                    });
+                    $(document).on('touchend', function () {//松手判断
+                        /*if (nWindowH + Math.abs(myScroll.y) < $('.con1').height() ) {//松手时没有达到条件
+                            onOff = false;
+                        };*/
+                        onOff = nWindowH + Math.abs(myScroll.y) < $('.con1').height() ? false : true;
+                        // console.log(Math.abs(myScroll.y))
+                        if (onOff) {
+                            $('.con2').css('display', 'block');
+                            myScroll.refresh();
+                            // el, time, offsetX, offsetY, easing
+                            myScroll.scrollToElement(document.querySelector('.con2'),500,null,null,IScroll.utils.ease.circular);
+                            myScroll.disable();
+                            setTimeout(function () {
+                                myScroll.enable();
+                                $('.con1').css('display', 'none');
+                                myScroll.refresh();
+                                myScroll.scrollTo(0,0,0,false);
+                            }, 520)
+                            onOff = false;
+                        };
+
+                        /*下拉*/
+                        /*if (myScroll.y > $('#header').height()*1.5 && $('.con2').css('display') == 'block') {
+                            onOff2 = true;
+                        }else{
+                            onOff2 = false;
+                        }*/
+                        onOff2 = myScroll.y > $('#header').height()*1.5 && $('.con2').css('display') == 'block' ? true : false;
+                        if (onOff2) {
+                            $('.con1').css('display', 'block');
+                            $('.con2').css('display', 'none');
+                            myScroll.refresh();
+                            // myScroll.disable();
+                            $('.con1').addClass('ani');
+                            setTimeout(function () {
+                                // myScroll.scrollTo(0,0,0,false);
+                                myScroll.scrollToElement(document.querySelector('.con1'));
+                            }, 0)
+                            // myScroll.enable();
+
+                            // myScroll.scrollToElement(document.querySelector('.con1'),300,null,null,IScroll.utils.ease.back);
+                            // myScroll.scrollTo(0,0,0,false);
+                            // $('.con1').addClass('ani');
+                            // myScroll.disable();
+                            // myScroll.enable();
+                            // $('.con2').css('display', 'none');
+                            // myScroll.refresh();
+                            onOff2 = false;
+                        }
+                    });
+                    $(document).on('touchmove', function (event) {//若移出内容区域
+                        // console.log(event.originalEvent.targetTouches[0].pageY)
+                        // event.originalEvent.targetTouches[0].pageY <= 50 && myScroll.refresh();
+                        event.originalEvent.targetTouches[0].pageY <= 50 && myScroll.scrollTo(0,0,0,false);
+                    });
+                    myScroll.on('beforeScrollStart', function () {//滚动开始
+                        /*if (nWindowH + Math.abs(this.y) >= $('.con1').height() && $('.con1').css('display') == 'block') {
+                            onOff = true;
+                        }else{
+                            onOff = false;
+                        }*/
+                    });
+                }
+                document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+            </script>
+        </body>
+</html>

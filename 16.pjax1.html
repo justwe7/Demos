@@ -1,0 +1,126 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8">
+<title>jQuery.LazyJaxDavis demo</title>
+<meta name="viewport" content="width=1000">
+<link rel="stylesheet" href="css/12.refrsh.css">
+<style type="text/css" media="screen">
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #link{
+        height: 300px;
+        background-color: #a7a;
+    }
+    #con{
+        height: 500px;
+        background-color: #9ff;
+    }
+    .pjax_loading{
+      width: 100%;
+      height: 100%;
+      position: fixed;
+      background-color: #ff8;
+      top: 0;
+      display: none;
+      z-index: 1111;
+    }
+</style>
+</head>
+<body>
+<!-- <header id="header" class="">
+    <a href="16.pjax2.html" title="">跳转到2</a>
+</header>/header
+<article id="ontentleft">
+LazyJaxDavis start
+111111111111
+LazyJaxDavis end
+</article> -->
+<ul id="link">
+        <li><a href="16.pjax1.html">111111111111111</a></li>
+        <li><a href="16.pjax2.html">22222222222222222222</a></li>
+</ul>
+<a href="16.pjax2.html" title="">无pjax</a>
+  <aside class="pjax_loading">
+
+  </aside>
+<div id="con">
+  111111111111
+</div>
+
+<script src="js/jquery1.82.min.js"></script>
+<script src="js/pjax.js"></script>
+<!-- <script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/davis.min.js"></script>
+<script src="js/jquery.lazyjaxdavis.min.js"></script> -->
+<script type="text/javascript">
+jQuery(document).ready(function () {
+  jQuery(document).pjax("#link a", "#con", { fragment: '#con', "push":true,"replace":false,timeout:1000,"scrollTo":false});
+});
+$(document).on('pjax:send', function() { //pjax链接点击后显示加载动画；
+    $(".pjax_loading").css("display", "block");
+});
+$(document).on('pjax:complete', function() { //pjax链接加载完成后隐藏加载动画；
+    $(".pjax_loading").css("display", "none");
+});
+</script>
+<script type="text/javascript">
+for (let i = 0; i < 3; i++) {
+  console.log(i)
+}
+// $(function(){
+
+//   // define the root of the main content
+
+//   new $.LazyJaxDavis(function(router){
+//     // console.log(router)
+//     var $root = $('#ontentleft');
+
+//     router.option({
+//       minwaittime: 1800
+//     });
+
+//     router.bind('everyfetchstart', function(page){
+//       $root.css('opacity', 0.6);
+//       window.scrollTo(0, 0);
+//     });
+
+//     router.bind('everyfetchsuccess', function(page){
+//       $root.css('opacity', 1);
+//       $newcontent = $(page.rip('content')).hide();
+//       $root.empty().append($newcontent);
+//       $newcontent.fadeIn();
+//       page.trigger('pageready');
+//     });
+
+//     router.bind('everyfetchfail', function(){
+//       alert('ajax error!');
+//       $root.css('opacity', 1);
+//     });
+
+//   });
+
+// });
+/*$(document).pjax('a[target!=_blank]', '#contentleft', {fragment:'#contentleft', timeout:8000});
+$(document).on('pjax:send', function() { //pjax链接点击后显示加载动画；
+    $(".pjax_loading").css("display", "block");
+});
+$(document).on('pjax:complete', function() { //pjax链接加载完成后隐藏加载动画；
+    $(".pjax_loading").css("display", "none");
+    pajx_loadDuodsuo();
+});
+function pajx_loadDuodsuo(){
+    var dus=$(".ds-thread");
+    if($(dus).length==1){
+        var el = document.createElement('div');
+        el.setAttribute('data-thread-key',$(dus).attr("data-thread-key"));//必选参数
+        el.setAttribute('data-url',$(dus).attr("data-url"));
+        DUOSHUO.EmbedThread(el);
+        $(dus).html(el);
+    }
+}*/
+</script>
+</body>
+</html>

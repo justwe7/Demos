@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css" media="screen">
+            *{
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+            li{
+                /*float: left;*/
+                width: 980px;
+                height: 100px;
+                background-color: #ff8;
+                /*white-space: normal;*/
+                /*display: inline-block;*/
+                vertical-align: top;
+            }
+            ul li:nth-child(even){
+                background-color: #f44;
+            }
+            ul{
+                /*width: 200px;*/
+                overflow-x: auto;
+
+            }
+           /* div{
+                width: 200px;
+                overflow-x: auto;
+            }*/
+        </style>
+        <script src="./js/zepto.min.js"></script>
+    </head>
+    <body>
+    <div>
+        <ul>
+            <li>1</li>
+            <li>2</li>
+            <li>3</li>
+            <li>4</li>
+            <li>5</li>
+            <li>6</li>
+            <li>7</li>
+            <li>8</li>
+            <li>9</li>
+            <li>10</li>
+            <li>11</li>
+            <li>12</li>
+            <li>13</li>
+            <li>14</li>
+            <li>15</li>
+            <li>16</li>
+            <li>17</li>
+            <li>18</li>
+            <li>19</li>
+            <li>20</li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    </body>
+    <script type="text/javascript">
+        console.log($('ul > li').last().offset().top);
+        console.log($(window).scrollTop())
+        console.log(document.documentElement.clientHeight)
+        $(document).on('scroll', function() {
+            console.log($('ul > li').last().offset().top < $(window).scrollTop()+document.documentElement.clientHeight)
+            if ($('ul > li').last().offset().top < $(window).scrollTop()+document.documentElement.clientHeight) {
+                alert(999999)
+            }
+            // console.log($('ul > li').last().offset().top > $(window).height())
+            // $('ul > li').last().offset().top
+            event.preventDefault();
+        });
+    </script>
+</html>

@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css" media="screen">
+            body{
+                background: rgba(0,0,0,0.2)
+            }
+            .item{
+                width: 500px;
+                height: 300px;
+                background-color: #ff8;
+                margin: 30px auto;
+                position: relative;
+                top: 50px;
+                -moz-box-sizing:border-box;
+                -webkit-box-sizing:border-box;
+                box-sizing:border-box;
+                background:#fff;
+                z-index:2
+            }
+            /*.list:after{content:"";display:block;position:absolute;left:0;bottom:0;top:0;right:0;border:2px solid #fff;z-index:1}*/
+            .item:after{content:"";display:block;position:absolute;left:-2px;top:-2px;right:-2px;bottom:-2px;border:2px solid #fff}
+            .item a .line-1,.item a .line-2,.item a .line-3,.item a .line-4{
+                /*display:none;*/
+            }
+            .item a{
+                position: absolute;
+                left: 2px;
+                top: 2px;
+                bottom: 2px;
+                right: 2px;
+                background-color: #77a;
+            }
+            .item a:after{
+                content:"";
+                position:absolute;
+                left:0;
+                top:0;
+                right:0;
+                bottom:0;
+                background:#fff;
+                z-index:2;
+                filter:progid:DXImageTransform.Microsoft.Alpha(Opacity=0);
+                opacity:0;
+                -moz-transition-property:opacity;
+                -o-transition-property:opacity;
+                -webkit-transition-property:opacity;
+                transition-property:opacity;
+                -moz-transition-duration:0.4s;
+                -o-transition-duration:0.4s;
+                -webkit-transition-duration:0.4s;
+                transition-duration:0.4s;
+                -moz-transition-timing-function:cubic-bezier(0.7, 0, 0.3, 1);
+                -o-transition-timing-function:cubic-bezier(0.7, 0, 0.3, 1);
+                -webkit-transition-timing-function:cubic-bezier(0.7, 0, 0.3, 1);
+                transition-timing-function:cubic-bezier(0.7, 0, 0.3, 1)
+            }
+            .item a .line-1,.item a .line-2,.item a .line-3,.item a .line-4{
+                z-index:10;
+                background:none
+            }
+            .item a .line-1 i,.item a .line-2 i,.item a .line-3 i,.item a .line-4 i{
+                background:#000
+            }
+            .item a .line-1,.item a .line-3{
+                width:100%;
+                height:2px
+            }
+            .item a .line-2,.item a .line-4{
+                height:100%;
+                width:2px;
+            }
+            .line-2 i,.line-4 i{
+                display:block;
+                position:absolute;
+                width:100%;
+                height:0;
+                background:#f97d49;
+            }
+            .line-1,.line-3{
+                height:4px;
+                width:0;
+                background:#000;
+                position:absolute;
+            }
+            .line-2,.line-4{
+                width:4px;
+                height:0;
+                background:#000;
+                position:absolute;
+            }
+            .line-1 i,.line-3 i{
+                display:block;
+                position:absolute;
+                height:100%;
+                width:0;
+                background:#f97d49
+            }
+
+            .item a:hover:after{
+                filter:progid:DXImageTransform.Microsoft.Alpha(enabled=false);
+                opacity:1
+            }
+            .item a:hover .line-1 i{
+                -moz-transition:width 0.4s ease-out;
+                -o-transition:width 0.4s ease-out;
+                -webkit-transition:width 0.4s ease-out;
+                transition:width 0.4s ease-out
+            }
+            .item a:hover .line-2 i{
+                -moz-transition:height 0.4s ease-out 0.4s;
+                -o-transition:height 0.4s ease-out 0.4s;
+                -webkit-transition:height 0.4s ease-out;
+                -webkit-transition-delay:0.4s;
+                transition:height 0.4s ease-out 0.4s
+            }
+            .item a:hover .line-3 i{
+                -moz-transition:width 0.4s ease-out 0.8s;
+                -o-transition:width 0.4s ease-out 0.8s;
+                -webkit-transition:width 0.4s ease-out;
+                -webkit-transition-delay:0.8s;
+                transition:width 0.4s ease-out 0.8s
+            }
+            .item a:hover .line-4 i{
+                -moz-transition:height 0.4s ease-out 1.2s;
+                -o-transition:height 0.4s ease-out 1.2s;
+                -webkit-transition:height 0.4s ease-out;
+                -webkit-transition-delay:1.2s;
+                transition:height 0.4s ease-out 1.2s
+            }
+            .item a:hover .line-1 i,.item a:hover .line-3 i{
+                width:100%;
+            }
+            .item a:hover .line-2 i,.item a:hover .line-4 i{
+                height:100%;
+            }
+
+            .line-1 i,.line-3 i{display:block;position:absolute;height:100%;width:0;background:#f97d49}
+            .line-1{
+                left:0;
+                top:0
+            }
+            .line-2{
+                top:0;
+                right:0
+            }
+            .line-3{
+                right:0;
+                bottom:0
+            }
+            .line-4{
+                bottom:0;
+                left:0
+            }
+            .line-1 i{
+                left:0;
+                top:0;
+                -moz-transition:width 0.4s ease-out 1.2s;
+                -o-transition:width 0.4s ease-out 1.2s;
+                -webkit-transition:width 0.4s ease-out;
+                -webkit-transition-delay:1.2s;
+                transition:width 0.4s ease-out 1.2s
+            }
+            .line-2 i{
+                top:0;
+                left:0;
+                -moz-transition:height 0.4s ease-out 0.8s;
+                -o-transition:height 0.4s ease-out 0.8s;
+                -webkit-transition:height 0.4s ease-out;
+                -webkit-transition-delay:0.8s;
+                transition:height 0.4s ease-out 0.8s
+            }
+            .line-3 i{
+                right:0;
+                top:0;
+                -moz-transition:width 0.4s ease-out 0.4s;
+                -o-transition:width 0.4s ease-out 0.4s;
+                -webkit-transition:width 0.4s ease-out;
+                -webkit-transition-delay:0.4s;
+                transition:width 0.4s ease-out 0.4s
+            }
+            .line-4 i{
+                bottom:0;
+                left:0;
+                -moz-transition:height 0.4s ease-out 0s;
+                -o-transition:height 0.4s ease-out 0s;
+                -webkit-transition:height 0.4s ease-out;
+                -webkit-transition-delay:0s;
+                transition:height 0.4s ease-out 0s
+            }
+        </style>
+    </head>
+    <body>
+            <div class="item">
+                <a href="#">
+                    <img src="img/logo.png" alt="">
+                    <div class="line-1"><i></i></div>
+                    <div class="line-2"><i></i></div>
+                    <div class="line-3"><i></i></div>
+                    <div class="line-4"><i></i></div>
+                </a>
+            </div>
+    </body>
+</html>

@@ -1,0 +1,68 @@
+<!doctype html>
+<html class="no-js" lang="en">
+<head>
+<meta charset="utf-8">
+<title>jQuery.LazyJaxDavis demo</title>
+<meta name="viewport" content="width=1000">
+<link rel="stylesheet" href="css/12.refrsh.css">
+<style type="text/css" media="screen">
+    *{
+        margin: 0;
+        padding: 0;
+    }
+    #link{
+        height: 300px;
+        background-color: #a7a;
+    }
+    #con{
+        height: 500px;
+        background-color: #97f;
+    }
+</style>
+</head>
+<body>
+<!-- <header id="header" class="">
+    <a href="16.pjax2.html" title="">跳转到2</a>
+</header>/header
+<article id="ontentleft">
+LazyJaxDavis start
+111111111111
+LazyJaxDavis end
+</article> -->
+<ul id="link">
+        <li><a href="16.pjax1.html">111111111111111</a></li>
+        <li><a href="16.pjax2.html">22222222222222222222</a></li>
+</ul>
+<input type="type" name="" value="">
+<div id="con">
+  2222222
+</div>
+<a href="" title=""></a>
+<script src="js/jquery1.82.min.js"></script>
+<script src="js/pjax.js"></script>
+<!-- <script src="js/jquery-1.10.2.min.js"></script>
+<script src="js/davis.min.js"></script>
+<script src="js/jquery.lazyjaxdavis.min.js"></script> -->
+<script type="text/javascript">
+jQuery(document).ready(function () {
+jQuery(document).pjax("#link a", "#con", { fragment: '#con', "push":true,"replace":false,timeout:10000,"scrollTo":false});
+// jQuery(document).pjax("#link a", "#con", {"push":true,"replace":false,"timeout":1000,"scrollTo":false});
+// jQuery(document).on('submit', "#w0 form[data-pjax]", function (event) {jQuery.pjax.submit(event, '#w0', {"push":true,"replace":false,"timeout":1000,"scrollTo":false});});
+});
+(function($){
+
+})(jQuery);
+
+var aLink = document.getElementsByTagName('a');
+for (var i = 0; i < aLink.length; i++) {
+  aLink[i].getAttribute('href') && aLink[i].addEventListener('touchend',function () {
+      location.href = aLink[i].getAttribute('href');
+  })
+}
+// var zhengying = {}
+// zhengying.onOff = true;
+// console.log(zhengying.onOff)
+// console.log(onOff)
+</script>
+</body>
+</html>

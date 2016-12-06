@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>菜谱</title>
+		<!--设置初始比例（1：1像素还原）-->
+		<script>
+			var iScale = 1 / window.devicePixelRatio;
+			document.write('<meta name="viewport" content="width=device-width,initial-scale='+iScale+',minimum-scale='+iScale+',maximum-scale='+iScale+',user-scalable=no"/>');
+		</script>
+		<!--动态设置html字体大小-->
+		<script>
+			var iWidth = document.documentElement.clientWidth;
+			document.getElementsByTagName('html')[0].style.fontSize = iWidth / 15 + 'px';
+			window.onresize = function(){
+				var iWidth = document.documentElement.clientWidth;
+				document.getElementsByTagName('html')[0].style.fontSize = iWidth / 15 + 'px';
+			}
+		</script>
+		<meta name="format-detection" content="telephone=no" />
+		<link rel="stylesheet" type="text/css" href="/Content/public.css" />
+	</head>
+	<body>
+		<section>
+			<header>
+				<div class="menu_head">
+					<div class="menulist_head_bar">
+						<div class="menulist_head_img">
+							<img src="/images/menu_item.png"/>
+						</div>
+						<a class="menulist_link_bar" onclick="javascript: history.go(-1);">
+							<span class="menulist_head_link" href="##">
+								<span class="icon_img"></span>
+							</span>
+						</a>
+						<div class="taste_info_title_img">
+							<img src="/images/head_img.png"/>
+						</div>
+					</div>
+					<div class="menulist_head_info">
+						
+						<p class="taste_info_title">法式煎羊排</p>
+						<div class="taste_list">
+							<p class="taste_item">麻辣口味</p>
+							<p class="taste_item">麻辣口味</p>
+							<p class="taste_item">麻辣口味</p>
+						</div>
+					</div>
+				</div>
+			</header>
+			<section class="menu_list_content">
+				<div class="foods_bar">
+					<p class="foods_title_bar">
+						<span class="foods_title_icon icon_img"></span>
+						<span>食材</span>
+					</p>
+					<ul class="foods_list">
+						<li class="foods_item clearfix">
+							<div class="foods_item_left fl">
+								<p>法式小羊排</p>
+							</div>
+							<div class="foods_item_right fl">
+								<p>1kg</p>
+							</div>
+						</li>
+						<li class="foods_item clearfix">
+							<div class="foods_item_left fl">
+								<p>法式小羊排</p>
+							</div>
+							<div class="foods_item_right fl">
+								<p>1kg</p>
+							</div>
+						</li>
+						<li class="foods_item clearfix">
+							<div class="foods_item_left fl">
+								<p>法式小羊排</p>
+							</div>
+							<div class="foods_item_right fl">
+								<p>1kg</p>
+							</div>
+						</li>
+						<li class="foods_item clearfix">
+							<div class="foods_item_left fl">
+								<p>法式小羊排</p>
+							</div>
+							<div class="foods_item_right fl">
+								<p>1kg</p>
+							</div>
+						</li>
+						<li class="foods_item clearfix">
+							<div class="foods_item_left fl">
+								<p>法式小羊排法式小羊排法式小羊排</p>
+							</div>
+							<div class="foods_item_right fl">
+								<p>1kg</p>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="steps_bar">
+					<div class="steps_title_bar clearfix">
+						<div class="steps_title_left fl">
+							<span class="steps_icon icon_img"></span>
+							<p class="steps_title">步骤</p>
+							<p class="steps_title_info">
+								共<span>8</span>步，
+								<span><15分钟</span>
+							</p>
+						</div>
+						<div class="steps_title_right fr">
+							<a href="#">
+								<span class="icon_img"></span>
+							</a>
+						</div>
+					</div>
+					<ul class="steps_list">
+						<li class="steps_item">
+							<p class="steps_num">
+								<span>01</span>
+							</p>
+							<div class="steps_info_bar">
+								<p class="steps_text">将羊排腌制，洋葱切面，调料备齐将羊排腌制，洋葱切面，调料备齐</p>
+								<div class="steps_img_bar">
+									<img src="/images/steps_img.png"/>
+								</div>
+							</div>
+						</li>
+						<li class="steps_item">
+							<p class="steps_num">
+								<span>02</span>
+							</p>
+							<div class="steps_info_bar">
+								<p class="steps_text">将羊排腌制，洋葱切面，调料备齐</p>
+								<!--<div class="steps_img_bar">
+									<img src="/images/steps_img.png"/>
+								</div>-->
+							</div>
+						</li>
+						<li class="steps_item">
+							<p class="steps_num">
+								<span>03</span>
+							</p>
+							<div class="steps_info_bar">
+								<p class="steps_text">将羊排腌制，洋葱切面，调料备齐</p>
+								<div class="steps_img_bar">
+									<img src="/images/steps_img.png"/>
+								</div>
+							</div>
+						</li>
+						<li class="steps_item">
+							<p class="steps_num">
+								<span>03</span>
+							</p>
+							<div class="steps_info_bar">
+								<p class="steps_text">将羊排腌制，洋葱切面，调料备齐</p>
+								<!--<div class="steps_img_bar">
+									<img src="/images/steps_img.png"/>
+								</div>-->
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="recommend_bar">
+					<div class="rule_bar">
+						<div class="rule_title">
+							<span class="vline"></span>
+							<span class="vround"></span>
+							<span class="text">有机食材</span>
+							<span class="vround"></span>
+							<span class="vline"></span>
+						</div>
+					</div>
+					<div class="recommend_list_bar">
+						<ul class="recommend_list clearfix">
+							<li class="recommend_item fl">
+								<div class="recommend_img">
+									<img src="/images/goods_img.png"/>
+									<div class="home_hot">
+										<p class="hot_text">爆款</p>
+									</div>
+								</div>
+								<div class="recommend_info">
+									<p class="recommend_title">羔羊排块0.7kg*2袋羔羊排块0.7kg*2袋</p>
+									<p class="recommend_price">
+										￥<span class="new">99</span>
+										<del class="old">
+											￥<span>99</span>
+										</del>
+									</p>
+								</div>
+							</li>
+							<li class="recommend_item fl">
+								<div class="recommend_img">
+									<img src="/images/goods_img.png"/>
+									<div class="home_hot">
+										<p class="hot_text">爆款</p>
+									</div>
+								</div>
+								<div class="recommend_info">
+									<p class="recommend_title">羔羊排块0.7kg*2袋羔羊排块0.7kg*2袋</p>
+									<p class="recommend_price">
+										￥<span class="new">99</span>
+										<del class="old">
+											￥<span>99</span>
+										</del>
+									</p>
+								</div>
+							</li>
+							<li class="recommend_item fl">
+								<div class="recommend_img">
+									<img src="/images/goods_img.png"/>
+									<div class="home_hot">
+										<p class="hot_text">爆款</p>
+									</div>
+								</div>
+								<div class="recommend_info">
+									<p class="recommend_title">羔羊排块0.7kg*2袋羔羊排块0.7kg*2袋</p>
+									<p class="recommend_price">
+										￥<span class="new">99</span>
+										<del class="old">
+											￥<span>99</span>
+										</del>
+									</p>
+								</div>
+							</li>
+							<li class="recommend_item fl">
+								<div class="recommend_img">
+									<img src="/images/goods_img.png"/>
+									<div class="home_hot">
+										<p class="hot_text">爆款</p>
+									</div>
+								</div>
+								<div class="recommend_info">
+									<p class="recommend_title">羔羊排块0.7kg*2袋羔羊排块0.7kg*2袋</p>
+									<p class="recommend_price">
+										￥<span class="new">99</span>
+										<del class="old">
+											￥<span>99</span>
+										</del>
+									</p>
+								</div>
+							</li>
+							<li class="recommend_item fl">
+								<div class="recommend_img">
+									<img src="/images/goods_img.png"/>
+									<div class="home_hot">
+										<p class="hot_text">爆款</p>
+									</div>
+								</div>
+								<div class="recommend_info">
+									<p class="recommend_title">羔羊排块0.7kg*2袋羔羊排块0.7kg*2袋</p>
+									<p class="recommend_price">
+										￥<span class="new">99</span>
+										<del class="old">
+											￥<span>99</span>
+										</del>
+									</p>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</section>
+			<section class="null"></section>
+			<footer class="footer_bar">
+				<ul class="clearfix">
+					<li class="footer_item fl">
+						<a class="footer_item_link" href="###">
+							<img src="/images/home_icon.png"/>
+							<span>首页</span>
+						</a>
+					</li>
+					<li class="footer_item fl">
+						<a class="footer_item_link" href="###">
+							<img src="/images/menu_icon.png"/>
+							<span>菜谱</span>
+						</a>
+					</li>
+					<li class="footer_item fl">
+						<a class="footer_item_link" href="###">
+							<span class="buy_bar">
+								<img src="/images/buy_icon.png"/>
+							</span>
+						</a>
+					</li>
+					<li class="footer_item fl">
+						<a class="footer_item_link" href="###">
+							<img src="/images/order_icon.png"/>
+							<span>订单</span>
+						</a>
+					</li>
+					<li class="footer_item fl">
+						<a class="footer_item_link" href="###">
+							<img src="/images/my_icon_new.png"/>
+							<span>我的</span>
+						</a>
+					</li>
+				</ul>
+			</footer>
+		</section>
+	</body>
+</html>

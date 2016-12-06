@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>参团成功</title>
+        <!--设置初始比例（1：1像素还原）-->
+        <script>
+            var iScale = 1 / window.devicePixelRatio;
+            document.write('<meta name="viewport" content="width=device-width,initial-scale='+iScale+',minimum-scale='+iScale+',maximum-scale='+iScale+',user-scalable=no"/>');
+        </script>
+        <!--动态设置html字体大小-->
+        <script>
+            var iWidth = document.documentElement.clientWidth;
+            document.getElementsByTagName('html')[0].style.fontSize = iWidth / 15 + 'px';
+            window.onresize = function(){
+                var iWidth = document.documentElement.clientWidth;
+                document.getElementsByTagName('html')[0].style.fontSize = iWidth / 15 + 'px';
+            }
+        </script>
+        <meta name="format-detection" content="telephone=no" />
+        <link rel="stylesheet" type="text/css"  href="css/tool.css" />
+    </head>
+    <body ontouchstart="">
+        <div id="fk">
+            我坑爹我坑爹我坑爹我坑爹我坑爹<span>复制我啊！</span>我坑爹我坑爹我坑爹我坑爹我坑爹我坑爹我坑爹我坑爹我坑爹我坑爹我坑爹我坑爹我坑爹我坑爹我坑爹我坑爹我坑爹我坑爹
+        </div>
+        <input type="text" value="fjhjdddddddddd" id='dd'></input>
+        <input type="button" name="" value="点击" id="bt">
+        <script src="js/jquery-1.11.1.js" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript">
+            $('#bt').on('touchstart', function(event) {
+                // $('#fk').val().select();
+                console.log($('#dd').val())
+                $('#fk').select()
+                // console.log($('#fk').text())
+                // $('#fk').text().select();
+                event.preventDefault();
+            });
+            $(function() {
+                /*$('body').ready(function () {
+                    loaded();
+                })*/
+                $('body').attr('onclick','f()')
+            });
+            function f() {
+                alert(0)
+            }
+        </script>
+    </body>
+</html>

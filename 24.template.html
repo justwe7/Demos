@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <script src="js/template-native.js"></script>
+    </head>
+    <body>
+
+<dl class="bbs_list bbs_recommend" id="bbs_recommend"></dl>
+<!-- 内容渲染 -->
+
+<script id="main" type="text/html">
+<dt><%=listTitle%></dt>
+<%include('list')%>
+</script>
+<script id="list" type="text/html">
+    <% for (var i = 0; i < listContent.length; i ++) { %>
+        <dd>索引 <%= i + 1 %> ：<%= listContent[i]['img'] %> 标题 <%= listContent[i]['title'] %></dd>
+    <% } %>
+</script>
+
+<script>
+        var data = {
+            'listTitle': '论坛精选',
+            'listContent': [
+               {
+                   'img':'img/lis1.jpg',
+                   'title': '超凡入圣：平板、限量周边约定你aaaaaa',
+                   'time': '2016-8-2',
+                   'lable': '梦幻杂谈'
+               },
+               {
+                   'img':'img/lis2.jpg',
+                   'title': '超凡入圣：平板、限量周边约定你aaaaaa',
+                   'time': '2016-8-4',
+                   'lable': '梦幻杂谈'
+               },
+               {
+                   'img':'img/lis3.jpg',
+                   'title': '超凡入圣：平板、限量周边约定你aaaaaa',
+                   'time': '2016-8-5',
+                   'lable': '梦幻杂谈'
+               }
+            ]
+        }
+        console.log()
+        var html = template('main',data);
+        document.getElementById('bbs_recommend').innerHTML = html;
+</script>
+</body>
+</html>

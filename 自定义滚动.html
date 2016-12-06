@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <style>
+        body,ul,li{
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+        #box{
+            width: 400px;
+            height: 500px;
+            /*background-color: #f5460c;*/
+            border: 1px solid #f5460c;
+            color: #381f17;
+            position: relative;
+            border-radius: 3px;
+            top: 10px;
+            left: 30%;
+            padding-right: 20px;
+            overflow: hidden;
+        }
+        #con{
+            width:100%;
+            position: absolute;
+            left: 10px;
+            top: 0;
+            font-size: 14px;
+            line-height: 24px;
+            transition:500ms;
+        }
+        li{
+            margin-top: 10px;
+        }
+        #scroll{
+            width: 20px;
+            height: 100%;
+            background-color: #aaa;
+            opacity: 0.8;
+            position: absolute;
+            right: 0;
+            top: 0;
+            /*display: none;*/
+        }
+        #cur{
+            width: 20px;
+            height: 20px;
+            background-color: #666;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+    </style>
+</head>
+<script type="text/javascript">
+window.onload = function () {
+    var oBox = document.getElementById('box');
+    var oCon = document.getElementById('con');
+    var oScr = document.getElementById('scroll');
+    var oCur = document.getElementById('cur');
+
+    var oBoxH = oBox.clientHeight;
+    var oConH = oCon.scrollHeight;
+    var oScrH = oScr.clientHeight;
+
+    var scale1 = oBox.clientHeight/oCon.scrollHeight;
+    if (scale1 > 1) {//滚动条的
+        scale1 = 0;
+        oScr.style.display = 'none';
+    } else if( scale1 < 0.1 ){
+        scale1 = 0.1;
+    };
+    oCur.style.height = oScrH * scale1 + 'px';
+    addEvent(oCur,'mousedown',cli,false)
+    addEvent(oScr,'mousedown',down,false)
+    addEvent(oScr,'mouseup',ups,false)
+    addWheel(oBox,run)
+    var timer = null;
+    function down (ev) {//点击位置
+        var ev = ev || event;
+        //父级height-（当前位置-父级top）<块高度
+        console.log(oCur.getBoundingClientRect());
+        if (ev.target.id == 'cur') {return;};
+        var loca = oCur.offsetTop;
+        timer = setInterval(function  () {
+        var sT = oScrH - oCur.offsetHeight + oScr.offsetTop;
+        console.log(sT)
+            if (ev.clientY < oCur.getBoundingClientRect().top) {
+                loca-=10;
+            } else if(ev.clientY > (oCur.getBoundingClientRect().top+oCur.offsetHeight)){
+                loca+=10;
+            }
+
+            var bili = loca/(oScrH-oCur.offsetHeight);
+            // console.log(loca/(oScrH-oCur.offsetHeight))
+            oCon.style.top = (oBoxH - oConH) * bili + 'px';
+            oCur.style.top = loca + oScr.offsetTop + 'px';
+        },30)
+    }
+    function ups () {
+        clearInterval(timer)
+    }
+    var n = 0;
+    function run (bool,ev) {//滚轮走
+        //根据当前从底部到顶部的距离算出与父级能移动最大高度的比例，通过滚轮增减自身滚动条的大小，移动的高度通过乘以比例算出来
+        var ev = ev || event;
+        var maxH = (oScrH-oCur.clientHeight)//oCur.clientHeight;//最大的高度
+        var nowH = ((oCur.offsetTop)+(oCur.offsetHeight))//当前从底部占据的位置
+        if (bool) {
+            nowH -= oCur.offsetHeight;
+            n = (nowH-oCur.offsetHeight)/maxH;
+            if (nowH < oCur.offsetHeight ) {
+                n = 0;
+            };
+            // console.log(n);
+        } else{
+            if (nowH > maxH ) {
+                nowH=maxH;
+            };
+            n = nowH/maxH;
+            nowH += oCur.offsetHeight;
+            // console.log(n)
+        };
+        oCur.style.top = (oScrH - oCur.offsetHeight)*(n) + 'px';
+        oCon.style.top = (oBoxH - oConH) *(n) + 'px';
+        stopDefault(oBox)
+    }
+
+    function cli (ev) {//点击创建移动
+        var ev = ev || event;
+        oY = ev.clientY - oCur.offsetTop;
+        addEvent(document,'mousemove',move);
+        addEvent(document,'mouseup',up);
+        stopDefault(oCur)
+    }
+    function move (ev) {//移动
+        var ev = ev || event;
+        var gtTop = ev.clientY - oY;
+        // oY = ev.clientY;
+        if (gtTop < 0) {
+            gtTop = 0
+        } else if(gtTop > oScrH - oCur.clientHeight){
+            gtTop = oScrH - oCur.clientHeight;
+        };
+        var scale2 = gtTop/(oScrH - oCur.clientHeight);
+        console.log(scale2);
+        oCur.style.top = gtTop + 'px';
+        oCon.style.top = (oBoxH - oConH) * scale2 + 'px';
+    }
+    function up () {//移除事件
+        document.removeEventListener('mousemove',move)
+        document.removeEventListener('mouseup',up)
+    }
+}
+</script>
+<body>
+    <section id="box">
+        <ul id="con">
+            <li>1.  笑死我了哈哈哈哈哈哈，原来好多梗都是这我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>2.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>3.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>4.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>5.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>6.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>7.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>8.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>9.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>10.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>11.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>12.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>13.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>14.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>15.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>16.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>17.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>18.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>19.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>20.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>21.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>22.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>23.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>24.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>25.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>26.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>27.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>28.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>29.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>30.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>31.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>32.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>33.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>34.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>35.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>36.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>37.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>38.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>39.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>40.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>41.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>42.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>43.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>44.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>45.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>46.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>47.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>48.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>49.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>50.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>51.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>52.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>53.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>54.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>55.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>56.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>57.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>58.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>59.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>60.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>61.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>62.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>63.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>64.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>65.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>66.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>67.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>68.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>69.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>70.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>71.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>72.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>73.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>74.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>75.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>76.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>77.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>78.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>79.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>80.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>81.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>82.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>83.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>84.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>85.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>86.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>87.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>88.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>89.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>90.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>91.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>92.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>93.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>94.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>95.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>96.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>97.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>98.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>99.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>100.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>101.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>102.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>103.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>104.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>105.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>106.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>107.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>108.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>109.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>110.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>111.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>112.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>113.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>114.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>115.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>116.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>117.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>118.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>119.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>120.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>121.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>122.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>123.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>124.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>125.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>126.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+            <li>127.  笑死我了哈哈哈哈哈哈，原来好多梗都是这神剧来的。</li>
+        </ul>
+        <div id="scroll">
+            <div id="cur"></div>
+        </div>
+    </section>
+</body>
+<script type="text/javascript">
+    function addEvent(obj,evEnt,evFn,TorF){//函数事件
+        if(obj.attachEvent){
+            obj.attachEvent('on'+evEnt,evFn);
+        }else{
+            obj.addEventListener(evEnt,evFn,TorF);
+        }
+    }
+    function stopDefault(e) {//阻止浏览器的默认行为
+         if (e && e.preventDefault ){//阻止默认浏览器动作(W3C)
+                e.preventDefault();
+         }
+        else{//IE中阻止函数器默认动作的方式
+            window.event.returnValue = false;
+        }
+        return false;
+    }
+    function addWheel (obj,fn) {
+        if (window.navigator.userAgent.toLowerCase().indexOf('firefox') != -1) {
+            addEvent(obj,'DOMMouseScroll',evFn);
+        }else{
+            addEvent(obj,'mousewheel',evFn);
+        }
+        function evFn(ev) {
+            var up = true;//上
+            var ev = ev || event;
+            if (ev.wheelDelta) {
+                up = ev.wheelDelta>0?true:false;//负值为下
+            } else{
+                up = ev.detail>0?false:true;//负值为上
+            };
+            fn && fn(up)
+        }
+    }
+</script>
+</html>

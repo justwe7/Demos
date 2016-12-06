@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>订单详情</title>
+		<!--设置初始比例（1：1像素还原）-->
+		<script>
+			var iScale = 1 / window.devicePixelRatio;
+			document.write('<meta name="viewport" content="width=device-width,initial-scale='+iScale+',minimum-scale='+iScale+',maximum-scale='+iScale+',user-scalable=no"/>');
+		</script>
+		<!--动态设置html字体大小-->
+		<script>
+			var iWidth = document.documentElement.clientWidth;
+			document.getElementsByTagName('html')[0].style.fontSize = iWidth / 15 + 'px';
+			window.onresize = function(){
+				var iWidth = document.documentElement.clientWidth;
+				document.getElementsByTagName('html')[0].style.fontSize = iWidth / 15 + 'px';
+			}
+		</script>
+		<meta name="format-detection" content="telephone=no" />
+		<link rel="stylesheet" type="text/css" href="/Content/public.css" />
+		<link rel="stylesheet" type="text/css" href="/Content/tool.css"/>
+		<link rel="stylesheet" type="text/css" href="/Content/order.css"/>
+	</head>
+	<body>
+		<section>
+			<header>
+				<div class="head">
+					<a class="head_link" href="##">
+						<span class="icon_img"></span>
+					</a>
+					<h2>订单详情</h2>
+				</div>
+			</header>
+			<section class="details_content">
+				<div class="details_num_bar">
+					<div class="details_num clearfix">
+						<div class="detail_num_left fl">
+							<p>
+								订单编号：<span>08987667</span>
+							</p>
+						</div>
+						<div class="detail_num_right fr">
+							<p class="fr">已取消</p>
+						</div>
+					</div>
+					<div class="progress_bar">
+						<div class="progress_bg"></div>
+						<ul class="progress_content clearfix">
+							<li class="progress_content_item fl active">
+								<span class="progress_text">提单</span>
+							</li>
+							<li class="progress_content_item fl">
+								<span class="progress_text">付款</span>
+							</li>
+							<li class="progress_content_item fl">
+								<span class="progress_text">发货</span>
+							</li>
+							<li class="progress_content_item fl">
+								<span class="progress_text">收货</span>
+							</li>
+							<li class="progress_content_item fl">
+								<span class="progress_text">完成</span>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="delivery_bar">
+					<p class="delivery_title">配送信息</p>
+					<ul class="delivery_info">
+						<li class="delivery_info_item clearfix">
+							<p class="delivery_info_left fl">收货人：</p>
+							<p class="delivery_info_right fl">彭春杰  18600908848</p>
+						</li>
+						<li class="delivery_info_item clearfix">
+							<p class="delivery_info_left fl">收货地址：</p>
+							<p class="delivery_info_right fl">北京朝阳区北苑路180号安慧北里-10号楼 602</p>
+						</li>
+					</ul>
+				</div>
+				<div class="pay_way_bar clearfix">
+					<div class="pay_way_title fl">
+						<p>支付方式</p>
+					</div>
+					<div class="pay_way_right fr">
+						<p class="fr">羊客钱币</p>
+					</div>
+				</div>
+				<div class="goods_information_bar">
+					<p class="goods_information_title">商品信息</p>
+					<div class="goods_information_content">
+						<ul class="ord_content_bar">
+							<li class="clearfix">
+								<div class="ord_goods_img fl">
+									<img src="/images/goods_img.png"/>
+								</div>
+								<div class="ord_goods_info fl">
+									<p class="ord_goods_left fl">
+										<span class="fl">羔羊排块0.7kg羔羊排块0.7kg羔羊排块0.7kg</span>
+										<span class="fl">2袋</span>
+									</p>
+									<p class="ord_goods_right fr">￥<span>189</span></p>
+								</div>
+							</li>
+							<li class="clearfix">
+								<div class="ord_goods_img fl">
+									<img src="/images/goods_img.png"/>
+								</div>
+								<div class="ord_goods_info fl">
+									<p class="ord_goods_left fl">
+										<span class="fl">羔羊排块0.7kg</span>
+										<span class="fl">2袋</span>
+									</p>
+									<p class="ord_goods_right fr">￥<span>189</span></p>
+								</div>
+							</li>
+						</ul>
+						<div class="else_bar clearfix">
+							<div class="else_left fl">
+								<p>+运费</p>
+							</div>
+							<div class="else_right fr">
+								<p class="fr">￥0</p>
+							</div>
+						</div>
+						<div class="else_bar clearfix">
+							<div class="else_left fl">
+								<p>-优惠券抵扣</p>
+							</div>
+							<div class="else_right fr">
+								<p class="fr">￥100</p>
+							</div>
+						</div>
+						<div class="pay_bar clearfix">
+							<div class="pay_right fr">
+								<p>实付款:<span>￥298</span></p>
+							</div>
+						</div>
+						<div class="time_bar clearfix">
+							<div class="time_right fr">
+								<p>下单时间:<span>2016-04-02 12:00</span></p>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="button_link_bar clearfix">
+					<a class="fr activered" href="#">立即支付</a>
+					<a class="fr" href="#">取消订单</a>
+					<a class="fr activegreen" href="#">立即支付</a>
+				</div>
+			</section>
+			<section class="null"></section>
+			<footer class="footer_bar">
+				<ul class="clearfix">
+					<li class="footer_item fl">
+						<a class="footer_item_link" href="###">
+							<img src="/images/home_icon.png"/>
+							<span>首页</span>
+						</a>
+					</li>
+					<li class="footer_item fl">
+						<a class="footer_item_link" href="###">
+							<img src="/images/menu_icon.png"/>
+							<span>菜谱</span>
+						</a>
+					</li>
+					<li class="footer_item fl">
+						<a class="footer_item_link" href="###">
+							<span class="buy_bar">
+								<img src="/images/buy_icon.png"/>
+							</span>
+						</a>
+					</li>
+					<li class="footer_item fl">
+						<a class="footer_item_link" href="###">
+							<img src="/images/order_icon.png"/>
+							<span>订单</span>
+						</a>
+					</li>
+					<li class="footer_item fl">
+						<a class="footer_item_link" href="###">
+							<img src="/images/my_icon_new.png"/>
+							<span>我的</span>
+						</a>
+					</li>
+				</ul>
+			</footer>
+		</section>
+	</body>
+</html>

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>购物车</title>
+		<!--设置初始比例（1：1像素还原）-->
+		<script>
+			var iScale = 1 / window.devicePixelRatio;
+			document.write('<meta name="viewport" content="width=device-width,initial-scale='+iScale+',minimum-scale='+iScale+',maximum-scale='+iScale+',user-scalable=no"/>');
+		</script>
+		<!--动态设置html字体大小-->
+		<script>
+			var iWidth = document.documentElement.clientWidth;
+			document.getElementsByTagName('html')[0].style.fontSize = iWidth / 15 + 'px';
+			window.onresize = function(){
+				var iWidth = document.documentElement.clientWidth;
+				document.getElementsByTagName('html')[0].style.fontSize = iWidth / 15 + 'px';
+			}
+		</script>
+		<meta name="format-detection" content="telephone=no" />
+		<link rel="stylesheet" type="text/css" href="/Content/public.css" />
+		<link rel="stylesheet" type="text/css" href="/Content/tool.css"/>
+		<link rel="stylesheet" type="text/css" href="/Content/order.css"/>
+	</head>
+	<body class="cart_box">
+		<section>
+			<header>
+				<div class="head">
+					<a class="head_link" onclick="javascript: history.go(-1);">
+						<span class="icon_img"></span>
+					</a>
+					<h2>购物车</h2>
+				</div>
+			</header>
+			<section class="cart_content">
+				<div class="nocoupon_bar" style="display: none;">
+					<div class="con_icon_bar">
+						<img src="/images/nocart_icon.png"/>
+					</div>
+					<p>购物车还空着，快去选商品吧~</p>
+					<a href="">去逛逛</a>
+				</div>
+				<div class="buycart_bar">
+					<form action="" method="post">
+						<ul class="buycart_list">
+							<li class="buycart_item clearfix">
+								<div class="buycart_select_bar fl">
+									<a class="buycart_link" href="#">
+										<img src="/images/buycheck_icon.png"/>
+									</a>
+								</div>
+								<div class="buycart_content_bar fl">
+									<div class="buy_goods_img fl">
+										<img src="/images/goods_img.png"/>
+									</div>
+									<div class="buy_goods_info fr">
+										<div class="buy_goods_title fr">
+											<p class="buy_title_text fr">
+												<span>羔羊排块</span>
+												<span>0.7kg*2袋0.7kg*2袋</span>
+											</p>
+										</div>
+										<div class="buy_goods_price fr">
+											<p class="buy_price_text fr">
+												<span>￥99</span>
+											</p>
+										</div>
+										<div class="buy_goods_button fr">
+											<div class="buy_goods_button_bg fr">
+												<a class="minus" href="#">-</a>
+												<input class="input_content" type="text" value="1"/>
+												<a class="plus active" href="javascript:;">+</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="buycart_del_bar fr">
+									<a class="buycart_del_info" href="#">
+										<span class="buycart_del_icon icon_img"></span>
+									</a>
+								</div>
+							</li>
+							<li class="buycart_item clearfix">
+								<div class="buycart_select_bar fl">
+									<a class="buycart_link" href="#">
+										<img src="/images/buychecked_icon.png"/>
+									</a>
+								</div>
+								<div class="buycart_content_bar fl">
+									<div class="buy_goods_img fl">
+										<img src="/images/goods_img.png"/>
+									</div>
+									<div class="buy_goods_info fr">
+										<div class="buy_goods_title fr">
+											<p class="buy_title_text fr">
+												<span>羔羊排块</span>
+												<span>0.7kg*2袋0.7kg*2袋</span>
+											</p>
+										</div>
+										<div class="buy_goods_price fr">
+											<p class="buy_price_text fr">
+												<span>￥99</span>
+											</p>
+										</div>
+										<div class="buy_goods_button fr">
+											<div class="buy_goods_button_bg fr">
+												<a class="minus" href="#">-</a>
+												<input class="input_content" type="text" value="1"/>
+												<a class="plus active" href="javascript:;">+</a>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="buycart_del_bar fr">
+									<a class="buycart_del_info" href="#">
+										<span class="buycart_del_icon icon_img"></span>
+									</a>
+								</div>
+							</li>
+						</ul>
+					</form>
+				</div>
+				<div class="cartnull"></div>
+				<div class="settlement_bar clearfix">
+					<div class="settlement_left fl">
+						<a class="settlement_icon" href="#">
+							<img src="/images/buycheck_icon.png"/>
+						</a>
+					</div>
+					<div class="settlement_content fl">
+						<p>合计:<span>￥297</span></p>
+					</div>
+					<div class="settlement_right fr">
+						<a class="settlement_link" href="#">去结算</a>
+					</div>
+				</div>
+			</section>
+			<!--弹出层-->
+			<section class="cart_bomb" style="display: none;">
+				<div class="bomb_bar">
+					<div class="bomb_top">
+						<p class="bomb_top_text">您确定要删除商品吗？</p>
+					</div>
+					<div class="bomb_bottom clearfix">
+						<div class="bomb_bottom_left fl">
+							<a class="sure" href="">确定</a>
+						</div>
+						<div class="bomb_bottom_right fr">
+							<a class="cancel" href="">取消</a>
+						</div>
+					</div>
+				</div>
+			</section>
+		</section>
+	</body>
+</html>

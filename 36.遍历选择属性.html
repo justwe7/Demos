@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css" media="screen">
+            section{
+                background-color: #f88;
+                width: 500px;
+                margin-top: 300px;
+                /*padding-top: 140px;*/
+                position: relative;
+                /*display: table-cell;*/
+            }
+            section img{
+                position: absolute;
+                top: 0;
+            }
+            section div{
+                position: relative;
+                width: 200px;
+                background-color: #f11;
+                word-wrap: break-word;word-break:break-all;
+                margin-top: -80px;
+                cursor: not-allowed;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- <select name="ddd">
+            <option value="">1111</option>
+            <option value="">2222</option>
+        </select>
+
+        <select >
+            <option value="">aaaa</option>
+            <option value="">2222</option>
+        </select> -->
+
+        <section>
+            <!-- <img src="img/logo.png" alt=""> -->
+            <div>
+ require.async(['./gb_service/service1_results.js','./gb_service/service2_history.js','./gb_service/service3_chart.js','./gb_service/service4_record.js','./gb_service/edit_user.js','./gb_service/hospital_panel.js'], function(S1,S2,S3,S4,Edit) {
+            var sHref = jc_href;
+            applyTab(); require.async(['./gb_service/service1_results.js','./gb_service/service2_history.js','./gb_service/service3_chart.js','./gb_service/service4_record.js','./gb_service/edit_user.js','./gb_service/hospital_panel.js'], function(S1,S2,S3,S4,Edit) {
+            var sHref = jc_href;
+            applyTab();
+            </div>
+        </section>
+        <input type="button" name="" value="ddd" id="ff">
+        <script type="text/javascript">
+            var bt = document.getElementsByTagName('ff');
+            bt.onclick = function function_name() {
+                window.location.href = 'kkk'
+            }
+
+            var aSelect = document.getElementsByTagName('select');
+            for (var i = 0; i < aSelect.length; i++) {
+                if (!!aSelect[i].getAttribute('name') && aSelect[i].getAttribute('name').toLowerCase() == 'ddd') {
+                    console.log(this)
+                    var option = document.createElement('option');
+                    option.selected = true;
+                    aSelect[i].appendChild(option);
+                }
+            }
+
+            function aa() {
+                console.log(1)
+                function bb() {
+                    console.log(2)
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>支付订单</title>
+		<!--设置初始比例（1：1像素还原）-->
+		<script>
+			var iScale = 1 / window.devicePixelRatio;
+			document.write('<meta name="viewport" content="width=device-width,initial-scale='+iScale+',minimum-scale='+iScale+',maximum-scale='+iScale+',user-scalable=no"/>');
+		</script>
+		<!--动态设置html字体大小-->
+		<script>
+			var iWidth = document.documentElement.clientWidth;
+			document.getElementsByTagName('html')[0].style.fontSize = iWidth / 15 + 'px';
+			window.onresize = function(){
+				var iWidth = document.documentElement.clientWidth;
+				document.getElementsByTagName('html')[0].style.fontSize = iWidth / 15 + 'px';
+			}
+		</script>
+		<meta name="format-detection" content="telephone=no" />
+		<link rel="stylesheet" type="text/css" href="/Content/public.css" />
+		<link rel="stylesheet" type="text/css" href="/Content/tool.css"/>
+		<link rel="stylesheet" type="text/css" href="/Content/order.css"/>
+	</head>
+	<body class="cart_box">
+		<section>
+			<header>
+				<div class="head">
+					<a class="head_link" onclick="javascript: history.go(-1);">
+						<span class="icon_img"></span>
+					</a>
+					<h2>支付订单</h2>
+				</div>
+			</header>
+			<section class="payorder_content">
+				<div class="payorder_num clearfix">
+					<p class="payorder_num_left fl">订单编号</p>
+					<p class="payorder_num_right fr">0099865789</p>
+				</div>
+				<div class="payorder_price clearfix">
+					<p class="payorder_price_left fl">订单金额</p>
+					<p class="payorder_price_right fr">￥189</p>
+				</div>
+				<div class="payorder_mode">
+					<p class="payorder_mode_title">支付方式</p>
+					<ul class="payorder_mode_list">
+						<li class="payorder_mode_item clearfix">
+							<div class="payorder_mode_icon fl">
+								<span class="icon_img"></span>
+							</div>
+							<div class="payorder_mode_info fl">
+								<div class="payorder_mode_left fl">
+									<p class="payorder_mode_bigtitle">微信支付</p>
+									<p class="payorder_mode_text">亿万用户的选择，更快更安全</p>
+								</div>
+								<a class="payorder_mode_right fr" href="#">
+									<img src="/images/check_icon.png"/>
+								</a>
+							</div>
+						</li>
+						<li class="payorder_mode_item clearfix">
+							<div class="payorder_mode_icon fl">
+								<span class="yk_icon icon_img"></span>
+							</div>
+							<div class="payorder_mode_info fl">
+								<div class="payorder_mode_left fl">
+									<p class="payorder_mode_bigtitle">羊客钱包</p>
+									<p class="payorder_mode_text">
+										余额<span>1000元</span>
+									</p>
+								</div>
+								<a class="payorder_mode_right fr" href="#">
+									<img src="/images/checked_icon.png"/>
+								</a>
+							</div>
+						</li>
+						<li class="payorder_mode_item clearfix unusablecol">
+							<div class="payorder_mode_icon fl">
+								<span class="yk_icon icon_img"></span>
+							</div>
+							<div class="payorder_mode_info fl">
+								<div class="payorder_mode_left fl">
+									<p class="payorder_mode_bigtitle">羊客钱包</p>
+									<p class="payorder_mode_text">暂不可用</p>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</div>
+				<div class="cartnull"></div>
+				<div class="settlement_bar clearfix">
+					<a class="pay_link" href="#">立即支付</a>
+				</div>
+			</section>
+		</section>
+	</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>商品列表</title>
+		<!--设置初始比例（1：1像素还原）-->
+		<script>
+			var iScale = 1 / window.devicePixelRatio;
+			document.write('<meta name="viewport" content="width=device-width,initial-scale='+iScale+',minimum-scale='+iScale+',maximum-scale='+iScale+',user-scalable=no"/>');
+		</script>
+		<!--动态设置html字体大小-->
+		<script>
+			var iWidth = document.documentElement.clientWidth;
+			document.getElementsByTagName('html')[0].style.fontSize = iWidth / 15 + 'px';
+			window.onresize = function(){
+				var iWidth = document.documentElement.clientWidth;
+				document.getElementsByTagName('html')[0].style.fontSize = iWidth / 15 + 'px';
+			}
+		</script>
+		<meta name="format-detection" content="telephone=no" />
+		<link rel="stylesheet" type="text/css" href="/Content/public.css" />
+		<link rel="stylesheet" type="text/css" href="/Content/home.css" />
+	</head>
+	<body>
+		<section>
+			<header>
+				<div class="head">
+					<a class="head_link" href="##">
+						<span class="icon_img"></span>
+					</a>
+					<h2>商品列表</h2>
+				</div>
+			</header>
+			<section class="goods_list_content">
+				<section class="goods_cont_bar">
+					<div class="pull_bar">
+						<span class="pull_icon icon_img"></span>
+						<p class="pull_text">下拉加载更多…</p>
+					</div>
+					<ul class="homegoods_list">
+						<li class="homegoods_item clearfix">
+							<div class="homegoods_left fl">
+								<img src="/images/goods_img.png"/>
+							</div>
+							<div class="homegoods_right fr">
+								<h2 class="homegoods_title fr">羔羊前腱</h2>
+								<p class="homegoods_text fr">科尔沁羊业  全天然放养全天然放养</p>
+								<p class="homegoods_weight fr">1400g</p>
+								<div class="homegoods_price fr">
+									<p class="new fr">
+										¥<span>168</span>
+									</p>
+									<del class="old fr">¥<span>218</span></del>
+								</div>
+								<a class="homegoods_buy fr" href="###">立即购买</a>
+							</div>
+						</li>
+						<li class="homegoods_item clearfix">
+							<div class="homegoods_left fl">
+								<img src="/images/goods_img.png"/>
+							</div>
+							<div class="homegoods_right fr">
+								<h2 class="homegoods_title fr">羔羊前腱</h2>
+								<p class="homegoods_text fr">科尔沁羊业  全天然放养全天然放养</p>
+								<p class="homegoods_weight fr">1400g</p>
+								<div class="homegoods_price fr">
+									<p class="new fr">
+										¥<span>168</span>
+									</p>
+									<del class="old fr">¥<span>218</span></del>
+								</div>
+								<a class="homegoods_buy fr" href="###">立即购买</a>
+							</div>
+						</li>
+						<li class="homegoods_item clearfix">
+							<div class="homegoods_left fl">
+								<img src="/images/goods_img.png"/>
+							</div>
+							<div class="homegoods_right fr">
+								<h2 class="homegoods_title fr">羔羊前腱</h2>
+								<p class="homegoods_text fr">科尔沁羊业  全天然放养全天然放养</p>
+								<p class="homegoods_weight fr">1400g</p>
+								<div class="homegoods_price fr">
+									<p class="new fr">
+										¥<span>168</span>
+									</p>
+									<del class="old fr">¥<span>218</span></del>
+								</div>
+								<a class="homegoods_buy fr" href="###">立即购买</a>
+							</div>
+						</li>
+						<li class="homegoods_item clearfix">
+							<div class="homegoods_left fl">
+								<img src="/images/goods_img.png"/>
+							</div>
+							<div class="homegoods_right fr">
+								<h2 class="homegoods_title fr">羔羊前腱</h2>
+								<p class="homegoods_text fr">科尔沁羊业  全天然放养全天然放养</p>
+								<p class="homegoods_weight fr">1400g</p>
+								<div class="homegoods_price fr">
+									<p class="new fr">
+										¥<span>168</span>
+									</p>
+									<del class="old fr">¥<span>218</span></del>
+								</div>
+								<a class="homegoods_buy fr" href="###">立即购买</a>
+							</div>
+						</li>
+					</ul>
+					<div class="pull_bar">
+						<span class="pull_icon icon_img rotate"></span>
+						<p class="pull_text">上拉加载更多…</p>
+					</div>
+				</section>
+				<section class="copyright_bar">
+					<p class="all">
+						<a href="###">登陆</a>
+						<span>｜</span>
+						<a href="###">注册</a>
+						<span>｜</span>
+						<a class="activecolor" href="###">触摸板</span>
+						<span>｜</span>
+						<a href="###">PC版</a>
+					</p>
+					<p class="copyright">Copyright © 2015 All Reserved 版权所有 科羊云牧</p>
+				</section>
+				<section class="up_bar">
+					<span class="up_icon icon_img"></span>
+				</section>
+			</section>
+			<section class="null"></section>
+			<footer class="footer_bar">
+				<ul class="clearfix">
+					<li class="footer_item fl">
+						<a class="footer_item_link" href="###">
+							<img src="/images/home_icon.png"/>
+							<span>首页</span>
+						</a>
+					</li>
+					<li class="footer_item fl">
+						<a class="footer_item_link" href="###">
+							<img src="/images/menu_icon.png"/>
+							<span>菜谱</span>
+						</a>
+					</li>
+					<li class="footer_item fl">
+						<a class="footer_item_link" href="###">
+							<span class="buy_bar">
+								<img src="/images/buy_icon.png"/>
+							</span>
+						</a>
+					</li>
+					<li class="footer_item fl">
+						<a class="footer_item_link" href="###">
+							<img src="/images/order_icon.png"/>
+							<span>订单</span>
+						</a>
+					</li>
+					<li class="footer_item fl">
+						<a class="footer_item_link" href="###">
+							<img src="/images/my_icon_new.png"/>
+							<span>我的</span>
+						</a>
+					</li>
+				</ul>
+			</footer>
+		</section>
+	</body>
+</html>

@@ -1,0 +1,230 @@
+/*index start*/
+header{
+	width:100%;
+	height: 6.96rem;
+	background:url(../img/bg.jpg) no-repeat;
+	background-size: 15rem 6.96rem;
+	text-align: center;
+}
+header .head_img_bar{
+	width: 100%;
+	height: 2.2rem;
+	padding-top: 2.16rem;
+}
+.head_img,.head_img img{
+	width: 2.2rem;
+	height: 2.2rem;
+	background-color: #fff;
+	border-radius: 50%;
+	text-align: center;
+	margin: 0 auto;
+}
+header .tel{
+	padding-top: 0.5rem;
+	font-size: 0.68rem;
+	color: #fff;
+}
+header .login_box{
+	font-size: 0.68rem;
+	padding-top: 0.5rem;
+}
+.login_box span{
+	margin: 0 0.6rem;
+	color: #fff;
+}
+.login_box a{
+	color: #fff;
+}
+.content{
+	width: 100%;
+	background-color:#f6f7f6;
+}
+.order_bar,.progress_bar{
+	background-color: #fff;
+	margin-bottom: 0.2rem;
+}
+.order_bar .order_top,.progress_bar .progress_top{
+	/*width: 100%;*/
+	height: 1.6rem;
+	padding: 0 0.4rem;
+	border-bottom: 1px solid #dcdcdc;
+	font-size: 0.6rem;
+	color: #000;
+	line-height: 1.6rem;
+	overflow: hidden;
+}
+.order_top .order_title,.progress_top .progress_title{
+	font-weight: 550;
+}
+.order_top .order_info{
+	display: block;
+}
+.order_info .icon_right{
+	display: inline-block;
+	width: 0.26rem;
+	height: 0.44rem;
+	background: url(../img/icon.png) no-repeat;
+	background-position: 0 0;
+	background-size: 6rem 6rem;
+	margin-right: 0.24rem;
+}
+.order_info .order_text{
+	font-size: 0.6rem;
+	color:#999999;
+	margin-right: 0.24rem;
+}
+.order_bar .order_bottom{
+	width: 100%;
+	height: 3rem;
+	border-bottom: 1px solid #f6f7f6;
+}
+.order_bottom .order_item{
+	width: 25%;
+	/*height: 3rem;*/
+	text-align: center;
+	font-size: 0.48rem;
+	overflow: hidden;
+	/*position: relative;*/
+}
+.order_item .order_item_link{
+	display: block;
+}
+.order_item_link img{
+	display: block;
+	width: 0.8rem;
+	height: 0.8rem;
+	margin: 0.64rem auto 0.44rem;
+}
+.order_item_link span{
+	color: #666666;
+	margin-bottom: 0.68rem;
+}
+.progress_top .progress_integral{
+	font-size: 0.48rem;
+	color: #4E9F35;
+	margin-top: 0.05rem;
+	margin-left: 0.5rem;
+}
+.progress_info .progress_text{
+	font-size: 0.48rem;
+	color:#999999;
+	/*margin-right: 0.44rem;*/
+}
+.progress_bar .progress_bottom{
+	width: 100%;
+	/*height: 3rem;*/
+	border-bottom: 1px solid #f6f7f6;
+}
+.progress_info .progress_right{
+	width: 0.48rem;
+	height: 0.48rem;
+	margin: 0.6rem 0.1rem 0 0;
+}
+.progress_bottom .progress_bottom_left{
+	width: 3.6rem;
+	text-align: center;
+}
+.progress_bottom_left .progress_price{
+	margin-top: 0.6rem;
+	margin-bottom: 0.4rem;
+	font-size: 0.8rem;
+	font-weight: 400;
+	color: #d64515;
+}
+.progress_bottom_left .col999{
+	color: #999999;
+}
+.progress_bottom_left .progress_price_title{
+	font-size: 0.48rem;
+	color: #666666;
+	margin-bottom: 0.6rem;
+}
+.progress_bottom_right{
+	width: 10.4rem;
+	margin-right: 0.4rem;
+	overflow: hidden;
+}
+.progress_bottom_right .eat_bar{
+	width: 100%;
+	height: 1.7rem;
+}
+.eat_bar .eat_item{
+	margin-top: 0.6rem;
+	width: 25%;
+	text-align: center;
+}
+
+.eat_item img{
+	width: 0.62rem;
+	height: 0.62rem;
+}
+.progress_bottom_right .progress_line_box{
+	width: 10.4rem;
+}
+.progress_line_box .progress_line{
+	width: 98%;
+	height: 0.16rem;
+	border: 1px solid #eeeeee;
+	background-color: #eef8eb;
+	border-radius: 0.1rem;
+	margin-bottom: 0.24rem;
+}
+.progress_line_box .coleee{
+	background-color: #eeeeee;
+}
+.progress_length{
+	display: block;
+	width: 25%;
+	height: 0.16rem;
+	border: 1px solid #4e9f35;
+	background-color: #4e9f35;
+	border-radius: 0.1rem;
+}
+.progress_class{
+	width: 100%;
+	font-size: 0.4rem;
+	color: #999999;
+}
+.progress_class span{
+	display: inline-block;
+	width: 25%;
+	text-align: center;
+}
+.module_bar{
+	width: 100%;
+	background-color:#fff;
+}
+.module .module_item{
+	width: 24.7%;
+	/*height: 4rem;*/
+	border-bottom: 1px solid #dddddd;
+	border-right: 1px solid #dddddd;
+	text-align: center;
+}
+.module_item_link{
+	display: block;
+	width: 100%;
+}
+.module_item_link img{
+	display: block;
+	width: 1rem;
+	height: 1rem;
+	margin: 1.32rem auto 0.24rem;
+}
+.module_item span{
+	display: block;
+	font-size: 0.48rem;
+	color: #666666;
+	margin-bottom: 1rem;
+}
+.module .module_item:nth-of-type(4){
+	border-right: none;
+}
+.module .module_item:nth-of-type(5),.module .module_item:nth-of-type(6),.module .module_item:nth-of-type(7){
+	border-bottom-color: #eeeeee;
+}
+.module .module_item:nth-of-type(8){
+	border-right: none;
+	border-bottom-color: #eeeeee;
+}
+/*index end*/

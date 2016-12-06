@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+        <style type="text/css" media="screen">
+            *{
+                margin: 0;
+                padding: 0;
+                list-style: none;
+            }
+            #warp{
+                width: 80%;
+                margin: 0 auto;
+            }
+            #main{
+                position: relative;
+            }
+            #main li {
+                padding:0 10px;
+                height:40px;
+                line-height:40px;
+                border-bottom:1px solid #ccc;
+                border-top:1px solid #fff;
+                background-color:#fafafa;
+                font-size:14px;
+            }
+        </style>
+        <script type="text/javascript">
+        window.onload = function () {
+            var oWarp = document.getElementById('warp');
+            var oMain = document.getElementById('main');
+
+            // var MyDropLoad = function(obj, options){
+            //     this.oMain = document.getElementById(obj);
+            //     // var me = this;
+            //     // me.$element = element;
+            //     // // 上方是否插入DOM
+            //     // me.upInsertDOM = false;
+            //     // // loading状态
+            //     // me.loading = false;
+            //     // // 是否锁定
+            //     // me.isLockUp = false;
+            //     // me.isLockDown = false;
+            //     // // 是否有数据
+            //     // me.isData = true;
+            //     // me._scrollTop = 0;
+            //     // me._threshold = 0;
+            //     // me.init(options);
+            // };
+
+            // MyDropLoad.prototype = {
+            //     handleEvent: function (e) {
+            //         var that = this;
+            //         switch(e.type) {
+            //             case START_EV:
+            //                 if (!hasTouch && e.button !== 0) return;
+            //                 that._start(e);
+            //                 break;
+            //             case MOVE_EV: that._move(e); break;
+            //             case END_EV:
+            //             case CANCEL_EV: that._end(e); break;
+            //             case RESIZE_EV: that._resize(); break;
+            //             case 'DOMMouseScroll': case 'mousewheel': that._wheel(e); break;
+            //             case TRNEND_EV: that._transitionEnd(e); break;
+            //         }
+            //     },
+            //     onclick : function (e) {
+            //         alert(9)
+            //     }
+            // }
+
+            // var o = new MyDropLoad('oMain')
+            // console.log(o)
+            // o.onclick = function () {
+            //     // alert(0)
+            // }
+
+
+            var
+                //型号
+                isAndroid = (/android/gi).test(navigator.appVersion),
+                isIDevice = (/iphone|ipad/gi).test(navigator.appVersion),
+                isTouchPad = (/hp-tablet/gi).test(navigator.appVersion),
+
+                //判读设备添加事件
+                hasTouch = 'ontouchstart' in window && !isTouchPad,
+
+                START_EV = hasTouch ? 'touchstart' : 'mousedown',
+                MOVE_EV = hasTouch ? 'touchmove' : 'mousemove',
+                END_EV = hasTouch ? 'touchend' : 'mouseup',
+                CANCEL_EV = hasTouch ? 'touchcancel' : 'mouseup';
+
+                TransF = ('transform'),
+                TransPr = ('transitionProperty'),
+                TransDu = ('transitionDuration'),
+                TransOr = ('transformOrigin'),
+                TransFn = ('transitionTimingFunction'),
+                TransDe = ('transitionDelay');
+            // console.log(oMain)
+            oMain.style.cssText = 'transition-property: -webkit-transform; transform-origin: 0px 0px 0px; -webkit-transform: translate3d(0px, -502px, 0px)';
+
+            oMain.addEventListener(START_EV, function (e) {
+                e.preventDefault();
+                point = hasTouch ? e.touches[0] : e,
+                nY = point.pageY;
+                // console.log(point.pageY)
+                // var nowY = getComputedStyle(oMain,null)['transform'].replace(/[^0-9\-.,]/g, '').split(',');
+                // nowY = nowY[nowY.length-1]
+                // SetY = nY - nowY;
+                    alert(9)
+                oMain.addEventListener(MOVE_EV, function (e) {
+                    alert(9)
+                },false)
+            }, false)
+
+            // console.log(getComputedStyle(oMain,null)['transform'].replace(/[^0-9\-.,]/g, '').split(','))
+            // console.log(getComputedStyle(oMain,null)['transform'])
+            // console.log(getComputedStyle(oMain,null)['height'])
+
+            // _bind(oMain ,START_EV, function (e) {
+            //     e.preventDefault();
+            //     point = hasTouch ? e.touches[0] : e,
+            //     nY = point.pageY;
+            //     // console.log(point.pageY)
+            //     var nowY = getComputedStyle(oMain,null)['transform'].replace(/[^0-9\-.,]/g, '').split(',');
+            //     nowY = nowY[nowY.length-1]
+            //     SetY = nY - nowY;
+            //     // console.info(nowY)
+
+            //     _bind(oMain ,MOVE_EV, function (e) {
+            //         // e.preventDefault();
+            //         point = hasTouch ? e.touches[0] : e;
+            //         // console.log(point.pageY-nY)
+            //         var Mov = point.pageY-SetY;
+            //         oMain.style.cssText = 'transition-property: -webkit-transform; transform-origin: 0px 0px 0px; -webkit-transform: translate3d(0px, '+Mov+'px, 0px)';
+            //     });
+
+            //     _bind(oMain ,END_EV, function (e) {
+            //         // e.preventDefault();
+            //         // point = hasTouch ? e.touches[0] : e,
+            //         // console.log(point.pageY)
+            //     });
+
+            // });
+
+
+            function _bind(obj, type, Fn, bubble) {
+                obj.addEventListener(type, Fn, !!bubble);
+            };
+            function _unbind(obj, type, Fn, bubble) {
+                obj.removeEventListener(type, Fn, !!bubble);
+            }
+
+            /*---------------*/
+        }
+        </script>
+    </head>
+    <body>
+        <section id="warp">
+            <ul id="main">
+                <li>滚动1</li>
+                <li>滚动2</li>
+                <li>滚动3</li>
+                <li>滚动4</li>
+                <li>滚动5</li>
+                <li>滚动6</li>
+                <li>滚动7</li>
+                <li>滚动8</li>
+                <li>滚动9</li>
+                <li>滚动10</li>
+                <li>滚动11</li>
+                <li>滚动12</li>
+                <li>滚动13</li>
+                <li>滚动14</li>
+                <li>滚动15</li>
+                <li>滚动16</li>
+                <li>滚动17</li>
+                <li>滚动18</li>
+                <li>滚动19</li>
+                <li>滚动20</li>
+                <li>滚动21</li>
+                <li>滚动22</li>
+                <li>滚动23</li>
+                <li>滚动24</li>
+                <li>滚动25</li>
+                <li>滚动26</li>
+                <li>滚动27</li>
+                <li>滚动28</li>
+                <li>滚动29</li>
+                <li>滚动30</li>
+                <li>滚动31</li>
+                <li>滚动32</li>
+                <li>滚动33</li>
+                <li>滚动34</li>
+                <li>滚动35</li>
+                <li>滚动36</li>
+                <li>滚动37</li>
+                <li>滚动38</li>
+                <li>滚动39</li>
+                <li>滚动40</li>
+                <li>滚动41</li>
+                <li>滚动42</li>
+                <li>滚动43</li>
+                <li>滚动44</li>
+                <li>滚动45</li>
+                <li>滚动46</li>
+                <li>滚动47</li>
+                <li>滚动48</li>
+                <li>滚动49</li>
+                <li>滚动50</li>
+                <li>滚动51</li>
+                <li>滚动52</li>
+                <li>滚动53</li>
+                <li>滚动54</li>
+                <li>滚动55</li>
+                <li>滚动56</li>
+                <li>滚动57</li>
+                <li>滚动58</li>
+                <li>滚动59</li>
+                <li>滚动60</li>
+                <li>滚动61</li>
+                <li>滚动62</li>
+                <li>滚动63</li>
+                <li>滚动64</li>
+                <li>滚动65</li>
+                <li>滚动66</li>
+                <li>滚动67</li>
+                <li>滚动68</li>
+                <li>滚动69</li>
+                <li>滚动70</li>
+                <li>滚动71</li>
+                <li>滚动72</li>
+                <li>滚动73</li>
+                <li>滚动74</li>
+                <li>滚动75</li>
+                <li>滚动76</li>
+                <li>滚动77</li>
+                <li>滚动78</li>
+                <li>滚动79</li>
+                <li>滚动80</li>
+                <li>滚动81</li>
+                <li>滚动82</li>
+                <li>滚动83</li>
+                <li>滚动84</li>
+                <li>滚动85</li>
+                <li>滚动86</li>
+                <li>滚动87</li>
+                <li>滚动88</li>
+                <li>滚动89</li>
+                <li>滚动90</li>
+                <li>滚动91</li>
+                <li>滚动92</li>
+                <li>滚动93</li>
+                <li>滚动94</li>
+                <li>滚动95</li>
+                <li>滚动96</li>
+                <li>滚动97</li>
+                <li>滚动98</li>
+                <li>滚动99</li>
+                <li>滚动100</li>
+            </ul>
+        </section>
+    </body>
+</html>

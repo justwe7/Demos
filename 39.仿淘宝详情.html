@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=no" name="viewport">
+        <script type="text/javascript">
+            function adapt(designWidth, rem2px){
+              var d = window.document.createElement('div');
+              d.style.width = '1rem';
+              d.style.display = "none";
+              var head = window.document.getElementsByTagName('head')[0];
+              head.appendChild(d);
+              var defaultFontSize = parseFloat(window.getComputedStyle(d, null).getPropertyValue('width'));
+              d.remove();
+              document.documentElement.style.fontSize = window.innerWidth / designWidth * rem2px / defaultFontSize * 100 + '%';
+              var
+                  st = document.createElement('style'),
+                  portrait = "@media screen and (min-width: "+window.innerWidth+"px) {html{font-size:"+ ((window.innerWidth/(designWidth/rem2px)/defaultFontSize)*100) +"%;}}",
+                  landscape = "@media screen and (min-width: "+window.innerHeight+"px) {html{font-size:"+ ((window.innerHeight/(designWidth/rem2px)/defaultFontSize)*100) +"%;}}"
+              st.innerHTML = portrait + landscape;
+              head.appendChild(st);
+              return defaultFontSize;
+            };
+            var defaultFontSize = adapt(750, 32);
+        </script>
+        <style type="text/css">
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            body{
+                /*position: relative;*/
+            }
+            #header{
+                width: 100%;
+                height: 10vh;
+                background-color: #df8;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+            #footer{
+                width: 100%;
+                height: 10vh;
+                background-color: #f88;
+                position: absolute;
+                bottom: 0;
+                left: 0;
+            }
+            #wrapper{
+                width: 100%;
+                height: 80vh;
+                position: absolute;
+                top: 10vh;
+                bottom: 10vh;
+                overflow: scroll
+            }
+            .con1{
+
+            }
+            .con2{
+                height: 40rem;
+                background-color: #77a;
+                display: none;
+            }
+            .ani{
+                -webkit-animation: fadein 300ms;
+                animation: fadein 300ms;
+            }
+            @-webkit-keyframes fadein{
+                0%{
+                    -webkit-transform: translateY(-100%);
+                    transform: translateY(-100%);
+                }
+                100%{
+                    -webkit-transform: translateY(0);
+                    transform: translateY(0);
+                }
+            }
+            @keyframes fadein{
+                0%{
+                    -webkit-transform: translateY(-100%);
+                    transform: translateY(-100%);
+                }
+                100%{
+                    -webkit-transform: translateY(0);
+                    transform: translateY(0);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header id="header">
+            头部
+        </header>
+        <section id="wrapper">
+            <div id="scroller">
+                <ul class="con1">
+                    <li>内容1</li>
+                    <li>内容2</li>
+                    <li>内容3</li>
+                    <li>内容4</li>
+                    <li>内容5</li>
+                    <li>内容6</li>
+                    <li>内容7</li>
+                    <li>内容8</li>
+                    <li>内容9</li>
+                    <li>内容10</li>
+                    <li>内容11</li>
+                    <li>内容12</li>
+                    <li>内容13</li>
+                    <li>内容14</li>
+                    <li>内容15</li>
+                    <li>内容16</li>
+                    <li>内容17</li>
+                    <li>内容18</li>
+                    <li>内容19</li>
+                    <li>内容20</li>
+                    <li>内容21</li>
+                    <li>内容22</li>
+                    <li>内容23</li>
+                    <li>内容24</li>
+                    <li>内容25</li>
+                    <li>内容26</li>
+                    <li>内容27</li>
+                    <li>内容28</li>
+                    <li>内容29</li>
+                    <li>内容30</li>
+                    <li>内容31</li>
+                    <li>内容32</li>
+                    <li>内容33</li>
+                    <li>内容34</li>
+                    <li>内容35</li>
+                    <li>内容36</li>
+                    <li>内容37</li>
+                    <li>内容38</li>
+                    <li>内容39</li>
+                    <li>内容40</li>
+                    <li>让我加载</li>
+                </ul>
+                <div class="con2">
+                    <p>1</p>
+                    <p>2</p>
+                    <p>3</p>
+                    <p>4</p>
+                    <p>5</p>
+                    <p>6</p>
+                    <p>7</p>
+                    <p>8</p>
+                    <p>9</p>
+                    <p>10</p>
+                </div>
+            </div>
+        </section>
+        <footer id="footer">
+            我是底部
+        </footer>
+
+
+        <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+        <script src="http://cdn.bootcss.com/iScroll/5.2.0/iscroll.min.js"></script>
+
+        <script type="text/javascript">
+            // (function ($) {
+            //     $.fn.detailSwipe = function () {
+
+
+            //     };
+            // })(jQuery);
+        </script>
+        <script type="text/javascript">
+            var style = document.getElementById('scroller').style;
+            var nWindowH = $(window).height() - $('#header').height()*2;
+            var nTran = 0;
+            var transform = '';
+
+            $('.footer').click(function(event) {
+                $('.con1').css('display', 'none');
+                $('.con2').css('display', 'block');
+                myScroll.refresh();
+            });
+            $('#header').click(function(event) {
+                $('.con1').css('display', 'block');
+                $('.con2').css('display', 'none');
+            //  myScroll.refresh();
+            });
+
+            var onOff = false;
+            var onOff2 = false;
+            // console.log($('.con1').height())
+            var myScroll;
+            // document.addEventListener('touchstart', function (e) { e.preventDefault();myScroll.refresh() }, false);
+            function fn1(){
+                $('.con1').css('display', 'block');
+                $('.con2').css('display', 'none');
+                myScroll.refresh();
+            }
+            function fn2(){
+                 $('.con1').css('display', 'none');
+                $('.con2').css('display', 'block');
+                myScroll.refresh();
+            }
+            function loaded() {
+                myScroll = new iScroll('#wrapper',{
+                    useTransition: true,
+                    onBeforeScrollEnd: function () {
+                        // var transform = style.transform || '';
+                        browserRedirect();
+                        nTran = transform.split(',')[1].split('px')[0];
+                        if (nTran > $('#header').height()*2 && $('.con2').css('display') == 'block') {
+                            onOff2 = true;
+                        }else{
+                            onOff2 = false;
+                        }
+                        if (onOff2) {
+                            $('.con1').css('display', 'block');
+                            myScroll.refresh();
+                            $('.con1').addClass('ani');
+                            $('.con2').css('display', 'none');
+                            myScroll.refresh();
+                            onOff2 = false;
+                        }
+
+                        if (Number(Math.abs(nTran)) + nWindowH <$('.con1').height() && $('.con1').css('display') == 'block') {
+                            onOff = false;
+                        }
+
+                        // alert(9)
+                        if (onOff) {
+                            $('.con2').css('display', 'block');
+                            myScroll.refresh();
+                            myScroll.scrollToElement('.con2',500);
+                            myScroll.disable();
+                            setTimeout(function () {
+                                $('.con1').css('display', 'none');
+                                myScroll.scrollTo(0,0,0,false);
+                                myScroll.enable();
+                                myScroll.refresh();
+                                onOff = false;
+                            }, 520)
+                        }
+
+                    },
+                    onTouchEnd: function () {
+                        // myScroll.enable();
+                        // myScroll.destroy()
+                    },
+                    onScrollMove: function (event) {
+                        event.changedTouches[0].clientY < 0 && myScroll.refresh();
+                    },
+                    onScrollEnd: function () {
+                        // var transform = style.transform || '';
+                        browserRedirect();
+                        nTran = transform.split(',')[1].split('px')[0]
+                        if (Number(Math.abs(nTran)) + nWindowH + 100>$('.con1').height() && $('.con1').css('display') == 'block') {
+                            onOff = true;
+                        }else{
+                            onOff = false;
+                        }
+                    }
+                });
+            }
+
+            document.addEventListener('touchmove', function (e) { e.preventDefault(); }, false);
+
+            document.addEventListener('DOMContentLoaded', loaded, false);
+
+            function browserRedirect() {
+                var sUserAgent = navigator.userAgent.toLowerCase();
+                var bIsIpad = sUserAgent.match(/ipad/i) == "ipad";
+                var bIsIphoneOs = sUserAgent.match(/iphone os/i) == "iphone os";
+                var bIsMidp = sUserAgent.match(/midp/i) == "midp";
+                var bIsUc7 = sUserAgent.match(/rv:1.2.3.4/i) == "rv:1.2.3.4";
+                var bIsUc = sUserAgent.match(/ucweb/i) == "ucweb";
+                var bIsAndroid = sUserAgent.match(/android/i) == "android";
+                var bIsCE = sUserAgent.match(/windows ce/i) == "windows ce";
+                var bIsWM = sUserAgent.match(/windows mobile/i) == "windows mobile";
+                if (bIsIpad || bIsIphoneOs || bIsMidp || bIsUc7 || bIsUc || bIsAndroid || bIsCE || bIsWM) {
+                    transform = style.webkitTransform || '';
+                } else {
+                    transform = style.transform || '';
+                }
+            }
+        </script>
+    </body>
+</html>

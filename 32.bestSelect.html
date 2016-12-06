@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="css/ui-selectbox.css">
+    </head>
+    <body>
+        <section id="test">
+            <label for="test-select">支持label标签：</label>
+            <select id="test-select">
+                <option value="0">---请选择---</option>
+                <option value="1">选项二</option>
+                <option selected value="2">选项二</option>
+                <option value="3">&#60;s&#62;选项三&#60;/s&#62;</option>
+                <option value="4"><s>选项四</s></option>
+                <option value="5">选项五</option>
+                <option value="31">31</option>
+                <option value="32">32</option>
+                <option value="33">33</option>
+                <option value="34">34</option>
+                <option value="35">35</option>
+                <option value="36">36</option>
+                <option value="37">37</option>
+                <option value="38">38</option>
+                <option value="39">39</option>
+                <option value="40">40</option>
+                <option value="41">41</option>
+                <option value="42">42</option>
+                <option value="43">43</option>
+                <option value="44">44</option>
+                <option value="45">45</option>
+                <option value="46">46</option>
+                <option value="47">47</option>
+                <option value="48">48</option>
+                <option value="49">49</option>
+                <option value="50">50</option>
+                <option value="51">51</option>
+                <option value="52">52</option>
+                <option value="53">53</option>
+                <option value="54">54</option>
+                <option value="55">55</option>
+                <option value="56">56</option>
+                <option value="57">57</option>
+                <option value="58">58</option>
+                <option value="59">59</option>
+                <option value="60">60</option>
+            </select>
+        </section>
+        <input type="button" name="" value="大师傅艰苦拉萨大家" id="btbt">
+        <script src="js/jquery1.82.min.js"></script>
+        <script src="js/selectbox.js"></script>
+        <script type="text/javascript">
+            $('#test-select').change(function(event) {
+                alert(this.value)
+            });
+           selectbox(document.getElementById('test-select'));
+
+           $.fn.hilight = function(options) {
+              var defaults = {
+               foreground: 'red',
+               background: 'yellow'
+              };
+            // Extend our default options with those provided.
+              var opts = $.extend(defaults, options);
+              console.log(opts)
+            // Our plugin implementation code goes here.
+            };
+
+            $('#btbt').hilight({
+              foreground: 'blue'
+            });
+        </script>
+    </body>
+</html>

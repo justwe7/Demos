@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="renderer" content="webkit">
+        <meta name="viewport" content="width=600">
+        <!-- <meta name="name" http-equiv="refresh" content="3"> -->
+        <link rel="stylesheet" href="css/animate.css">
+        <style type="text/css" media="screen">
+        body{
+            /*width: 100%;*/
+            height: 5000px;
+                background-color: #ffa;
+                /*line-height: 500px;*/
+                padding-top: 10%;
+        }
+            section{
+                width:6px;
+                height:700px;
+                background-color: #f00;
+                display: inline-block;
+                margin-top: 000px;
+            }
+            div{
+
+            }
+            p{
+                /*position: relative;*/
+                /*overflow: hidden;*/
+            }
+            p span{
+                display: block;
+                line-height: 40px;
+                height: 40px;
+                background-color: #716;
+                margin: 10px 0;
+                position: relative;
+                opacity: 0;
+                top: 40px;
+                filter: alpha(opacity=0);
+/* -webkit-animation-duration: .5s !important;
+animation-duration: .5s !important; */
+            }
+        </style>
+    </head>
+    <body>
+        <section>
+            dddd
+        </section>
+        <p class="text">
+            <span>我们生产的不只是高品质的羊肉</span>
+            <span>我们创造的是不断规范的行业标准</span>
+            <span>我们透过产品实践工作与生命的意义</span>
+            <span>我们了解每一个人都怀抱着</span>
+            <span>希望明天会更好的梦想</span>
+            <span>所以我们不止于现状</span>
+            <span>我们总是不断的创新，不断地拓展</span>
+            <span>在每个环节上, 致力追求卓越的品质</span>
+            <span>让每个人因努力付出而获得丰厚的回报</span>
+        </p>
+        <script src="js/jquery1.82.min.js"></script>
+        <script type="text/javascript">
+        </script>
+        <script type="text/javascript">
+            $(window).on('scroll resize load',function(ev){
+                //第三块
+                var scrollTop = $(window).scrollTop();
+                var innerTop = $(window).innerHeight();
+                var h = $('.text').height();
+                var t = scrollTop + innerTop;
+                var spaceBg = $('.text');
+                // var oP = $('.phone');
+                // var oC = $('.code');
+                var bgTop = spaceBg.offset().top;
+                /*$.each($('.text>span'), function(index, val) {
+                    $(this).css({
+                        position: 'absolute',
+                        top: (index*40)+'px'
+                    });
+                });*/
+                // console.log(t +';l;;;;;;'+ bgTop)
+                var textOnOff = false;
+                var textNum = 0;
+                if(bgTop < t && scrollTop < bgTop + h){
+                    console.info(0)
+                    textNum ++;
+                    if (textNum != 1) return;
+                    console.info(3)
+                    $.each($('.text>span'), function(index, val) {
+                        // var sec = index
+                         /*$(this).addClass('animated fadeInUp');
+                         $(this).css({
+                             'animation-delay': index/2+'s',
+                             '-webkit-animation-delay': +index/2+'s'
+                         });*/
+                        $(this).delay(index*500).animate({
+                            'opacity':'1',
+                            'top':'0',
+                            'filter': 'alpha(opacity=100)'
+                         });
+                    });
+                    $(this).stop(true,true)
+//                  spInfo.delay(100).animate({top : 120},1300);
+                }else{
+                    /*console.info(2222)
+                    $('.text>span').attr('class', '');*/
+                    textNum = 0;
+                    $('.text>span').stop(true,true)
+                    $('.text>span').off()
+                    $('.text>span').css({
+                        'opacity': '0',
+                        'top': '40px',
+                        'filter': 'alpha(opacity=0)'
+                    });
+                    /*$.each($('.text>span'), function(index, val) {
+                        $(this).stop(true,true).animate({
+                            'opacity':'0',
+                            'top':'40px',
+                            'filter': 'alpha(opacity=0)'
+                         },{duration:0});
+                    });*/
+                }
+            })
+        </script>
+    </body>
+</html>

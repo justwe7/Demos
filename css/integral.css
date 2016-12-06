@@ -1,0 +1,68 @@
+/*integral start*/
+body{
+	background-color:#fff;
+}
+.content{
+	width: 100%;
+	height: 100%;
+	background-color:#f6f7f6;
+}
+.content .integral_bar{
+	width:100%;
+	height:12rem;
+	background:url(../img/inte_bg.png) no-repeat;
+	background-size: contain;
+	text-align: center;
+}
+.integral_bar p:nth-of-type(1){
+	color: #fff;
+	font-size: 2.4rem;
+	font-weight: bold;
+	padding-top: 2.6rem;
+}
+.integral_bar p:nth-of-type(2){
+	color: #fff;
+	font-size: 0.48rem;
+	padding-top: 0.5rem;
+}
+.content .rule_bar{
+	width:100%;
+	background-color: #fff;
+	border-top:1px solid #eeeeee;
+}
+.content .rule_bar{
+	width: 100%;
+	color:#999999;
+	font-size:0.6rem;
+}
+.rule_bar .rule_title{
+	text-align: center;
+	font-size: 0;
+	margin: 0.8rem 0;
+}
+.rule_title .vline{
+	display: inline-block;
+	width: 5.2rem;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 0.2rem;
+}
+.rule_title .vround{
+	display: inline-block;
+	width: 0.16rem;
+	height: 0.16rem;
+	border: 1px solid #cccccc;
+	border-radius:50%;
+	margin-bottom: 0.1rem;
+}
+.rule_title .text{
+	font-size:0.6rem;
+	margin: 0 0.52rem;
+}
+.rule_bar .rule_info{
+	padding-left: 0.64rem;
+	padding-bottom: 0.3rem;
+}
+.rule_info p:nth-of-type(1){
+	margin-bottom: 0.1rem;
+}
+/*integral end*/

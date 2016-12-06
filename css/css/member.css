@@ -1,0 +1,54 @@
+/*member start*/
+.content{
+	width: 100%;
+	height: 100%;
+	background-color:#f6f7f6;
+}
+.content .rule_bar{
+	width:100%;
+	height: 8rem;
+	background-color: #fff;
+	border-top:1px solid #eeeeee;
+	border-bottom:1px solid #eeeeee;
+	color:#999999;
+	font-size:0.6rem;
+	margin-bottom: 0.4rem;
+}
+.rule_bar .rule_title{
+	text-align: center;
+	font-size: 0;
+	margin: 0.8rem 0;
+}
+.rule_title .vline{
+	display: inline-block;
+	width: 5.2rem;
+	border-bottom: 1px solid #4E9F35;
+	margin-bottom: 0.2rem;
+}
+.rule_title .vround{
+	display: inline-block;
+	width: 0.16rem;
+	height: 0.16rem;
+	border: 1px solid #4E9F35;
+	border-radius:50%;
+	margin-bottom: 0.1rem;
+}
+.rule_title .text{
+	font-size:0.6rem;
+	margin: 0 0.52rem;
+	color: #4E9F35;
+}
+.rule_bar .rule_info{
+	padding-left: 0.64rem;
+}
+.rule_info p{
+	margin-bottom: 0.1rem;
+}
+.rule_item{
+	width: 7rem;
+	margin-left: 0.24rem;
+} 
+.rule_item span:nth-of-type(1){
+	margin-top:0.1rem ;
+}
+/*member end*/

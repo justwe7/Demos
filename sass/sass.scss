@@ -1,0 +1,20 @@
+@charset "UTF-8";
+$pink : darken(#f18,30%);
+$px300 : 300px;
+$border: 2px solid #111;
+
+section{
+    width: $px300;
+    height: $px300;
+    border: $border;
+
+    p{/* 注释 - zhushi */
+        color: $pink;
+        border: none;
+        height: 10*20px;
+    }
+}
+
+p{
+    border: $border;
+}

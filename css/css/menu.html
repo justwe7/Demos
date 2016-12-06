@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>菜谱</title>
+		<!--设置初始比例（1：1像素还原）-->
+		<script>
+			var iScale = 1 / window.devicePixelRatio;
+			document.write('<meta name="viewport" content="width=device-width,initial-scale='+iScale+',minimum-scale='+iScale+',maximum-scale='+iScale+',user-scalable=no"/>');
+		</script>
+		<!--动态设置html字体大小-->
+		<script>
+			var iWidth = document.documentElement.clientWidth;
+			document.getElementsByTagName('html')[0].style.fontSize = iWidth / 15 + 'px';
+			window.onresize = function(){
+				var iWidth = document.documentElement.clientWidth;
+				document.getElementsByTagName('html')[0].style.fontSize = iWidth / 15 + 'px';
+			}
+		</script>
+		<meta name="format-detection" content="telephone=no" />
+		<link rel="stylesheet" type="text/css" href="/Content/public.css" />
+	</head>
+	<body>
+		<section>
+			<header>
+				<div class="head center lineheight">
+					<!--<span class="location icon_img"></span>-->
+					<h2>菜谱</h2>
+					<!--<span class="downsel icon_img"></span>-->
+				</div>
+			</header>
+			<section class="home_content">
+				<section class="banner_bar">
+					<ul class="banner_img_bar">
+						<li class="banner_img_item">
+							<img src="/images/home_banner1.png"/>
+						</li>
+						<li class="banner_img_item">
+							<img src="/images/home_banner1.png"/>
+						</li>
+					</ul>
+					<ul class="banner_icon_bar">
+						<li></li>
+						<li class="activeba"></li>
+						<li></li>
+						<li></li>
+					</ul>
+				</section>
+				<section class="menu_bar">
+					<ul class="menu_list clearfix">
+						<li class="menu_item fl">
+							<a class="menu_link" href="###">
+								<img src="/images/house_icon.png"/>
+								<p>家庭厨房</p>
+							</a>
+						</li>
+						<li class="menu_item fl">
+							<a class="menu_link" href="###">
+								<img src="/images/world_icon.png"/>
+								<p>二人世界</p>
+							</a>
+						</li>
+						<li class="menu_item fl">
+							<a class="menu_link" href="###">
+								<img src="/images/baby_icon.png"/>
+								<p>家有宝贝</p>
+							</a>
+						</li>
+						<li class="menu_item fl">
+							<a class="menu_link" href="###">
+								<img src="/images/weekend_icon.png"/>
+								<p>周末聚餐</p>
+							</a>
+						</li>
+						<li class="menu_item fl">
+							<a class="menu_link" href="###">
+								<img src="/images/breakfast_icon.png"/>
+								<p>营养早餐</p>
+							</a>
+						</li>
+					</ul>
+				</section>
+				<section class="menugoods_bar">
+					<ul class="menugoods_list clearfix">
+						<li class="menugoods_item fl">
+							<div class="menugoods_img">
+								<img src="/images/menu_item.png"/>
+							</div>
+							<div class="menugoods_info clearfix">
+								<div class="menugoods_title fl">
+									<p>法式煎羊排法式煎羊排</p>
+								</div>
+								<div class="menugoods_step fr">
+									<span class="menugoods_step_icon icon_img"></span>
+									<p class="menugoods_step_text">
+										<span>8</span>步 /
+										<span><15分钟</span>
+									</p>
+								</div>
+								<div class="menugoods_taste fr">
+									<span class="menugoods_taste_icon icon_img"></span>
+									<p class="menugoods_taste_text">
+										<span>麻辣口味</span>
+									</p>
+								</div>
+							</div>
+						</li>
+						<li class="menugoods_item fl">
+							<div class="menugoods_img">
+								<img src="/images/menu_item.png"/>
+							</div>
+							<div class="menugoods_info clearfix">
+								<div class="menugoods_title fl">
+									<p>法式煎羊排法式煎羊排</p>
+								</div>
+								<div class="menugoods_step fr">
+									<span class="menugoods_step_icon icon_img"></span>
+									<p class="menugoods_step_text">
+										<span>8</span>步 /
+										<span><15分钟</span>
+									</p>
+								</div>
+								<div class="menugoods_taste fr">
+									<span class="menugoods_taste_icon icon_img"></span>
+									<p class="menugoods_taste_text">
+										<span>麻辣口味麻辣口味麻辣口味</span>
+									</p>
+								</div>
+							</div>
+						</li>
+						<li class="menugoods_item fl">
+							<div class="menugoods_img">
+								<img src="/images/menu_item.png"/>
+							</div>
+							<div class="menugoods_info clearfix">
+								<div class="menugoods_title fl">
+									<p>法式煎羊排法式煎羊排</p>
+								</div>
+								<div class="menugoods_step fr">
+									<span class="menugoods_step_icon icon_img"></span>
+									<p class="menugoods_step_text">
+										<span>8</span>步 /
+										<span><15分钟</span>
+									</p>
+								</div>
+								<div class="menugoods_taste fr">
+									<span class="menugoods_taste_icon icon_img"></span>
+									<p class="menugoods_taste_text">
+										<span>麻辣口味</span>
+									</p>
+								</div>
+							</div>
+						</li>
+					</ul>
+				</section>
+				
+				<!--<section class="up_bar">
+					<span class="up_icon icon_img"></span>
+				</section>-->
+			</section>
+			<section class="null"></section>
+			<footer class="footer_bar">
+				<ul class="clearfix">
+					<li class="footer_item fl">
+						<a class="footer_item_link" href="###">
+							<img src="/images/home_icon.png"/>
+							<span>首页</span>
+						</a>
+					</li>
+					<li class="footer_item fl">
+						<a class="footer_item_link" href="###">
+							<img src="/images/menu_icon.png"/>
+							<span>菜谱</span>
+						</a>
+					</li>
+					<li class="footer_item fl">
+						<a class="footer_item_link" href="###">
+							<span class="buy_bar">
+								<img src="/images/buy_icon.png"/>
+							</span>
+						</a>
+					</li>
+					<li class="footer_item fl">
+						<a class="footer_item_link" href="###">
+							<img src="/images/order_icon.png"/>
+							<span>订单</span>
+						</a>
+					</li>
+					<li class="footer_item fl">
+						<a class="footer_item_link" href="###">
+							<img src="/images/my_icon_new.png"/>
+							<span>我的</span>
+						</a>
+					</li>
+				</ul>
+			</footer>
+		</section>
+	</body>
+</html>

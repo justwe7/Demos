@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>我的订单</title>
+		<!--设置初始比例（1：1像素还原）-->
+		<script>
+			var iScale = 1 / window.devicePixelRatio;
+			document.write('<meta name="viewport" content="width=device-width,initial-scale='+iScale+',minimum-scale='+iScale+',maximum-scale='+iScale+',user-scalable=no"/>');
+		</script>
+		<!--动态设置html字体大小-->
+		<script>
+			var iWidth = document.documentElement.clientWidth;
+			document.getElementsByTagName('html')[0].style.fontSize = iWidth / 15 + 'px';
+			window.onresize = function(){
+				var iWidth = document.documentElement.clientWidth;
+				document.getElementsByTagName('html')[0].style.fontSize = iWidth / 15 + 'px';
+			}
+		</script>
+		<meta name="format-detection" content="telephone=no" />
+		<link rel="stylesheet" type="text/css" href="/Content/public.css" />
+		<link rel="stylesheet" type="text/css" href="/Content/tool.css"/>
+		<link rel="stylesheet" type="text/css" href="/Content/order.css"/>
+	</head>
+	<body>
+		<section>
+			<header>
+				<div class="head">
+					<a class="head_link" href="##">
+						<span class="icon_img"></span>
+					</a>
+					<h2>我的订单</h2>
+				</div>
+			</header>
+			<section class="order_content">
+				<div class="nocoupon_bar" style="display: none;">
+					<div class="con_icon_bar">
+						<img src="/images/nobuy_icon.png"/>
+					</div>
+					<p>您还没有相关订单，快去选商品吧~</p>
+					<a href="">去逛逛</a>
+				</div>
+				<div class="order_show_bar">
+					<ul class="coupon_tab_bar clearfix">
+						<li class="fl">
+							<p class="coupon_tab_title active">全部</p>
+						</li>
+						<li class="fl">
+							<p class="coupon_tab_title">待付款</p>
+						</li>
+						<li class="fl">
+							<p class="coupon_tab_title">待发货</p>
+						</li>
+						<li class="fl">
+							<p class="coupon_tab_title">待收货</p>
+						</li>
+					</ul>
+					<ul class="nopay_bar">
+						<li class="ord_item">
+							<div class="ord_title_bar clearfix">
+								<p class="fl">订单编号：<span>08987667</span></p>
+								<p class="fr">待付款</p>
+							</div>
+							<ul class="ord_content_bar">
+								<li class="clearfix">
+									<div class="ord_goods_img fl">
+										<img src="/images/goods_img.png"/>
+									</div>
+									<div class="ord_goods_info fl">
+										<p class="ord_goods_left fl">
+											<span class="fl">羔羊排块0.7kg羔羊排块0.7kg羔羊排块0.7kg</span>
+											<span class="fl">2袋</span>
+										</p>
+										<p class="ord_goods_right fr">￥<span>189</span></p>
+									</div>
+								</li>
+								<li class="clearfix">
+									<div class="ord_goods_img fl">
+										<img src="/images/goods_img.png"/>
+									</div>
+									<div class="ord_goods_info fl">
+										<p class="ord_goods_left fl">
+											<span class="fl">羔羊排块0.7kg</span>
+											<span class="fl">2袋</span>
+										</p>
+										<p class="ord_goods_right fr">￥<span>189</span></p>
+									</div>
+								</li>
+							</ul>
+							<div class="ord_count_bar clearfix">
+								<p class="fr">合计:￥<span>398</span></p>
+								<p class="fr">共<span>2</span>件商品</p>
+							</div>
+							<div class="a_link_bar clearfix">
+								<a class="fr activecol" href="###">付款</a>
+								<a class="fr" href="###">取消订单</a>
+							</div>
+						</li>
+					</ul>
+					<ul class="nosend_bar">
+						<li class="ord_item">
+							<div class="ord_title_bar clearfix">
+								<p class="fl">订单编号：<span>08987667</span></p>
+								<p class="fr">待发货</p>
+							</div>
+							<ul class="ord_content_bar">
+								<li class="clearfix">
+									<div class="ord_goods_img fl">
+										<img src="/images/goods_img.png"/>
+									</div>
+									<div class="ord_goods_info fl">
+										<p class="ord_goods_left fl">
+											<span class="fl">羔羊排块0.7kg</span>
+											<span class="fl">2袋</span>
+										</p>
+										<p class="ord_goods_right fr">￥<span>189</span></p>
+									</div>
+								</li>
+								<li class="clearfix">
+									<div class="ord_goods_img fl">
+										<img src="/images/goods_img.png"/>
+									</div>
+									<div class="ord_goods_info fl">
+										<p class="ord_goods_left fl">
+											<span class="fl">羔羊排块0.7kg</span>
+											<span class="fl">2袋</span>
+										</p>
+										<p class="ord_goods_right fr">￥<span>189</span></p>
+									</div>
+								</li>
+							</ul>
+							<div class="ord_count_bar clearfix">
+								<p class="fr">合计:￥<span>398</span></p>
+								<p class="fr">共<span>2</span>件商品</p>
+							</div>
+							<div class="a_link_bar clearfix">
+								<a class="fr activecol" href="###">确认订单</a>
+								<a class="fr" href="###">查看物流</a>
+								<a class="fr" href="###">删除订单</a>
+							</div>
+						</li>
+					</ul>
+					<ul class="noreceived_bar">
+						<li class="ord_item">
+							<div class="ord_title_bar clearfix">
+								<p class="fl">订单编号：<span>08987667</span></p>
+								<p class="fr">待收货</p>
+							</div>
+							<ul class="ord_content_bar">
+								<li class="clearfix">
+									<div class="ord_goods_img fl">
+										<img src="/images/goods_img.png"/>
+									</div>
+									<div class="ord_goods_info fl">
+										<p class="ord_goods_left fl">
+											<span class="fl">羔羊排块0.7kg</span>
+											<span class="fl">2袋</span>
+										</p>
+										<p class="ord_goods_right fr">￥<span>189</span></p>
+									</div>
+								</li>
+								<li class="clearfix">
+									<div class="ord_goods_img fl">
+										<img src="/images/goods_img.png"/>
+									</div>
+									<div class="ord_goods_info fl">
+										<p class="ord_goods_left fl">
+											<span class="fl">羔羊排块0.7kg</span>
+											<span class="fl">2袋</span>
+										</p>
+										<p class="ord_goods_right fr">￥<span>189</span></p>
+									</div>
+								</li>
+							</ul>
+							<div class="ord_count_bar clearfix">
+								<p class="fr">合计:￥<span>398</span></p>
+								<p class="fr">共<span>2</span>件商品</p>
+							</div>
+							<div class="a_link_bar clearfix">
+								<a class="fr activecol" href="###">确认收货</a>
+							</div>
+						</li>
+					</ul>
+					<div class="pull_bar" style="display: block;">
+						<span class="pull_icon icon_img rotate"></span>
+						<p class="pull_text">上拉加载更多…</p>
+					</div>
+				</div>
+			</section>
+			<section class="null"></section>
+			<footer class="footer_bar">
+				<ul class="clearfix">
+					<li class="footer_item fl">
+						<a class="footer_item_link" href="###">
+							<img src="/images/home_icon.png"/>
+							<span>首页</span>
+						</a>
+					</li>
+					<li class="footer_item fl">
+						<a class="footer_item_link" href="###">
+							<img src="/images/menu_icon.png"/>
+							<span>菜谱</span>
+						</a>
+					</li>
+					<li class="footer_item fl">
+						<a class="footer_item_link" href="###">
+							<span class="buy_bar">
+								<img src="/images/buy_icon.png"/>
+							</span>
+						</a>
+					</li>
+					<li class="footer_item fl">
+						<a class="footer_item_link" href="###">
+							<img src="/images/order_icon.png"/>
+							<span>订单</span>
+						</a>
+					</li>
+					<li class="footer_item fl">
+						<a class="footer_item_link" href="###">
+							<img src="/images/my_icon_new.png"/>
+							<span>我的</span>
+						</a>
+					</li>
+				</ul>
+			</footer>
+		</section>
+	</body>
+</html>

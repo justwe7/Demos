@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css" media="screen">
+            .active{
+                background-color: #f88;
+            }
+        </style>
+        <script src="js/jquery1.82.min.js"></script>
+    </head>
+    <body>
+        <div id="txt">
+            日期
+            <span id="st"></span>
+            <span id="end"></span>
+        </div>
+        <input type="button" name="" value="上周" id="prev">
+        <input type="button" name="" value="下周" id="next">
+
+        <div class="box">
+            <input type="button" name="" value="周" id="week" class="active">
+            <input type="button" name="" value="月" id="month">
+            <input type="button" name="" value="年" id="year">
+        </div>
+    </body>
+    <script type="text/javascript">
+
+    var oH = document.getElementById('txt');
+    var st = document.getElementById('st');
+    var end = document.getElementById('end');
+    var prev = document.getElementById('prev');
+    var next = document.getElementById('next');
+
+        var now = new Date(); //当前日期
+        var nowDayOfWeek = now.getDay(); //今天本周的第几天
+        var nowDay = now.getDate(); //当前日
+        var nowMonth = now.getMonth(); //当前月
+        var nowYear = now.getYear(); //当前年
+        nowYear += (nowYear < 2000) ? 1900 : 0; //
+        var lastMonthDate = new Date(); //上月日期
+        lastMonthDate.setDate(1);
+        lastMonthDate.setMonth(lastMonthDate.getMonth() - 1);
+
+        /*nextMonthDate = new Date(); //下月日期
+        nextMonthDate.setDate(1);
+        nextMonthDate.setMonth(nextMonthDate.getMonth() + 1);*/
+
+        st.innerHTML = getWeekStartDate()
+        end.innerHTML = getWeekEndDate()
+
+        $('.box>input').each(function(index, el) {
+            $(this).click(function(event) {
+                $('.box>input').attr('class', '');
+                $(this).addClass('active');
+                if (index == 0) {   //切换为周
+                    st.innerHTML = getWeekStartDate();
+                    end.innerHTML = getWeekEndDate();
+                }
+                if (index == 1) {  //切换为月
+                    st.innerHTML = getMonthStartDate();
+                    end.innerHTML = getMonthEndDate();
+                }
+                if (index == 2) {  //切换为年
+                    st.innerHTML = getNowYearStartDate();
+                    end.innerHTML = getNowYearEndDate();
+                }
+            });
+        });
+
+        prev.onclick = function () {//上一
+            var nowReal = new Date();
+            var thisDate = end.innerHTML.split('-');
+            console.log(thisDate)
+            var thisnow = new Date(thisDate[0],(thisDate[1]-1),thisDate[2]-7);
+            if (thisnow < nowReal) {
+                next.disabled = false;
+            }
+            selectPrevShowFunc();
+        }
+        next.onclick = function () {//下一
+            var nowReal = new Date();
+            var thisDate = end.innerHTML.split('-');
+            var thisnow = new Date(thisDate[0],(thisDate[1]-1),thisDate[2]);
+            if (thisnow >= nowReal) {
+                next.disabled = true;
+                return;
+            }else{
+                next.disabled = false;
+            }
+            selectNextShowFunc();
+        }
+        var nowReal = new Date();
+        disable();
+        function disable() {
+            var thisDate = end.innerHTML.split('-');
+            console.log(thisDate)
+            var thisnow = new Date(thisDate[0],(thisDate[1]-1),thisDate[2]);
+            console.log(nowReal.getTime())
+            console.info(thisnow.getTime())
+
+            if (thisnow >= nowReal) {
+                next.disabled = true;
+            }else{
+                next.disabled = false;
+            }
+        }
+
+        function selectPrevShowFunc() {//                上周上月上年
+            var arrDate = st.innerHTML.split('-');
+            now = new Date(arrDate[0],(arrDate[1]-1),arrDate[2]);
+            nowDayOfWeek = now.getDay(); //今天本周的第几天
+            nowDay = now.getDate(); //当前日
+            nowMonth = now.getMonth(); //当前月
+            nowYear = now.getYear(); //当前年
+            nowYear += (nowYear < 2000) ? 1900 : 0;
+
+            lastMonthDate = new Date(arrDate[0],(arrDate[1]-1),arrDate[2]); //上月日期
+            lastMonthDate.setDate(1);
+            lastMonthDate.setMonth(lastMonthDate.getMonth() - 1);
+
+            var endMonth = new Date(arrDate[0],(nowMonth-1),getMonthDays(nowMonth+1));
+
+            for (var i = 0; i < $('.box>input').length; i++) {
+                if($('.box>input').eq(i).attr('class') == 'active'){
+                    if (i == 0) {//周
+                        st.innerHTML = getLastWeekStartDate();
+                        end.innerHTML = getLastWeekEndDate();
+                        return;
+                    }
+                    if (i == 1) {//月
+                        st.innerHTML = formatDate(lastMonthDate);
+                        end.innerHTML = formatDate(endMonth);
+                        return;
+                    }
+                    if (i == 2) {//年
+                        st.innerHTML = getLastYearStartDate();
+                        end.innerHTML = getLastYearEndDate();
+                        return;
+                    }
+                }
+            }
+        }
+
+        function selectNextShowFunc() {//                 下周下月下年
+            var arrDate = end.innerHTML.split('-');
+            now = new Date(arrDate[0],(arrDate[1]-1),arrDate[2]);
+            nowDayOfWeek = now.getDay(); //今天本周的第几天
+            nowDay = now.getDate(); //当前日
+            nowMonth = now.getMonth(); //当前月
+            nowYear = now.getYear(); //当前年
+            nowYear += (nowYear < 2000) ? 1900 : 0;
+
+            nextMonthDate = new Date(arrDate[0],(arrDate[1]-1),arrDate[2]); //下月日期
+            nextMonthDate.setDate(1);
+            nextMonthDate.setMonth(nextMonthDate.getMonth() + 1);
+            var endMonth = new Date(arrDate[0],(nowMonth+1),getMonthDays(nowMonth+1));
+            for (var i = 0; i < $('.box>input').length; i++) {
+                if($('.box>input').eq(i).attr('class') == 'active'){
+                    if (i == 0) {//周
+                        st.innerHTML = getNextWeekStartDate();
+                        end.innerHTML = getNextWeekEndDate();
+                        return;
+                    }
+                    if (i == 1) {//月
+                        st.innerHTML = formatDate(nextMonthDate);
+                        end.innerHTML = formatDate(endMonth);
+                        return;
+                    }
+                    if (i == 2) {//年
+                        st.innerHTML = getNextYearStartDate();
+                        end.innerHTML = getNextYearEndDate();
+                        return;
+                    }
+                }
+            }
+        }
+
+        /*控制*/
+
+        //格式化日期：yyyy-MM-dd
+        function formatDate(date) {
+            var myyear = date.getFullYear();
+            var mymonth = date.getMonth() + 1;
+            var myweekday = date.getDate();
+            if (mymonth < 10) {
+                mymonth = "0" + mymonth;
+            }
+            if (myweekday < 10) {
+                myweekday = "0" + myweekday;
+            }
+            return (myyear + "-" + mymonth + "-" + myweekday);
+        }
+
+        //获得某月的天数
+        function getMonthDays(myMonth) {
+            var monthStartDate = new Date(nowYear, myMonth, 1);
+            var monthEndDate = new Date(nowYear, myMonth + 1, 1);
+            var days = (monthEndDate - monthStartDate) / (1000 * 60 * 60 * 24);
+            return days;
+        }
+
+        //获得本周的开始日期
+        function getWeekStartDate() {
+            var weekStartDate = new Date(nowYear, nowMonth, nowDay - nowDayOfWeek + 1);
+            return formatDate(weekStartDate);
+        }
+        //获得本周的结束日期
+        function getWeekEndDate() {
+            var weekEndDate = new Date(nowYear, nowMonth, nowDay + (7 - nowDayOfWeek));
+            return formatDate(weekEndDate);
+        }
+        //获得上周的开始日期
+        function getLastWeekStartDate() {
+            var weekStartDate = new Date(nowYear, nowMonth, nowDay - nowDayOfWeek - 6);
+            return formatDate(weekStartDate);
+        }
+        //获得上周的结束日期
+        function getLastWeekEndDate() {
+            var weekEndDate = new Date(nowYear, nowMonth, nowDay - nowDayOfWeek);
+            return formatDate(weekEndDate);
+        }
+
+        //获得下周的开始日期
+        function getNextWeekStartDate() {
+            var weekStartDate = new Date(nowYear, nowMonth, nowDay - nowDayOfWeek + 1);
+            return formatDate(weekStartDate);
+        }
+        //获得下周的结束日期
+        function getNextWeekEndDate() {
+            var weekEndDate = new Date(nowYear, nowMonth, nowDay - nowDayOfWeek + 7);
+            return formatDate(weekEndDate);
+        }
+
+        //获得本月的开始日期
+        function getMonthStartDate() {
+            var monthStartDate = new Date(nowYear, nowMonth, 1);
+            return formatDate(monthStartDate);
+        }
+        //获得本月的结束日期
+        function getMonthEndDate() {
+            var monthEndDate = new Date(nowYear, nowMonth, getMonthDays(nowMonth));
+            return formatDate(monthEndDate);
+        }
+        //获得上月开始时间
+        function getLastMonthStartDate() {
+            var lastMonthStartDate = new Date(nowYear, lastMonth, 1);
+            return formatDate(lastMonthStartDate);
+        }
+        //获得上月结束时间
+        function getLastMonthEndDate() {
+            var lastMonthEndDate = new Date(nowYear, lastMonth, getMonthDays(lastMonth));
+            return formatDate(lastMonthEndDate);
+        }
+
+        //获得下月的开始日期
+        function getNextMonthStartDate() {
+            var MonthStartDate = new Date(nowYear, nowMonth, nowDay - nowDayOfMonth + 1);
+            return formatDate(MonthStartDate);
+        }
+        //获得下月的结束日期
+        function getNextMonthEndDate() {
+            var MonthEndDate = new Date(nowYear, nowMonth, nowDay - nowDayOfMonth + 7);
+            return formatDate(weekEndDate);
+        }
+
+        //获得当年开始时间
+        function getNowYearStartDate() {
+            var NowYearStartDate = new Date(nowYear, 0, 1);
+            return formatDate(NowYearStartDate);
+        }
+
+        //获得当年结束时间
+        function getNowYearEndDate() {
+            var NowYearEndDate = new Date(nowYear, 11, 31);
+            return formatDate(NowYearEndDate);
+        }
+
+        //获得上年开始时间
+        function getLastYearStartDate() {
+            var lastYearStartDate = new Date(nowYear-1, 0, 1);
+            return formatDate(lastYearStartDate);
+        }
+        //获得上年结束时间
+        function getLastYearEndDate() {
+            var lastYearEndDate = new Date(nowYear-1, 11, 31);
+            return formatDate(lastYearEndDate);
+        }
+
+        //获得下年开始时间
+        function getNextYearStartDate() {
+            var NextYearStartDate = new Date(nowYear+1, 0, 1);
+            return formatDate(NextYearStartDate);
+        }
+        //获得下年结束时间
+        function getNextYearEndDate() {
+            var NextYearEndDate = new Date(nowYear+1, 11, 31);
+            return formatDate(NextYearEndDate);
+        }
+
+        //获得本季度的开始日期
+        function getQuarterStartDate() {
+            var quarterStartDate = new Date(nowYear, getQuarterStartMonth(), 1);
+            return formatDate(quarterStartDate);
+        }
+        //或的本季度的结束日期
+        function getQuarterEndDate() {
+            var quarterEndMonth = getQuarterStartMonth() + 2;
+            var quarterStartDate = new Date(nowYear, quarterEndMonth,
+                    getMonthDays(quarterEndMonth));
+            return formatDate(quarterStartDate);
+        }
+        //获得本季度的开始月份
+        function getQuarterStartMonth() {
+            var quarterStartMonth = 0;
+            if (nowMonth < 3) {
+                quarterStartMonth = 0;
+            }
+            if (2 < nowMonth && nowMonth < 6) {
+                quarterStartMonth = 3;
+            }
+            if (5 < nowMonth && nowMonth < 9) {
+                quarterStartMonth = 6;
+            }
+            if (nowMonth > 8) {
+                quarterStartMonth = 9;
+            }
+            return quarterStartMonth;
+        }
+    </script>
+</html>

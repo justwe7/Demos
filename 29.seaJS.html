@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css" media="screen">
+            div{
+                background-color: #1FB5AD;
+                /*padding: 10px 20px;*/
+                color: #fff;
+                float: left;
+                position: relative;
+                border-radius: 4px;
+                height: 34px;
+                width: 70px;
+                line-height: 34px;
+                text-align: center;
+            }
+            div::after{
+                position: absolute;
+                content: "";
+                border-bottom: 1.1em solid rgba(0,0,0,0);
+                border-left: 1.5em solid #1FB5AD;
+                border-top: 1.1em solid rgba(0,0,0,0);
+                content: "";
+                margin-top: -1.05em;
+                position: absolute;
+                right: -1.4em;
+                top: 50%;
+                border-radius: 4px;
+            }
+        </style>
+    </head>
+    <body>
+     <select id="attribute-required" class="form-control" name="Attribute[required]">
+        <option value="1">是</option>
+        <option value="0">否</option>
+    </select>
+        <div>
+            2016
+        </div>
+        <script src="js/sea.js"></script>
+        <script type="text/javascript">
+            seajs.use('./js/seaJS1.js',function (ex) {
+                ex.run();
+                run()
+                function run() {
+                    alert(11)
+                }
+            })
+            //根目录 seajs这个文件
+            //
+            seajs.use('./js/seaJS2.js',function (ex) {
+                ex.run();
+            })
+        </script>
+        <script src="js/jquery1.82.min.js"></script>
+        <script type="text/javascript">
+            $("select[name='Attribute[required]']").find("option[value='0']").attr("selected", 'selected');
+            // $("select[name='Attribute[required]']").find("option[value='0']").attr("selected", 'selected');
+            $("select[name='Attribute[required]']").click(function(event) {
+                // alert(11)
+            });
+        </script>
+    </body>
+</html>
