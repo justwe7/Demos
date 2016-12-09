@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <div id="main" style="height: 400px;">
+
+    </div>
+<script src="js/echarts-all.js"></script>
+<script type="text/javascript">
+
+        /*var mycharts = echarts.init(document.getElementById('main'));
+        mycharts.showLoading({
+            text : '数据载入中',
+            effect : 'whirling',
+            textStyle : {
+                fontSize : 20
+            }
+        });*/
+
+        var data = ["-",10,"-","-",40,"-",20];
+        // var data = ["-",10,"20","30",40,"30",20];
+
+        var arrNull = [],arrVal = [],arrValIndex = [];
+        for (var i = 0; i < data.length; i++) {
+            if (data[i] != "-") {
+                arrVal.push(data[i]);
+                arrValIndex.push(i);
+            }
+        }
+
+        console.log(arrVal)
+        console.log(arrValIndex)
+
+        /*for (var i = 0; i < arr.length; i++) {
+            if (i == 0 || i == (arr.length-1)) {
+                continue;
+            }else{
+                arr[i]
+            }
+        }*/
+        // var data = [32,55,{value:90,symbol: 'none'},33,77];
+
+        // function getFakeY(previousValidX, currentX, nextValidX){
+        //     // getPreviousValidY, getNextValidY这里仅为获取对应的Y值，请根据自己的实际情况代替。
+        //     var previousValidY = getPreviousValidY(previousValidX);
+        //     var nextValidY = getNextValidY(nextValidX);
+        //     var totalDeltaX = nextValidX - previousValidX;
+        //     var deltaX = currentX - previousValidX;
+
+        //     var totalDeltaY;
+        //     var deltaY = parseFloat((deltaX * totalDeltaY / totalDeltaX)).toFixed(2));
+        //     var fakeY;
+
+        //     if(previousValidY <= nextValidY){
+        //         totalDeltaY = nextValidY - previousValidY;
+        //         fakeY = Number(previousValidY) + Number(deltaY);
+        //     }else{
+        //         totalDeltaY = previousValidY - nextValidY;
+        //         fakeY = previousValidY - deltaY;
+        //     }
+
+        //     return (parseFloat(fakeY)).toFixed(2);
+        // }
+
+        var myChart = echarts.init(document.getElementById('main'));
+        // myChart.clear();
+        // 图表释放-------------------
+        // myChart.dispose();
+        var option = {
+            tooltip: {
+                show: true,
+                trigger: 'axis'
+            },
+            legend: {
+                data:['销量']
+            },
+            xAxis : [
+                {
+                    type : 'category',
+                    data : ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子","手套","背心"]
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+                    /*min: 30,
+                    max: 50,*/
+                }
+            ],
+            series : [
+                {
+                    "name":"销量",
+                    "type":"line",
+                    // 'barWidth': 10,
+                    'borderColor' :'#23f',
+                    symbolSize: 10,
+                    // symbol: 'none',
+                    "itemStyle": {
+                        normal: {
+                            color: 'red',
+                            label : {
+                                show : true,
+                                formatter: function (params) {
+                                    return params.value + '\n(' + (Math.round(params.value / 300 * 10000) / 100.00 + "%)");
+                                },
+                                textStyle : {
+                                    fontSize : '26',
+                                    fontFamily : '微软雅黑',
+                                    fontWeight : 'bold'
+                                }
+                            }
+                        },
+                    },
+                    "data": data
+                }
+            ]
+        };
+
+        /*myChart.showLoading({
+            text : 'sss',
+            effect : 'spin',
+            textStyle : {
+                fontSize : 20
+            }
+        });*/
+
+        // clearTimeout(loadingTicket);
+        /*setTimeout(function (){
+            myChart.hideLoading();
+            myChart.setOption(option);
+        },2200);*/
+
+        // 为echarts对象加载数据
+    myChart.setOption(option);
+
+    /*document.onclick = function () {
+        myChart.clear()
+    }*/
+</script>
+</body>
+</html>
