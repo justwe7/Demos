@@ -23,44 +23,48 @@
         var data = ["-",10,"-","-",40,"-",20,"-","-","-",30,"-"];
         // var data = ["-",10,"20","30",40,"30",20];
 
-        var arrNull = [],arrVal = [],arrValIndex = [],n = 0,_n = 0;
-        for (var i = 0; i < data.length; i++) {
-            if (data[i] != "-") {
-                arrVal.push(data[i]);
-                arrValIndex.push(i);
-            }
-        }
-// console.info(arrValIndex[n])
-        for (var i = 0; i < data.length; i++) {
-            if (data[i] == "-" && i > arrValIndex[0] && i < arrValIndex[arrValIndex.length-1]) {
-                //首次出现 和 之后的 - 不执行处理
-                if (i > arrValIndex[n] && i < arrValIndex[n+1]) {//在数值index 范围内的处理 else  增加arrValIndex 的下标
-                    // console.log(i)
-                    // console.warn(arrValIndex[n])
-                    // console.log(arrValIndex[n+1] - arrValIndex[n])
-                    data[i] = difineVal(n,_n);
-                    _n++;//需要改变 - 值的区间下标
-                    // console.log(difineVal(n,_n))
-                }else{//增加arrValIndex 的下标寻找值
-                    n++;
-                    _n = 1;
-                    // console.log(difineVal(n,_n))
-                    // console.log(_n)
-                    // console.info(i)
-                    // console.warn(arrValIndex[n])
-                    // console.log(arrValIndex[n+1] - arrValIndex[n])
-                    data[i] = difineVal(n,_n);
+        function ProcessData(data) {
+            var _data = data.concat(),arrNull = [],arrVal = [],arrValIndex = [],n = 0,_n = 0;
+            window.ToolTipNullData = [];
+            for (var i = 0; i < _data.length; i++) {
+                if (_data[i] != "-") {
+                    arrVal.push(_data[i]);
+                    arrValIndex.push(i);
                 }
-                // difineVal(n)
             }
+
+            for (var i = 0; i < _data.length; i++) {
+                if (_data[i] == "-" && i > arrValIndex[0] && i < arrValIndex[arrValIndex.length-1]) {
+                    //首次出现 和 之后的 - 不执行处理
+                    if (i > arrValIndex[n] && i < arrValIndex[n+1]) {//在数值index 范围内的处理 else  增加arrValIndex 的下标
+                        // console.log(i)
+                        // console.warn(arrValIndex[n])
+                        // console.log(arrValIndex[n+1] - arrValIndex[n])
+                        // _data[i] = difineVal(n,_n);
+                        _n++;//需要改变 - 值的区间下标
+                        // console.log(difineVal(n,_n))
+                        _data[i] = difineVal(n,_n);
+                    }else{//增加arrValIndex 的下标寻找值
+                        n++;
+                        _n = 1;
+                        // console.log(difineVal(n,_n))
+                        _data[i] = difineVal(n,_n);
+                        // console.log(_n)
+                        // console.info(i)
+                        // console.warn(arrValIndex[n])
+                        // console.log(arrValIndex[n+1] - arrValIndex[n])
+                        // _data[i] = difineVal();
+                    }
+                }
+            }
+
+            function difineVal(n,_n) {
+                var fragment = (arrVal[n+1] - arrVal[n]) / (arrValIndex[n+1] - arrValIndex[n]) * _n;
+                return {value:(arrVal[n] + fragment),symbol: 'none'};
+            }
+            return _data;
         }
 
-        console.log(data)
-
-        function difineVal(n,_n) {
-            var fragment = (arrVal[n+1] - arrVal[n]) / (arrValIndex[n+1] - arrValIndex[n]) * (_n+1)
-            return (arrVal[n] + fragment);
-        }
         /*console.log(arrVal)
         console.log(arrValIndex)*/
 
@@ -102,7 +106,18 @@
         var option = {
             tooltip: {
                 show: true,
-                trigger: 'axis'
+                trigger: 'axis',
+                formatter: function (params) {
+                    if (data[params[0].dataIndex] == "-") {
+                        return "今日暂无数据";
+                    }else{
+                        var str = params[0].name;
+                        for (var key in params) {
+                            str += '<br>' + params[key].seriesName + params[key].data;
+                        }
+                        return str;
+                    }
+                }
             },
             legend: {
                 data:['销量']
@@ -110,7 +125,7 @@
             xAxis : [
                 {
                     type : 'category',
-                    data : ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子","手套","背心","裤衩"]
+                    data : ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子","手套","背心","裤衩","哇哈哈","脉动","营养快线"]
                 }
             ],
             yAxis : [
@@ -144,7 +159,7 @@
                             }
                         },
                     },
-                    "data": data
+                    "data": ProcessData(data)
                 }
             ]
         };
