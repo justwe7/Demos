@@ -20,19 +20,49 @@
             }
         });*/
 
-        var data = ["-",10,"-","-",40,"-",20];
+        var data = ["-",10,"-","-",40,"-",20,"-","-","-",30,"-"];
         // var data = ["-",10,"20","30",40,"30",20];
 
-        var arrNull = [],arrVal = [],arrValIndex = [];
+        var arrNull = [],arrVal = [],arrValIndex = [],n = 0,_n = 0;
         for (var i = 0; i < data.length; i++) {
             if (data[i] != "-") {
                 arrVal.push(data[i]);
                 arrValIndex.push(i);
             }
         }
+// console.info(arrValIndex[n])
+        for (var i = 0; i < data.length; i++) {
+            if (data[i] == "-" && i > arrValIndex[0] && i < arrValIndex[arrValIndex.length-1]) {
+                //首次出现 和 之后的 - 不执行处理
+                if (i > arrValIndex[n] && i < arrValIndex[n+1]) {//在数值index 范围内的处理 else  增加arrValIndex 的下标
+                    // console.log(i)
+                    // console.warn(arrValIndex[n])
+                    // console.log(arrValIndex[n+1] - arrValIndex[n])
+                    data[i] = difineVal(n,_n);
+                    _n++;//需要改变 - 值的区间下标
+                    // console.log(difineVal(n,_n))
+                }else{//增加arrValIndex 的下标寻找值
+                    n++;
+                    _n = 1;
+                    // console.log(difineVal(n,_n))
+                    // console.log(_n)
+                    // console.info(i)
+                    // console.warn(arrValIndex[n])
+                    // console.log(arrValIndex[n+1] - arrValIndex[n])
+                    data[i] = difineVal(n,_n);
+                }
+                // difineVal(n)
+            }
+        }
 
-        console.log(arrVal)
-        console.log(arrValIndex)
+        console.log(data)
+
+        function difineVal(n,_n) {
+            var fragment = (arrVal[n+1] - arrVal[n]) / (arrValIndex[n+1] - arrValIndex[n]) * (_n+1)
+            return (arrVal[n] + fragment);
+        }
+        /*console.log(arrVal)
+        console.log(arrValIndex)*/
 
         /*for (var i = 0; i < arr.length; i++) {
             if (i == 0 || i == (arr.length-1)) {
@@ -80,7 +110,7 @@
             xAxis : [
                 {
                     type : 'category',
-                    data : ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子","手套","背心"]
+                    data : ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子","手套","背心","裤衩"]
                 }
             ],
             yAxis : [
