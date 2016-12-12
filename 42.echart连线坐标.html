@@ -20,35 +20,47 @@
             }
         });*/
 
-        var data = ["-",10,"-","-",40,"-",20,"-","-","-",30,"-"];
+        var data = ["-",10,"-","-",40,"55",20,"-","-","-",30,"-"];
+        // var data = ["-", "128", "-", "134", "111", "100", "-"];
+        // var data = ["-", "-", "-", "-", "-", "-", "-", "-", "99", "-", "96", "96", "102", "98", "-", "-", "-", "-", "99", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"]
+        // var data = ["-", "-", "-", "-", "-", "-", "-", "-", "69", "-", "70", "64", "75", "76", "-", "-", "-", "-", "84", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-", "-"]
         // var data = ["-",10,"20","30",40,"30",20];
-
+        // console.log(ProcessData(data))
         function ProcessData(data) {
             var _data = data.concat(),arrNull = [],arrVal = [],arrValIndex = [],n = 0,_n = 0;
             window.ToolTipNullData = [];
             for (var i = 0; i < _data.length; i++) {
                 if (_data[i] != "-") {
-                    arrVal.push(_data[i]);
+                    arrVal.push(Number(_data[i]));
                     arrValIndex.push(i);
                 }
             }
+            // console.log(arrVal)
+            // console.info(arrValIndex)
 
             for (var i = 0; i < _data.length; i++) {
                 if (_data[i] == "-" && i > arrValIndex[0] && i < arrValIndex[arrValIndex.length-1]) {
                     //首次出现 和 之后的 - 不执行处理
                     if (i > arrValIndex[n] && i < arrValIndex[n+1]) {//在数值index 范围内的处理 else  增加arrValIndex 的下标
+                        // console.log(n)
                         // console.log(i)
                         // console.warn(arrValIndex[n])
                         // console.log(arrValIndex[n+1] - arrValIndex[n])
                         // _data[i] = difineVal(n,_n);
                         _n++;//需要改变 - 值的区间下标
                         // console.log(difineVal(n,_n))
+                        // console.info(n)
                         _data[i] = difineVal(n,_n);
                     }else{//增加arrValIndex 的下标寻找值
-                        n++;
+                        // if (true) {}
+                        while(i > arrValIndex[n] && i > arrValIndex[n+1]){//避免多个连续有效数值连续导致n值计算对应下标错误
+                            n++;
+                        }
+                        console.log(n)
                         _n = 1;
                         // console.log(difineVal(n,_n))
                         _data[i] = difineVal(n,_n);
+                        // }
                         // console.log(_n)
                         // console.info(i)
                         // console.warn(arrValIndex[n])
@@ -57,7 +69,6 @@
                     }
                 }
             }
-
             function difineVal(n,_n) {
                 var fragment = (arrVal[n+1] - arrVal[n]) / (arrValIndex[n+1] - arrValIndex[n]) * _n;
                 return {value:(arrVal[n] + fragment),symbol: 'none'};
