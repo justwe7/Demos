@@ -1,5 +1,5 @@
 @charset "UTF-8";
-$pink : darken(#f18,30%);
+$pink : darken(#f88,30%);
 $px300 : 300px;
 $border: 2px solid #111;
 
@@ -17,4 +17,65 @@ section{
 
 p{
     border: $border;
+}
+
+
+%c{
+    border-bottom: 3px solid #888;
+}
+.a{
+    @extend %c;
+    span{
+        background-color: #ff8;
+    }
+}
+.b{
+    @extend %c;
+}
+
+/* .a,.b{
+    border-bottom: 3px solid #888;
+}
+.a span{
+    background-color: #ff8;
+}
+.b{
+    border-bottom: 3px solid #888;
+} */
+// .a{
+//     border-bottom: 3px solid #888;
+//     span{
+//         background-color: #ff8;
+//     }
+//     /* }
+//     @at-root span{
+//         background-color: #ff8;
+//     } */
+// }
+// .b{
+//     @extend .a;
+// }
+//
+li{
+    background-color: #ff9;
+    @for $i from 1 through 5 {
+      // .item-#{$i} { width: 2em * $i; }
+      &:nth-of-type( #{$i} ){
+        width: 2em * $i;
+      }
+    }
+
+    $List: (1, #ffa, 1), (2, #faa,.8), (3, #f3a, .6), (4, #fea, .4), (5, #afa, .2);
+    @each $child,$color,$opc in $List {
+        &:nth-of-type( #{$child} ){
+            background-color: #{$color};
+            opacity: #{$opc};
+        }
+    }
+}
+$headings: (h1: 2em, h2: 1.5em, h3: 1.2em);
+@each $header, $size in $headings {
+  #{$header} {
+    font-size: $size;
+  }
 }

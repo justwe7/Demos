@@ -1,18 +1,35 @@
 @charset "UTF-8";
-section {
-  width: 300px;
-  height: 300px;
-  border: 2px solid #111;
-}
-section p {
-  /* 注释 - zhushi */
-  color: #77003c;
-  border: none;
-  height: 200px;
-}
+section { width: 300px; height: 300px; border: 2px solid #111; }
+section p { /* 注释 - zhushi */ color: #ee0000; border: none; height: 200px; }
 
-p {
-  border: 2px solid #111;
+p { border: 2px solid #111; }
+
+.a, .b { border-bottom: 3px solid #888; }
+
+.a span { background-color: #ff8; }
+
+/* .a,.b{ border-bottom: 3px solid #888;
 }
+.a span{ background-color: #ff8;
+}
+.b{ border-bottom: 3px solid #888;
+} */
+li { background-color: #ff9; }
+li:nth-of-type(1) { width: 2em; }
+li:nth-of-type(2) { width: 4em; }
+li:nth-of-type(3) { width: 6em; }
+li:nth-of-type(4) { width: 8em; }
+li:nth-of-type(5) { width: 10em; }
+li:nth-of-type(1) { background-color: #ffa; opacity: 1; }
+li:nth-of-type(2) { background-color: #faa; opacity: 0.8; }
+li:nth-of-type(3) { background-color: #f3a; opacity: 0.6; }
+li:nth-of-type(4) { background-color: #fea; opacity: 0.4; }
+li:nth-of-type(5) { background-color: #afa; opacity: 0.2; }
+
+h1 { font-size: 2em; }
+
+h2 { font-size: 1.5em; }
+
+h3 { font-size: 1.2em; }
 
 /*# sourceMappingURL=sass.css.map */

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script type="text/javascript">
+            var len = 5;
+            function run(n) {
+                var
+                A = Math.random(),
+                n = n || 0,
+                N = Math.floor(A*len);
+                if(N == 4){
+                        console.info(n)
+                    n++;
+                        console.log(n)
+                    if(n == 2){
+                        // console.log(999)
+                        // console.log(N)
+                        return N;
+                    }else{
+                        // console.info(n)
+                        run(n);
+                    }
+                }else{
+                    return N;
+                }
+            }
+            // var A = Math.random();
+            // if (true) {}
+            // console.log(A)
+            document.write(run())
+        </script>
+    </body>
+</html>

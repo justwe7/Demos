@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <style type="text/css" media="screen">
             body{
-                background-color: green;
+                /*background-color: green;*/
             }
             div{
                 width: 70px;
@@ -19,11 +19,24 @@
                 -webkit-text-align-last:justify;/*chrome 20+*/
             }
             div:after{content:""; display: inline-block; width:100%; overflow:hidden; height:0;}
+            #bo{
+                width: 50px;
+                height: 50px;
+                background: #f18;
+                transform: rotate(50deg);
+                transition: .5s;
+            }
+            #bo:hover{
+                transform: rotate(350deg);
+            }
         </style>
     </head>
     <body>
         <div>
             空格
+        </div>
+        <div id="bo">
+
         </div>
     </body>
 </html>

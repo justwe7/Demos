@@ -28,11 +28,26 @@
     border:15px solid #FFF;
     border-color:transparent transparent transparent #000;
     }
+    div{
+        width: 100px;
+        height: 100px;
+        background-color: #f38;
+        margin-top: 10px;
+    }
+    #a:hover~#b{
+        background-color: #999;
+    }
 </style>
 </head>
 
 <body>
 
     <p class="square"></p>
+    <div id="a">
+        aaa
+    </div>
+    <div id="b">bbb</div>
+    <div id="b">bbb</div>
+    <div id="b">bbb</div>
 </body>
 </html>
