@@ -1,0 +1,6 @@
+<view bindtap="ontap1">
+    测试页1
+</view>
+<view style="color:red;">
+    {{msg+1}}
+</view>

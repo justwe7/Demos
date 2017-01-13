@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <script src="http://cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+        <script type="text/javascript">
+            (function ($) {
+                var aaa = 'aaaa';
+                $(window).click(function(event) {
+                    run()
+                });
+
+                function run() {
+                    console.warn(aaa);
+                }
+            })($)
+            document.onclick = function () {
+                alert(9)
+            }
+
+            var str = 'ABCE';
+            console.log(list(str))
+            function list(str){
+                var
+                index = ['A', 'B', 'C', 'D', 'E'],
+                arr = [];
+                for (var i = 0; i < index.length; i++) {
+                    str.indexOf(index[i]) != -1 && arr.push(i);
+                }
+                return arr;
+            };
+            /*var aa = setInterval(
+                console.log(999)
+            , 300)*/
+
+
+        </script>
+    </body>
+</html>
