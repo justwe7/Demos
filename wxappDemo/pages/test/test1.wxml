@@ -4,3 +4,15 @@
 <view style="color:red;">
     {{msg+1}}
 </view>
+<button bindtap="backpage">返回上一页</button>
+
+<button bindtap="changeShow">改变下面的显示</button>
+<view wx:if="{{num<2}}">显示第一条</view>
+<view wx:if="{{3<num<5}}">显示第二条</view>
+<view wx:else>显示第三条</view>
+<view wx:if="{{num<2}}">显示第四条</view>
+<view wx:else>显示第五条</view>
+
+<view hidden="{{num<2}}">显示第一条</view>
+<view hidden="{{3<num<5}}">显示第二条</view>
+<view hidden="{{num<2}}">显示第四条</view>

@@ -23,7 +23,6 @@
             ul{
                 /*width: 200px;*/
                 overflow-x: auto;
-
             }
            /* div{
                 width: 200px;
@@ -69,9 +68,11 @@
     </div>
     </body>
     <script type="text/javascript">
+
         console.log($('ul > li').last().offset().top);
         console.log($(window).scrollTop())
-        console.log(document.documentElement.clientHeight)
+        console.log(document.documentElement.clientHeight);
+
         $(document).on('scroll', function() {
             console.log($('ul > li').last().offset().top < $(window).scrollTop()+document.documentElement.clientHeight)
             if ($('ul > li').last().offset().top < $(window).scrollTop()+document.documentElement.clientHeight) {

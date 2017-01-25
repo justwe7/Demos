@@ -10,7 +10,10 @@ Page({
   //事件处理函数
   bindViewTap: function() {
     wx.navigateTo({
-      url: '../test/test1'
+      url: '../test/test1',
+      complete: function(ev){
+        console.log(ev)
+      }
     })
   },
   onLoad: function () {

@@ -1,5 +1,7 @@
 <!--logs.wxml-->
 <view class="container log-list">
+<navigator url="../test/test1" hover-class="navigator-hover">跳转到新页面</navigator>
+<navigator url="../test/test1" open-type="redirect" hover-class="other-navigator-hover">在当前页打开</navigator>
   <block wx:for="{{logs}}" wx:for-item="log" wx:key="*this">
     <text class="log-item">{{index + 1}}. {{log}}</text>
   </block>

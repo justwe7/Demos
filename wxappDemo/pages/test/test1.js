@@ -2,7 +2,9 @@ var test1_app = getApp();
 
 Page({
   data:{
-   msg: test1_app.globalData.AAA
+   msg: test1_app.globalData.AAA,
+   num: 4,
+   show: true
   },
   onLoad:function(options){
     // 生命周期函数--监听页面加载
@@ -35,5 +37,19 @@ Page({
   },
   ontap1: function(){{
     console.log('自定义的点击');
-  }}
+  }},
+  backpage: function(){
+    wx.navigateBack()
+  },
+  changeShow: function(){
+    if(this.data.num > 5){
+      this.data.num = 0;
+    }else if(this.data.num < 2){
+      this.data.num = 4;
+    }else{
+      this.data.num = 8;
+    }
+    this.data.show = false;
+    console.log(this.data.num)
+  }
 })
