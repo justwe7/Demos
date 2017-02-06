@@ -5,17 +5,23 @@
     </div>-->
     <tmpheader></tmpheader>
     <nav class="tab">
-      <div class="tab-item">商品</div>
-      <div class="tab-item">评价</div>
-      <div class="tab-item">商家</div>
+      <div class="tab-item">
+        <a v-link="{path: '/goods'}">商品</a>
+      </div>
+      <div class="tab-item">
+        <a v-link="{path: '/ratings'}">评价</a>
+      </div>
+      <div class="tab-item">
+        <a v-link="{path: '/seller'}">商家</a>
+      </div>
     </nav>
-    <div class="content">
+    <router-view class="content">
       内容
-    </div>
+    </router-view>
   </div>
 </template>
 
-<script>
+<script type="text/ecmascript-6">
   import header from './components/header/header.vue';
   export default {
     components: {
