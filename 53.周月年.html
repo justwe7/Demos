@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Title</title>
+	<style>
+		.active{
+			background-color: #f88;
+		}
+		#prev,#next{
+			background-color: #eee;
+			border: none;
+			height: 40px;
+			outline: none;
+		}
+	</style>
+</head>
+<body>
+<div id="txt">
+	日期
+	<span id="st"></span>
+	<span id="end"></span>
+</div>
+<input type="button" name="" value="上周" id="prev">
+<input type="button" name="" value="下周" id="next">
+
+<div class="box">
+	<input type="button" name="" value="周" id="week" class="active">
+	<input type="button" name="" value="月" id="month">
+	<input type="button" name="" value="年" id="year">
+</div>
+<script src="js/jquery1.82.min.js"></script>
+<script src="js/datecontrol.js"></script>
+</body>
+</html>

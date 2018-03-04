@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css" media="screen">
+            .current{
+                color: #f88;
+            }
+        </style>
+    </head>
+    <body>
+      <div id="currency-input-example" class="demo">
+        <span><currency-input v-model="price"></currency-input></span>
+        <tag :value='ceshi' v-on:selected=""></tag>
+      </div>
+      <div id="box">
+        <p>{{price}}<br><other-tag :value='price'></other-tag></p>
+      </div>
+      <script src="js/vue.js"></script>
+      <script type="text/javascript">
+      console.log('abcd'.warning)
+        Vue.component('currency-input', {
+          template: '\
+            <span>\
+              $\
+              <input\
+                ref="input"\
+                v-bind:value="value"\
+                v-on:input="updateValue($event.target.value)"\
+              >\
+            </span>\
+          ',
+          props: ['value'],
+          methods: {
+            updateValue: function (value) {
+              var formattedValue = value
+                .trim()
+                .slice(0, value.indexOf('.') + 3)
+              if (formattedValue !== value) {
+                this.$refs.input.value = formattedValue
+              }
+              this.$emit('input', Number(formattedValue))
+            }
+          }
+        })
+
+        var bus = new Vue()
+
+        new Vue({
+          el: '#currency-input-example',
+          data: {
+            price: 0,
+            ceshi: '测试'
+          },
+          components: {
+            'tag': {
+              data() {
+                return {
+                  aaa: '啊啊啊'
+                }
+              },
+              props: ['value'],
+              computed: {
+                  // function function_name(argument) {
+                  //   // body...
+                  // }
+              },
+              created() {
+                  bus.$on('selected', function (id) {
+                    alert(id)
+                    this.aaa = id
+                  })
+              },
+              methods: {
+                /*clicks: function () {
+                  alert(9)
+                  bus.$emit('selected', 1)
+                },*/
+
+              },
+              template : "<i >{{value}}{{aaa}}</i>"
+            }
+          }
+        })
+
+        new Vue({
+          el: '#box',
+          data: {
+            price: '另一个'
+          },
+          components: {
+            'other-tag': {
+              props: ['value'],
+              methods: {
+                clicks: function () {
+                  this.value = '变了'
+                  // bus.$emit('selected', 5)
+                }
+              },
+              template : "<b @click='clicks'>{{value}}</b>"
+            }
+          }
+        })
+      </script>
+    </body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <div id="app">
+            <ol>
+                <li v-for="item in aj">{{item.DeptName}}</li>
+            </ol>
+            <div v-for="(item,$index) in message" :title="$index">
+                {{item.txt}}{{$index}}
+            </div >
+            <dl v-for="(item,$index) in msg" :title="$index">
+                <dt>{{item.date}}{{}}</dt>
+                <dd v-for="(item2,$index) in item.data" v-if="item2 != 2" @click="fn1">
+                    {{item2}}
+                </dd>
+            </dl >
+            <div v-text="message">
+
+            </div>
+            <div id="main" style="height: 300px;" v-on:click="clck"></div>
+            <!-- <com></com> -->
+        </div>
+        <script src="js/vue.js"></script>
+        <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+        <script src="http://cdn.bootcss.com/echarts/2.2.7/echarts-all.js"></script>
+        <script type="text/javascript">
+
+
+
+            var arr = [1,2,3,4,5]
+            arr.forEach(function (ee,index) {
+                console.log(ee,index)
+            })
+            // import com from 'src/app.vue';
+            /*setTimeout(function(){
+                var MyComponent = Vue.extend({
+                     data() {
+                    return {
+                        message: [
+                            {txt:'哈'},
+                            {txt:'哈喽！'}
+                        ]
+                    }
+                },
+                })
+                var myComponentInstance = new MyComponent()
+            })*/
+            var app = new Vue({
+                el: '#app',
+                data() {
+                    return {
+                        aj: [1],
+                        message: [
+                            {txt:'哈'},
+                            {txt:'哈喽'},
+                            {txt:'哈喽！'}
+                        ],
+                        ajax: '111',
+                        msg: [
+                            {
+                                date: 'fky',
+                                data: [1,2,3]
+                            },
+                            {
+                                date: 'fky2',
+                                data: [1,2,3,8]
+                            },
+                            {
+                                date: 'fky3',
+                                data: [1,2,3,8]
+                            },
+                        ]
+                    }
+                },
+                methods: {
+                    handleScroll() {
+                        // alert(9)
+                    },
+                    clck(){
+                        alert(9)
+                    },
+                    fn1(){
+                        console.log(this.ajax)
+                    }
+                },
+                beforeCreated() {
+                    _this = this;
+                    $.ajax({
+                        url: 'xzks.json',
+                        type: 'GET',
+                        dataType: 'json',
+                    })
+                    .done(function(data) {
+                        console.log(data.xzks)
+                        _this.ajax = data;
+                        _this.aj = data.xzks;
+                        // this.ajax = data
+                    })
+                    .fail(function() {
+                        console.log("error");
+                    })
+                },
+                mounted() {
+                    _this = this;
+                    this.$nextTick(() => {
+                        $.ajax({
+                            url: 'xzks.json',
+                            type: 'GET',
+                            dataType: 'json',
+                        })
+                        .done(function(data) {
+                            console.log(data.xzks)
+                            _this.ajax = data;
+                            _this.aj = data.xzks;
+                            // this.ajax = data
+                        })
+                        .fail(function() {
+                            console.log("error");
+                        })
+                        window.addEventListener('scroll', this.handleScroll);
+
+                        var myChart = echarts.init(document.getElementById('main'));
+
+                        var option = {
+                            tooltip: {
+                                show: true
+                            },
+                            legend: {
+                                data:['销量']
+                            },
+                            xAxis : [
+                                {
+                                    type : 'category',
+                                    data : ["衬衫","羊毛衫","雪纺衫","裤子","高跟鞋","袜子"]
+                                }
+                            ],
+                            yAxis : [
+                                {
+                                    type : 'value'
+                                }
+                            ],
+                            series : [
+                                {
+                                    "name":"销量",
+                                    "type":"bar",
+                                    "data":[5, 20, 40, 10, 10, 20]
+                                }
+                            ]
+                        };
+
+                        // 为echarts对象加载数据
+                        myChart.setOption(option);
+                    });
+                }
+                /*,
+                components: {
+                    com
+                }*/
+            });
+        </script>
+    </body>
+</html>
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>eleme</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="static/css/reset.css">
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+</html> -->

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    </body>
+    <script type="text/javascript">
+    const imgs = ['http://static.galileo.xiaojukeji.com/static/tms/default_header.png','http://static.galileo.xiaojukeji.com/static/tms/default_header.png']
+
+    /*const pic = new Promise((resolve,reject) => {
+        const img = new Image();
+        // img.src = imgs[0];
+        img.src = '';
+        img.onload = function () {
+            resolve(this)
+        }
+        // img.onerror = function () {
+        //     reject(new Error('加载失败'))
+        // }
+        img.onerror = () => {
+            reject(new Error('加载失败'))
+        }
+    })
+
+    console.log(1)
+    pic.then(function (img) {
+        console.log('完成');
+        document.body.appendChild(img)
+    }).catch(function (err) {
+        console.log(err)
+    })
+    console.log(2)*/
+
+    function loadimg(src1) {
+        const pic = new Promise((resolve,reject) => {
+            const img = new Image();
+            img.src = src1;
+            img.onload = function () {
+                resolve(this)
+            }
+            // img.onerror = function () {
+            //     reject(new Error('加载失败'))
+            // }
+            img.onerror = () => {
+                reject(new Error('加载失败'))
+            }
+        })
+        return pic;
+    }
+    const allpromise = Promise.all([loadimg(imgs[0]),loadimg(imgs[1])]);//所有的promise对象实例resolve成功才走then方法，只要有一个reject all的状态就是rejecte
+    allpromise.then((datas)=>{
+        datas.forEach((item,i)=>{
+            document.body.appendChild(item)
+        })
+    }).catch((err)=>{
+        console.log(err)
+    })
+
+    Promise.resolve(loadimg(imgs[1]).then((img) => { //传入值返回的是成功的返回值
+        document.body.appendChild(img)
+    }))
+
+    Promise.resolve({
+        then(resolve,reject){
+            const img = new Image();
+            img.src = imgs[0];
+            img.onload = function () {
+               resolve(this)
+            }
+            img.error = function (err) {
+               reject(new Error('加载失败'))
+            }
+        }
+    }).then((img) => {
+        document.body.appendChild(img)
+    })
+
+    Promise.resolve('args').then((str) => {
+        console.log(str)
+    })
+
+    var pp = Promise.resolve();//不传任何返回值是resolved的对象
+    console.log(pp)
+    </script>
+</html>

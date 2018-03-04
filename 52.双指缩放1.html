@@ -1,0 +1,67 @@
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1,maximum-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <meta name="format-detection" content="telephone=no" />
+        <meta name="apple-itunes-app" content="app-id=1080935808">
+        <script>
+            window.onresize = function () {
+                var iWidth = document.documentElement.clientWidth;
+                iWidth = iWidth > 414 ? 540 : iWidth;
+                document.getElementsByTagName('html')[0].style.fontSize = iWidth / 16 + 'px';
+            }
+            window.onresize();
+        </script>
+        <style type="text/css" media="screen">
+            .warpper{
+                width: 10rem;
+                margin: 0 auto;
+            }
+            .box{
+                background-color: #a99;
+            }
+        </style>
+        </head>
+<body>
+<div class="warpper">
+    <input type="file" name="" accept="image/*" value="上传" placeholder="" id="submi">
+
+    <div class="box">
+111
+<canvas width="300" height="300" id="canvas">
+
+</canvas>
+    </div>
+</div>
+<script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript">
+var canvas = $('#canvas')[0];
+cx = canvas.getContext("2d");
+// cx.fillRect(0, 0, 100, 100)
+    $('#submi').change(function(event) {
+        var fd = new FormData();//数据传给后端
+        // console.log(this.files[0])
+        // console.log(event.target.files[0])
+        var reader = new FileReader();
+        reader.readAsDataURL(this.files[0]);
+
+
+        fd.append('file',this.files[0]);
+        console.log(fd)
+        reader.onload = function(e){
+            console.log(this.result)
+            var img = new Image();
+            img.src = this.result;
+            img.onload = function () {
+                cx.drawImage(img, 0, 0, 300 ,300)
+            }
+        }
+    });
+</script>
+</body>
+</html>
+

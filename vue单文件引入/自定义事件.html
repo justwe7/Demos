@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css" media="screen">
+            .current{
+                color: #f88;
+            }
+        </style>
+    </head>
+    <body>
+      <div id="counter-event-example">
+        <p>{{ total }}</p>
+        <button-counter v-on:childevent="parentevent"></button-counter>//给子组件绑定自定义的事件
+        <button-counter v-on:childevent="parentevent"></button-counter>
+
+        <!-- <my-component v-on:click.native="doTheThing"></my-component> -->
+      </div>
+      <script src="js/vue.js"></script>
+      <script type="text/javascript">
+      Vue.component('button-counter', {
+        template: '<button v-on:click="childevent">{{ counter }}</button>',//子组件绑定点击的事件
+        data: function () {
+          return {
+            counter: 0
+          }
+        },
+        methods: {
+          childevent: function () {//子组件绑定点击事件的触发方式
+            this.counter += 1
+            this.$emit('childevent')//将自定义事件传入到父组件
+          }
+        },
+      })
+
+      Vue.component('my-component', {
+        template: '<button v-on:click="childevent">{{ counter }}</button>',
+        data: function () {
+          return {
+            counter: '原生事件'
+          }
+        },
+        doTheThing: {
+          childevent: function () {
+            this.counter = '变了';
+          }
+        },
+      })
+      new Vue({
+        el: '#counter-event-example',
+        data: {
+          total: 0
+        },
+        methods: {
+          parentevent: function () {
+            console.log(9)
+            this.total += 1
+          }
+        }
+      })
+      </script>
+    </body>
+</html>

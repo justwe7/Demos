@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+
+    </body>
+    <script type="text/javascript">
+        const o = new Set([1,2,3]);//数据结构set，key和value相同，没有重复的value
+        console.log(o,o.size)  //数据长度
+
+        o.add('a').add('z') //添加数据
+        console.log(o)
+
+        console.log(o.delete('a')); //删除数据
+        console.log(o);
+        console.log(o.delete('a'));
+
+        console.log(o.has('z')) //是否包含属性
+
+        // console.log(o.clear(),o) // 清空属性
+        //
+        console.log(o.keys(),o.values()) //返回键名 键值
+
+        console.log(o.entries()) //返回键值对
+
+        o.forEach(function (value,key,set) {//值不能修改
+            console.log(value,key,set)
+            key = 1;
+            value = 1;
+            set = 1;
+        })
+
+        o.add(1);
+
+        console.log(o)
+
+        let arr=[1,1,'1',2]//用set去重
+        console.log([...new Set(arr)])
+    </script>
+</html>

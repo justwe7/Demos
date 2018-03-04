@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css" media="screen">
+            .current{
+                color: #f88;
+            }
+        </style>
+    </head>
+    <body>
+      <div id="box">
+        <div>
+          <h1>我是父组件的标题</h1>
+          <my-component>
+            <p>这是一些初始内容</p>
+            <p>这是更多的初始内容</p>
+          </my-component>
+        </div>
+        <br><br><br>
+      </div>
+
+<div id="box2">
+  <app-layout>
+    <h1 slot="header">备用标题</h1>
+    <p>主要内容的一个段落。</p>
+    <p>另一个主要段落。</p>
+    <p slot="footer">这里有一些联系信息</p>
+  <app-layout>
+</div>
+
+<br><br><br>
+<div id="box3">
+  <div class="parent">
+    <child>
+      <template scope="props">
+        <span>分发的内容</span>
+        <span>{{ props.text }}</span>
+      </template>
+    </child>
+  </div>
+</div>
+
+
+
+<br><br><br>
+<div id="box4">
+  <div class="parent">
+    <my-awesome-list :items="items">
+      <!-- 作用域插槽也可以是具名的 -->
+      <template slot="item" scope="props">
+        <li class="my-fancy-item">{{ props.text }}</li>
+      </template>
+    </my-awesome-list>
+  </div>
+</div>
+      <script src="js/vue.js"></script>
+      <script type="text/javascript">
+        new Vue({
+          el: '#box',
+          data: {
+            price: '另一个'
+          },
+          components: {
+            'my-component': {
+              props: ['value'],
+              methods: {
+                clicks: function () {
+                  // this.value = '变了'
+                  // bus.$emit('selected', 5)
+                }
+              },
+              template : "<div>\
+                <h2>我是子组件的标题</h2>\
+                <slot>\
+                  只有在没有要分发的内容时才会显示。\
+                </slot>\
+              </div>"
+            }
+          }
+        })
+
+
+        new Vue({
+          el: '#box2',
+          data: {
+            price: '另一个'
+          },
+          components: {
+            'app-layout': {
+              props: ['value'],
+              methods: {
+                clicks: function () {
+                  // this.value = '变了'
+                  // bus.$emit('selected', 5)
+                }
+              },
+              template : '<div class="container">\
+                <header>\
+                  <slot name="header"></slot>\
+                </header>\
+                <main>\
+                  <slot></slot>\
+                </main>\
+                <footer>\
+                  <slot name="footer"></slot>\
+                </footer>\
+              </div>'
+            }
+          }
+        })
+
+        new Vue({
+          el: '#box3',
+          components: {
+            'child': {
+              template : '<div class="child">\
+                <slot text="模板内容"></slot>\
+              </div>'
+            }
+          }
+        })
+
+
+         new Vue({
+          el: '#box4',
+          components: {
+            'my-awesome-list': {
+              data() {
+                return{
+                  items: ['a','b','c']
+                }
+              },
+              template : '<ul>\
+                <slot name="item"\
+                  v-for="item in items"\
+                  :text="item">\
+                  <!-- 这里写入备用内容 -->\
+                </slot>\
+              </ul>'
+            }
+          }
+        })
+      </script>
+    </body>
+</html>

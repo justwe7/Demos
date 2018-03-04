@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css" media="screen">
+            .current{
+                color: #f88;
+            }
+        </style>
+    </head>
+    <body>
+      <div id="example">
+        <component v-bind:is="currentView">
+          <!-- 组件在 vm.currentview 变化时改变！ -->
+        </component>
+        <br><br />
+        <component v-bind:is="other" :childcon.sync="con" name="aaa">
+        <p slot="nani">{{con}}</p>
+          <!-- 组件在 vm.currentview 变化时改变！ -->
+        </component>
+      </div>
+      <script src="js/vue.js"></script>
+      <script type="text/javascript">
+        var Home = {
+          template: '<p>Welcome home!</p>'
+        }
+        var vm = new Vue({
+          el: '#example',
+          data: {
+            currentView: Home,
+
+            con: '父级组件',
+            other: {
+              data() {
+                return{
+                  // childcon: '啥啥啥'
+                }
+              },
+              template: '<b @click="cli">测试组件<br /><slot name="nani">\
+                </slot>\</b>',
+              prop: ['childcon'],
+              methods: {
+                cli: function () {
+                  alert('点');
+                }
+              }
+            }
+          }
+        })
+      </script>
+    </body>
+</html>

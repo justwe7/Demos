@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css" media="screen">
+            .current{
+                color: #f88;
+            }
+        </style>
+    </head>
+    <body>
+      <div id="example" class="current">
+        <my-component ref="profile"></my-component>
+        <!-- <async-example></async-example> -->
+      </div>
+      <script src="js/vue.js"></script>
+      <script type="text/javascript">
+        Vue.component('my-component', {
+          template: '<div v-once>全局组件</div>'
+        })
+        // 创建根实例
+        var parent = new Vue({
+          el: '#example'
+        })
+
+        var child = parent.$refs.profile;
+        console.log(child.blur())
+
+
+// Vue.component('async-example', function (resolve, reject) {
+//   setTimeout(function () {
+//     // Pass the component definition to the resolve callback
+//     resolve({
+//       template: '<div>I am async!</div>'
+//     })
+//   }, 1000)
+// })
+      </script>
+    </body>
+</html>

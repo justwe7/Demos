@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css" media="screen">
+            .current{
+                color: #f88;
+            }
+        </style>
+    </head>
+    <body>
+      <div id="example">
+      <table>
+        <!-- <my-component></my-component> -->
+        <tbody>
+          <tr is="my-component"></tr>
+        </tbody>
+      </table>
+      </div>
+      <br><br><br>
+      <div id="example2">
+        <my-component></my-component>
+        <my-component2></my-component2>
+        <tmp1></tmp1>
+      </div>
+
+      <template id="tmp">
+            <div>
+              {{childcon}}
+            </div>
+      </template>
+
+
+      <div id="xx" is="my-component">
+
+      </div>
+      <script src="js/vue.js"></script>
+      <script type="text/javascript">
+        Vue.component('my-component', {
+          template: '<div>全局组件</div>'
+        })
+        // 创建根实例
+        new Vue({
+          el: '#example'
+        })
+
+        new Vue({
+          el: '#xx'
+        })
+
+        var Child = {
+          template: '<div>局部组件</div>'
+        }
+
+        var Child1 = {//基础资料
+          data() {
+                return{
+                  childcon: '啥啥啥'
+                }
+              },
+        template: '#tmp'
+        }
+        new Vue({
+          el: '#example2',
+          components: {
+            // <my-component> 将只在父模板可用
+            'my-component2': Child,
+            'tmp1': Child1
+          }
+        })
+      </script>
+    </body>
+</html>

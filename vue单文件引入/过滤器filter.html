@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css" media="screen">
+            .current{
+                color: #f88;
+            }
+        </style>
+    </head>
+    <body>
+        <br>
+        <ul id="app">
+            <li v-for="n in evenNumbers">{{ n | double}}</li>
+            <p>{{dt | formatDate}}</p>
+        </ul>
+        <script src="js/vue.js"></script>
+        <script type="text/javascript">
+        Vue.filter('double',function (str) {
+          return ('00' + str).substr(str.length);
+        })
+            var app = new Vue({
+                el: '#app',
+                data: {
+                  numbers: [ 1, 2, 3, 4, 5 ],
+                  dt: 1493779274
+                },
+                filters: {
+                    formatDate(time) {
+                        let date = new Date(time);
+                        return formatDate(date, 'yyyy-MM-dd hh:mm');
+                    }
+                },
+                computed: {
+                  evenNumbers: function () {
+                    return this.numbers.filter(function (number) {
+                      return number % 2 === 0
+                    })
+                  }
+                }
+            });
+            function formatDate(date, fmt) {
+  if (/(y+)/.test(fmt)) {//截取当前年
+    fmt = fmt.replace(RegExp.$1,(date.getFullYear()+'').substr(4-RegExp.$1.length));//当前年份的截取 可能是yy / yyyy
+  }
+  let oM = {
+    'M+': date.getMonth() + 1,
+    'd+': date.getDate(),
+    'h+': date.getHours(),
+    'm+': date.getMinutes(),
+    's+': date.getSeconds()
+  }
+  for (let key in oM) {
+    // if (new RegExp(`(${key})`).test(fmt)) {
+    if (new RegExp(`(${key})`).test(fmt)) {
+      let str = oM[key] + '';
+      fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? str : padLeftZero(str))
+    }
+  }
+  return fmt;
+}
+function padLeftZero(str) {
+  return ('00' + str).substr(str.length);
+}
+        </script>
+    </body>
+</html>
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>eleme</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="static/css/reset.css">
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+</html> -->

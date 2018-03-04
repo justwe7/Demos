@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link href="https://unpkg.com/animate.css@3.5.1/animate.min.css" rel="stylesheet" type="text/css">
+        <style type="text/css" media="screen">
+          .example-7-color-preview {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+          }
+        </style>
+    </head>
+    <body>
+      <div id="demo">
+        <anchored-heading :level="1">Hello world!</anchored-heading>
+      </div>
+
+      <div id="demo1">
+        <anchored-heading1 :level="1" >Hello world!</anchored-heading1>
+      </div>
+
+
+      <div id="demo2">
+        <my-aa :level="1">Hello world!</my-aa>
+      </div>
+
+      <div id="demo3">
+        <my-input v-model="fvalue">Hello world!</my-input>
+        <p>{{fvalue}}</p>
+      </div>
+      <script type="text/x-template" id="anchored-heading-template">
+        <!-- <div>   原始写法无render
+          <h1 v-if="level === 1">
+            <slot></slot>
+          </h1>
+          <h2 v-if="level === 2">
+            <slot></slot>
+          </h2>
+          <h3 v-if="level === 3">
+            <slot></slot>
+          </h3>
+          <h4 v-if="level === 4">
+            <slot></slot>
+          </h4>
+          <h5 v-if="level === 5">
+            <slot></slot>
+          </h5>
+          <h6 v-if="level === 6">
+            <slot></slot>
+          </h6>
+        </div> -->
+      </script>
+      <script src="https://unpkg.com/tween.js@16.3.4"></script>
+      <script src="https://unpkg.com/color-js@1.0.3/color.js"></script>
+      <script src="js/vue.js"></script>
+      <script type="text/javascript">
+        Vue.component('anchored-heading', {
+          template: '#anchored-heading-template',
+          render: function (createElement) {
+            return createElement(
+              'h' + this.level,   // tag name 标签名称
+              this.$slots.default // 子组件中的阵列  内容（简写，可以写参数）  default 属性包括了所有没有被包含在具名 slot 中的节点
+            )
+          },
+          props: {
+            level: {
+              type: Number,
+              required: true
+            }
+          }
+        })
+
+
+        var getChildrenTextContent = function (children) {
+          return children.map(function (node) {
+            return node.children
+              ? getChildrenTextContent(node.children)
+              : node.text
+          }).join('')
+        }
+        Vue.component('anchored-heading1', {
+          render: function (createElement) {
+            // create kebabCase id
+            var headingId = getChildrenTextContent(this.$slots.default)
+              .toLowerCase()
+              .replace(/\W+/g, '-')
+              .replace(/(^\-|\-$)/g, '')
+            return createElement(
+              'h' + this.level,
+              [
+                createElement('a', {
+                  attrs: {
+                    name: headingId,
+                    href: '#' + headingId
+                  }
+                }, this.$slots.default)
+              ]
+            )
+          },
+          props: {
+            level: {
+              type: Number,
+              required: true
+            }
+          }
+        })
+
+
+      new Vue({
+        el: '#demo',
+        data: {
+          number: 0,
+          animatedNumber: 0
+        },
+        watch: {
+          number: function(newValue, oldValue) {
+            var vm = this
+            function animate (time) {
+              requestAnimationFrame(animate)//动画完成之后回掉 自身
+              TWEEN.update(time)
+            }
+            new TWEEN.Tween({ tweeningNumber: oldValue })
+              .easing(TWEEN.Easing.Quadratic.Out)
+              .to({ tweeningNumber: newValue }, 500)
+              .onUpdate(function () {
+                vm.animatedNumber = this.tweeningNumber.toFixed(0)
+              })
+              .start()
+            animate()
+          }
+        }
+      })
+
+
+      new Vue({
+        el: '#demo1',
+      })
+
+      new Vue({
+        el: '#demo2',
+        components: {
+          'my-aa': {
+            render: function (createElement) {
+              return createElement('div',
+                Array.apply(null, { length: 3 }).map(function (el,index) {
+                  return createElement('p',{attrs: {'title': index}}, 'hi')
+                })
+              )
+            }
+          }
+        }
+      })
+
+      new Vue({
+        el: '#demo3',
+        data: {
+          fvalue: '55'
+        },
+        components: {
+          'my-input': {
+            methods: {
+              updateValue: function (value) {
+                this.$emit('input', value)
+              }
+            },
+            render: function (createElement) {
+              var self = this
+                return createElement('input', {
+                  domProps: {
+                    value: self.value
+                  },
+                  on: {
+                    input: function (event) {
+                      self.value = event.target.value
+                      self.updateValue(self.value)
+                    }
+                  }
+                })
+            }
+          }
+        }
+      })
+      </script>
+    </body>
+</html>

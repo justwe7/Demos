@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css" media="screen">
+            .current{
+                color: #f88;
+            }
+        </style>
+    </head>
+    <body>
+    <svg xmlns="http://www.w3.org/2000/svg" width="14" height="24" viewBox="0 0 14 24"><path fill="#999" d="M2 .69L13.31 12 2 23.31.59 21.9l9.9-9.9-9.9-9.9z"/></svg>
+    <svg viewBox="0 0 20 18" xmlns="http://www.w3.org/2000/svg" class="Icon Icon--like Icon--left" width="13" height="16" aria-hidden="true" style="transform: rotate(180deg); height: 16px; width: 13px;"><title></title><g><path d="M.718 7.024c-.718 0-.718.63-.718.63l.996 9.693c0 .703.718.65.718.65h1.45c.916 0 .847-.65.847-.65V7.793c-.09-.88-.853-.79-.846-.79l-2.446.02zm11.727-.05S13.2 5.396 13.6 2.89C13.765.03 11.55-.6 10.565.53c-1.014 1.232 0 2.056-4.45 5.83C5.336 6.965 5 8.01 5 8.997v6.998c-.016 1.104.49 2 1.99 2h7.586c2.097 0 2.86-1.416 2.86-1.416s2.178-5.402 2.346-5.91c1.047-3.516-1.95-3.704-1.95-3.704l-5.387.007z"></path></g></svg>
+        <br>
+        <div id="app">
+            <div v-for="(item,key,$index) in message" :title="$index" :class="classObject">
+                {{item.txt}}{{$index}}
+            </div >
+            <br>
+            <div v-text="message" :class="{ current: isActive }" @click="clck">
+
+            </div>
+            <br>
+            <div :class="classObject2">
+                22222
+            </div>
+            <br>
+            <div v-bind:class="[isActive == 0 ? activeClass : '']">
+                数组语法
+            </div>
+            <br>
+            <div v-bind:class="[{ current: isActive,fky:  isActive}]">
+                数组语法2
+            </div>
+            <!-- <com></com> -->
+        </div>
+        <script src="js/vue.js"></script>
+        <script type="text/javascript">
+
+            var app = new Vue({
+                el: '#app',
+                data() {
+                    return {
+                        message: [
+                            {txt:'哈'},
+                            {txt:'哈喽'},
+                            {txt:'哈喽！'}
+                        ],
+                    classObject: {
+                        current: true,
+                        'text-danger': false
+                      },
+                      activeClass: 'current',
+                         isActive: true,
+                         error: null,
+                        msg: [
+                            {
+                                date: 'fky',
+                                data: [1,2,3]
+                            },
+                            {
+                                date: 'fky2',
+                                data: [1,2,3,8]
+                            },
+                            {
+                                date: 'fky3',
+                                data: [1,2,3,8]
+                            },
+                        ]
+                    }
+                },
+                methods: {
+                    handleScroll() {
+                        // alert(9)
+                    },
+                    clck(){
+                        this.isActive = !this.isActive
+                    }
+                },
+                computed: {
+                    classObject2: function () {
+                        return {
+                          current: this.isActive && !this.error,
+                          'text-danger': !this.error,
+                        }
+                      }
+                },
+                mounted() {
+                    this.$nextTick(() => {
+                    });
+                }
+                /*,
+                components: {
+                    com
+                }*/
+            });
+        </script>
+    </body>
+</html>
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>eleme</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="static/css/reset.css">
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+</html> -->

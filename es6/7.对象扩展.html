@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <ul>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
+          <a href="8.函数扩展.html" title="">2222</a>
+    </body>
+    <script type="text/javascript">
+/**
+ * 字符串的扩展
+ */
+
+// 模板字符串
+
+let flag = true;
+
+let html = `<ul>
+              <li>
+                <span>${'首页'}</span>
+                <span></span>
+                <span></span>
+                <span class="${flag ? 'show' : 'hide'}"></span>
+                <span></span>
+              </li>
+            </ul>`;
+
+console.log(html);
+
+
+
+/**
+ * 1 repeat
+ * 2 includes() startsWith() endsWith()
+ */
+
+let str1 = 'a';
+
+let str2 = str1.repeat(3);
+
+console.log(str2);
+
+let str = 'miaov';
+
+console.log(str.includes('ao'));  // true  是否包含字符
+console.log(str.includes('asd'));  // false
+
+console.log(str.startsWith('m')); // true    是否以字符开头
+console.log(str.startsWith('o')); // false
+
+console.log(str.endsWith('ov')); // true  是否以字符结尾
+console.log(str.endsWith('m')); // true
+
+
+/**
+ * 数组的扩展
+ */
+console.log('-----------------------------------------------------')
+
+
+// Array.from()   类数组转为数组
+var lis = document.querySelectorAll('li');
+
+console.log(Array.isArray(lis));
+
+var lis2 = Array.from(lis);
+
+console.log(lis2);
+console.log(Array.isArray(lis2));
+
+
+// Array.of()    创建数组
+
+const arr = Array.of(1,2);
+
+console.log(arr);
+
+
+// find()  findIndex()  筛选数组符合条件
+
+const arr1 = [1, 2, 3, 4];
+
+let res = arr1.find(function (a){  //返回第一个符合条件  否则undefined
+  return a < 3;
+});
+
+console.log(res);
+
+let res1 = arr1.findIndex(function (a){  //返回第一个符合条件下标  否则-1
+  return a < -200;
+});
+
+console.log(res1);
+
+
+// fill()  给定一个值对数组填充
+
+const arr2 = [1, 2, 3, 4];
+
+arr2.fill('abc');
+// arr2.fill('abc', 1, 3);   从1下标开始到3的前一个改变
+
+console.log(arr2);
+
+console.log('-----------------------------------------------------')
+
+/**
+ * 对象的扩展
+ */
+
+// 对象的简洁表示法
+
+let a = 1;
+let b = 2;
+
+const obj1 = {
+  a: a
+};
+
+console.log(obj1);
+const obj2 = {a,b}
+
+console.log(obj2);
+
+const obj3 = {
+  fn: function (){
+    console.log(1);
+  },
+  fn2(){
+    console.log(2);
+  }
+}
+
+obj3.fn();
+obj3.fn2();
+
+
+
+
+// Object.is()   判断两个数据是否长的一样
+
+console.log(Object.is(NaN, NaN));
+
+console.log(Object.is(+0, -0));  //false
+console.log(Object.is(NaN,5, NaN,NaN)); //传多个只判断前两个
+console.log(Object.is(1,Number('1')));
+
+
+
+// Object.assign()
+// 用于对象的合并，将源对象的所有可枚举属性，复制到目标对象。  值相同会覆盖之前的
+
+let ob1 = {a: 1};
+let ob2 = {a: 2, b: 3};
+let ob3 = {c: 'abc'};
+
+Object.assign(ob1, ob2, ob3);
+
+console.log(ob1);
+
+    </script>
+</html>

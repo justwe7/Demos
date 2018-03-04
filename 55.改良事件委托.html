@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <ul style="padding: 10px;">
+        <li>1</li>
+        <li><span>222</span></li>
+        <li><span>333</span></li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+    <script type="text/javascript">
+        document.getElementsByTagName('ul')[0].addEventListener('click', function (ev) {
+            var target = ev.target;
+            while (target && !target.matches('li')) {
+                if (this === target) {
+                    target = null;
+                    break;
+                }
+                target = target.parentNode;
+            }
+            if (target) {
+                console.log(9)
+            }
+        }, false)
+        /*var eve = function (f,c,e) {
+            document.getElementsByTagName(f)[0].addEventListener('click', function (ev) {
+                var target = ev.target;
+                while (target && !target.matches(c)) {
+                    if (this === target) {
+                        target = null;
+                        break;
+                    }
+                    target = target.parentNode;
+                }
+                if (target) {
+                    e()
+                }
+            }, false)
+        }
+        eve('ul','li',function (argument) {
+            alert(9)
+        })*/
+    </script>
+</body>
+</html>

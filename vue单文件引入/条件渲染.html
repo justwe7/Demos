@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css" media="screen">
+            .current{
+                color: #f88;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="app">
+            <div v-for="(item,key,$index) in classObject">
+                {{item}}---{{key}}---{{$index}}
+            </div >
+            <!-- <com></com> -->
+        </div>
+        <script src="js/vue.js"></script>
+        <script type="text/javascript">
+            var app = new Vue({
+                el: '#app',
+                data() {
+                    return {
+                        message: [
+                            {txt:'哈'},
+                            {txt:'哈喽'},
+                            {txt:'哈喽！'}
+                        ],
+                    classObject: {
+                        current: true,
+                        'text-danger': false
+                      },
+                      activeClass: 'current',
+                         isActive: true,
+                         error: null,
+                        msg: [
+                            {
+                                date: 'fky',
+                                data: [1,2,3]
+                            },
+                            {
+                                date: 'fky2',
+                                data: [1,2,3,8]
+                            },
+                            {
+                                date: 'fky3',
+                                data: [1,2,3,8]
+                            },
+                        ]
+                    }
+                },
+                methods: {
+                    handleScroll() {
+                        // alert(9)
+                    },
+                    clck(){
+                        this.isActive = !this.isActive
+                    }
+                },
+                computed: {
+                    classObject2: function () {
+                        return {
+                          current: this.isActive && !this.error,
+                          'text-danger': !this.error,
+                        }
+                      }
+                },
+                mounted() {
+                    this.$nextTick(() => {
+                    });
+                }
+                /*,
+                components: {
+                    com
+                }*/
+            });
+        </script>
+    </body>
+</html>
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>eleme</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="static/css/reset.css">
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+</html> -->

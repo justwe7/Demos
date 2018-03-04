@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css" media="screen">
+            .current{
+                color: #f88;
+            }
+[v-cloak] {
+  display: none;
+}
+        </style>
+    </head>
+    <body>
+
+      <div id="example-1" v-cloak>
+        <input v-model="message" placeholder="edit me" >
+        <input v-model.number="message" type="number">
+        <p>Message is: {{ message }}</p>
+        <br>
+        <input type="checkbox" id="checkbox" v-model="checked">
+        <label for="checkbox">{{ checked }}</label>
+        <br>
+        <input type="checkbox" id="jack" value="Jack" v-model="checkedNames" :checked="!!checked">
+        <label for="jack">Jack</label>
+        <input type="checkbox" id="john" value="John" v-model="checkedNames">
+        <label for="john">John</label>
+        <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+        <label for="mike">Mike</label>
+        <br>
+        <span>Checked names: {{ checkedNames }}</span>
+        <br>
+        <br>
+        <br>
+        <select v-model="selected">
+          <option>A</option>
+          <option>B</option>
+          <option>C</option>
+        </select>
+        <span>Selected: {{ selected }}</span>
+        <br><br>
+        <select v-model="selected2" multiple style="width: 50px">
+          <option>A</option>
+          <option>B</option>
+          <option>C</option>
+        </select>
+        <br>
+        <span>Selected: {{ selected2 }}</span>
+        <br><br><br>
+        <select v-model="selected3">
+          <option v-for="option in options" v-bind:value="option.value">
+            {{ option.text }}
+          </option>
+        </select>
+        <span>Selected: {{ selected3 }}</span>
+
+        <input type="radio" v-model="picked" value="a">
+        <!-- 当选中时
+        vm.picked === vm.a -->
+        <br><br>
+        <label><input type="radio" name="222" value="" :checked="!check">有</label>
+        <label><input type="radio" name="222" value="" :checked="check">无</label>
+        <div @click="run">
+          改变有无
+        </div>
+        <div @click="run">
+          改变有无
+        </div>
+      </div>
+      <br>
+
+      <div id="box">
+        <input v-model="message1" placeholder="edit me">
+        <label for="jack">Jack</label>
+        <input v-model="message2" placeholder="edit me">
+        <label for="john">John</label>
+        <input v-model="message3" placeholder="edit me">
+        <label for="mike">Mike</label>
+        <input type="button" name="" value="提交" :disabled="on">
+        <input type="button" name="" value="提交" :disabled="onoff">
+      </div>
+<div class="ooo">
+  cdfsf
+</div>
+      <script src="js/vue.js"></script>
+      <script type="text/javascript">
+/*document.querySelector('.ooo').addEventListener('click', function () {
+  alert(9)
+})*/
+
+      var vm1 = new Vue({
+        el: '#box',
+        dt: 'dddd',
+        data: {
+          message1: '',
+          message2: '',
+          message3: '',
+          doctor: 'aaa',
+          on: true
+        },
+        computed: {
+          'onoff' () {
+            if (this.message1 && this.message2 && this.message3) {
+              return false
+            }else{
+              return true
+            }
+          },
+        },
+        watch: {
+          'message1' () {
+            this.vaild()
+          },
+          'message2' () {
+            this.vaild()
+          },
+          'message3' () {
+            this.vaild()
+          }
+        },
+        methods: {
+          vaild: function () {
+            // alert(this.doctor)
+            if (this.message1 && this.message2 && this.message3) {
+              this.on = false
+            }else{
+              this.on = true
+            }
+          }
+        }
+      })
+            /*alert(vm1.$options.dt)
+            alert(vm1.$data.doctor)*/
+
+        var example1 = new Vue({
+          el: '#example-1',
+          data: {
+            message: '',
+            checked: true,
+            checkedNames: [],
+            selected: 'A',
+            selected2: [],
+
+            selected3: 'A',
+            options: [
+              { text: 'One', value: 'A' },
+              { text: 'Two', value: 'B' },
+              { text: 'Three', value: 'C' }
+            ],
+
+            picked: true,
+            check: true
+          },
+          methods: {
+            run: function () {
+              this.check = !this.check;
+            }
+          }
+        })
+
+      </script>
+    </body>
+</html>
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>eleme</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="static/css/reset.css">
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+</html> -->

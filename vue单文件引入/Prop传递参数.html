@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css" media="screen">
+            .current{
+                color: #f88;
+            }
+        </style>
+    </head>
+    <body>
+      <div id="example">
+        <input v-model="parentMsg"><br><br><br>
+        <my-component my-message="传入静态子组件"></my-component><br><br><br>
+        <my-component :my-message="parentMsg"></my-component>
+      </div>
+      <script src="js/vue.js"></script>
+      <script type="text/javascript">
+      new Vue({
+        el: '#example',
+        data: {
+          parentMsg: '要传入动态子组件'
+        },
+        components: {
+          'my-component': {
+              // 声明 props
+              // props: ['myMessage'],
+              props: {
+                myMessage: {
+                  type: String
+                }
+              },
+              // 就像 data 一样，prop 可以用在模板内
+              // 同样也可以在 vm 实例中像 “this.message” 这样使用
+              template: '<span>{{ myMessage }}</b></span>'
+            }
+        }
+      })
+      </script>
+    </body>
+</html>

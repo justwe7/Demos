@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link href="https://unpkg.com/animate.css@3.5.1/animate.min.css" rel="stylesheet" type="text/css">
+        <style type="text/css" media="screen">
+          .demo-enter-active, .demo-leave-active {
+            transition: .5s
+          }
+          .demo-enter, .demo-leave-active {
+            opacity: 0;
+          }
+          .demo-enter{
+            /*触发动画之前的效果*/
+            transform: translateX(50px);
+          }
+          .demo-leave-active{
+            /*动画过渡的目标效果*/
+            transform: translateX(-50px);
+          }
+          .aaa{
+            position: absolute;
+            left: 50%;
+          }
+
+          .component-fade-enter-active, .component-fade-leave-active {
+            transition: opacity .3s ease;
+          }
+          .component-fade-enter, .component-fade-leave-active {
+            opacity: 0;
+          }
+
+          .list-item {
+            display: inline-block;
+            margin-right: 10px;
+          }
+          .list-enter-active, .list-leave-active {
+            transition: all 1s;
+          }
+          .list-enter, .list-leave-active {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+        </style>
+    </head>
+    <body>
+
+      <script src="js/vue.js"></script>
+      <script type="text/javascript">
+        var myMixin = {
+          created: function () {
+            this.hello()
+          },
+          methods: {
+            hello: function () {
+              console.log('hello from mixin!')
+            }
+          }
+        }
+        // 定义一个使用混合对象的组件
+        var Component = Vue.extend({
+          mixins: [myMixin]
+        })
+        var component = new Component()
+
+/*----------*/
+
+        var mixin = {
+          created: function () {
+            console.log('混合对象的钩子被调用')
+          }
+        }
+        new Vue({
+          mixins: [mixin],
+          created: function () {
+            console.log('组件钩子被调用')
+          }
+        })
+
+
+var mixin = {
+  methods: {
+    foo: function () {
+      console.log('foo')
+    },
+    conflicting: function () {
+      console.log('from mixin')
+    }
+  }
+}
+var vm = new Vue({
+  mixins: [mixin],
+  methods: {
+    bar: function () {
+      console.log('bar')
+    },
+    conflicting: function () {
+      console.log('from self')
+    }
+  }
+})
+vm.foo() // -> "foo"
+vm.bar() // -> "bar"
+vm.conflicting()
+
+
+/*-------------*/
+
+Vue.mixin({
+  created: function () {
+    var myOption = this.$options.myOption
+    if (myOption) {
+      console.log(myOption)
+    }
+  }
+})
+new Vue({
+  myOption: '作用于全部!'
+})
+
+      </script>
+    </body>
+</html>

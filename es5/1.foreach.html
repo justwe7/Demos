@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    </body>
+    <script type="text/javascript">
+
+        var arr = [1,2,3,4,5]
+        function fore(a,f,t) {
+            try {a.forEach(a,f)}
+            catch (t){
+                if (e === fore.break) return
+                    else throw e;
+            }
+        }
+        fore.break = new Error('终止');
+
+        document.write(...arr)
+
+        b = arr.map((x) => x*x)
+        console.log(b)
+
+        console.log(arr.filter((n) => n<3))
+
+        console.log(arr.every((n) => n<10)) //遍历所有均符合则返回true
+        console.log(arr.every((n) => n<2))
+
+        console.log(arr.some((n) => n<2)) //一旦有符合条件的停止遍历并返回
+        console.log(arr.some((n) => n<1))
+
+        console.log(arr.reduce(function (x,y) { //接收两个参数，第一个参数默认是第二个参数，接下来是函数返回值 0+1，1+2，...
+            return x+y;
+        },0))
+        console.log(arr.reduce(((x,y) => x+y),2))
+
+        var o = {a:1}
+        console.log(o)
+        console.log("a" in o)
+        delete o.a
+        console.log(o)
+        console.log("a" in o)
+
+            var p = {
+                a : 7,
+                get b(){return this.a +1;},//通过 get,set的 b,c方法间接性修改 a 属性
+                set c(x){this.a = x/2}
+            };
+            console.log(p.a);
+            console.log(p.b);
+            document.body.innerHTML += '<div>'+p.a+'</div>'
+            p.c = 50;
+            document.body.innerHTML += '<div>'+p.a+'</div>'
+            console.log(p.a);
+            console.log(p);
+
+console.log(p instanceof Object)
+            /*var q = inherit(p);
+            console.log(q)
+            q.c = 40;
+            console.log(q.a);*/
+    </script>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    </body>
+    <script type="text/javascript">
+        var currying = function(fn) {
+            var args = [];
+
+            return function () {
+                if (arguments.length === 0) {
+                    return fn.apply(this,args);
+                } else{
+                    [].push.apply(args,arguments);
+                    return arguments.callee;
+                }
+            }
+        }
+
+        var cost = (function () {
+            var money = 0;
+            return function () {
+                for (var i = 0; i < arguments.length; i++) {
+                    money += arguments[i]
+                }
+                return money;
+            }
+        })();
+
+        var cost = currying(cost);
+
+        // console.log(cost(1));
+        // console.log(cost(1));
+        // console.log(cost(1));
+        console.log(cost());
+
+        Function.prototype.unc = function () {
+            var self = this;
+            return function () {
+                var obj = Array.prototype.shift.call( arguments );
+                console.log(obj)
+                return self.apply(obj,arguments)
+                // return Array.prototype.push.apply(obj,2)
+            }
+        }
+
+        var push = Array.prototype.push.unc();
+
+        var obj = {"l":1,"0":1};
+        push(obj,2);
+        console.dir(obj)
+
+        // Function.prototype.uncurrying = function () {
+        //         var self = this; // self 此时是Array.prototype.push
+        //         return function() {
+        //             var obj = Array.prototype.shift.call( arguments );
+        //             return self.apply( obj, arguments );
+        //         // 相当于Array.prototype.push.apply( obj, 2 )
+        //     };
+        // };
+
+        // var push = Array.prototype.push.uncurrying();
+        // var obj = {
+        //     "length": 1,
+        //     "0": 1
+        // };
+
+        // push( obj, 2 );
+        //     console.log( obj ); // 输出：{0: 1, 1: 2, length: 2}
+
+           var aaa;
+           aaa = 22222222;
+           console.log(aaa)
+           var aaa;
+           console.log(aaa)
+    </script>
+</html>

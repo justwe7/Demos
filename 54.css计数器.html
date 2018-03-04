@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <style type="text/css" media="screen">
+        .reset { padding-left: 20px; counter-reset: wangxiaoer 0; line-height: 1.6; color: #666; }
+        .counter:before { content: counters(wangxiaoer, '-') '. '; counter-increment: wangxiaoer; font-family: arial black; }
+    </style>
+</head>
+<body>
+<div class="reset">
+    <div class="counter">我是王小二
+        <div class="reset">
+            <div class="counter">我是王小二的大儿子</div>
+            <div class="counter">我是王小二的二儿子
+                <div class="reset">
+                    <div class="counter">我是王小二的二儿子的大孙子</div>
+                    <div class="counter">我是王小二的二儿子的二孙子</div>
+                    <div class="counter">我是王小二的二儿子的小孙子</div>
+                </div>
+            </div>
+            <div class="counter">我是王小二的三儿子</div>
+        </div>
+    </div>
+    <div class="counter">我是王小三</div>
+    <div class="counter">我是王小四
+        <div class="reset">
+            <div class="counter">我是王小四的大儿子</div>
+        </div>
+    </div>
+</div>
+</body>
+<script type="text/javascript">
+console.log(sort1([2,1,3,4,2]))
+    function sort1(array) {
+      var len = array.length,
+          i, j, tmp, result;
+
+      // 设置数组副本
+      result = array.slice(0);
+      for(i=1; i < len; i++){
+        tmp = result[i];
+        j = i - 1;
+        while(j>=0 && tmp < result[j]){
+          result[j+1] = result[j];
+          j--;
+        }
+        result[j+1] = tmp;
+      }
+      return result;
+    }
+
+</script>
+</html>

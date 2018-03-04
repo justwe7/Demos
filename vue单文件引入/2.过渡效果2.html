@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link href="https://unpkg.com/animate.css@3.5.1/animate.min.css" rel="stylesheet" type="text/css">
+        <style type="text/css" media="screen">
+          .demo-enter-active, .demo-leave-active {
+            transition: .5s
+          }
+          .demo-enter, .demo-leave-active {
+            opacity: 0;
+          }
+          .demo-enter{
+            /*触发动画之前的效果*/
+            transform: translateX(50px);
+          }
+          .demo-leave-active{
+            /*动画过渡的目标效果*/
+            transform: translateX(-50px);
+          }
+          .aaa{
+            position: absolute;
+            left: 50%;
+          }
+
+          .component-fade-enter-active, .component-fade-leave-active {
+            transition: opacity .3s ease;
+          }
+          .component-fade-enter, .component-fade-leave-active {
+            opacity: 0;
+          }
+
+          .list-item {
+            display: inline-block;
+            margin-right: 10px;
+          }
+          .list-enter-active, .list-leave-active {
+            transition: all 1s;
+          }
+          .list-enter, .list-leave-active {
+            opacity: 0;
+            transform: translateY(30px);
+          }
+        </style>
+    </head>
+    <body>
+      <div id="demo">
+        <transition name="demo" mode="in-out">
+           <!-- mode="out-in"  添加过渡模式-->
+          <button v-bind:key="isEditing" class="aaa" v-on:click="fn">
+            {{ isEditing ? 'Save' : 'Edit' }}
+          </button>
+        </transition>
+      </div>
+
+      <div id="transition-components-demo">
+        <input type="radio" value="v-a" id="a" name="view" v-model="view"><label for="a">A</label>
+        <input type="radio" value="v-b" id="b" name="view" v-model="view"><label for="b">B</label>
+        <transition name="component-fade" mode="out-in">
+          <component v-bind:is="view"></component>
+        </transition>
+      </div>
+
+      <br><br>
+      <div id="list-demo" class="demo">
+        <button v-on:click="add">Add</button>
+        <button v-on:click="remove">Remove</button>
+        <transition-group name="list" tag="p">
+          <span v-for="item in items" v-bind:key="item" class="list-item">
+            {{ item }}
+          </span>
+        </transition-group>
+      </div>
+
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
+      <script src="js/vue.js"></script>
+      <script type="text/javascript">
+      var vvv = new Vue({
+        el: '#demo',
+        data: {
+          isEditing: false,
+          show: true,
+          da: '',
+        },
+        computed: {
+          real: function () {
+            return this.da
+          }
+        },
+        watch: {
+          'da'() {
+            console.info(this)
+            console.log(vvv.da)
+            // ajax
+          }
+        },
+        methods: {
+          fn: function () {
+            this.isEditing = !this.isEditing
+            this.asd()
+              setTimeout(function () {
+                // console.log(vvv.da)
+              }, 2000)
+          },
+          asd: function () {
+            setTimeout(function () {
+              vvv.da = '阿斯顿'
+            }, 1000)
+          }
+        }
+      })
+
+
+      new Vue({
+        el: '#transition-components-demo',
+        data: {
+          view: 'v-a'
+        },
+        components: {
+          'v-a': {
+            template: '<div>Component A</div>'
+          },
+          'v-b': {
+            template: '<div>Component B</div>'
+          }
+        }
+      })
+
+       new Vue({
+        el: '#list-demo',
+        data: {
+          items: [1,2,3,4,5,6,7,8,9],
+          nextNum: 10
+        },
+        methods: {
+          randomIndex: function () {
+            return Math.floor(Math.random() * this.items.length)
+          },
+          add: function () {
+            this.items.splice(this.randomIndex(), 0, this.nextNum++)
+          },
+          remove: function () {
+            this.items.splice(this.randomIndex(), 1)
+          },
+        }
+      })
+      </script>
+    </body>
+</html>

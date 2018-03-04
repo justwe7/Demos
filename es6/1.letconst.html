@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+
+    </body>
+    <script type="text/javascript">
+        // console.log(typeof o)
+        console.log(typeof p)
+        let o = 1;
+        {
+            let o = 2;
+            var p = 3;
+        }
+        console.log(o,p)
+
+        let [q,w,e] = [7,8,9];
+        console.log(q,w,e)
+
+        let [a,[s,[d]]] = [7,[8,[9]]];
+        console.log(a,s,d)
+
+        let [g = 1] = [];
+        console.log(g)
+
+        let {j,h} = {h: 'hhh', j: 'jjj'}
+        console.log(h,j)
+
+        let [z,x,c,v,b] = 'asdf';
+        console.log(z,x,c,v,b)
+
+        let {length: len} = '少时诵诗书';
+        console.log(len)
+    </script>
+</html>

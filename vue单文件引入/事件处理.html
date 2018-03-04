@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css" media="screen">
+            .current{
+                color: #f88;
+            }
+        </style>
+    </head>
+    <body>
+      <div id="example-1">
+        <button v-on:click="counter += 1">增加 1</button>
+        <p>这个按钮被点击了 {{ counter }} 次。</p>
+      </div>
+      <br>
+      <div id="example-2">
+        <!-- `greet` 是在下面定义的方法名 -->
+        <button v-on:click="greet">Greet</button>
+        {{name}}
+        <button v-on:click="warn('传入的某个实参', $event)">Submit</button>
+        <input v-on:keyup.enter.ctrl="COM">
+      </div>
+      <br>
+
+      <script src="js/vue.js"></script>
+      <script type="text/javascript">
+        var example1 = new Vue({
+          el: '#example-1',
+          data: {
+            counter: 0
+          }
+        })
+
+        var example2 = new Vue({
+          el: '#example-2',
+          data: {
+            name: 'Vue.js'
+          },
+          // 在 `methods` 对象中定义方法
+          methods: {
+            greet: function (event) {
+              this.name = '嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻嘻'
+              // `this` 在方法里指当前 Vue 实例
+              alert('Hello ' + this.name + '!')
+              // `event` 是原生 DOM 事件
+              // alert(event.target.tagName)
+              alert(event.target.innerHTML)
+
+              console.log(ev.currentTarget)//当前点击的事件对象
+            },
+            warn: function (message, event) {
+              // 现在我们可以访问原生事件对象
+              if (event) event.preventDefault()
+              console.log(event)
+              alert(message)
+            },
+            COM: function () {
+              console.log(9)
+            }
+          }
+        })
+      </script>
+    </body>
+</html>
+<!-- <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>eleme</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="static/css/reset.css">
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+</html> -->

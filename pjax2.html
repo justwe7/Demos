@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+    <ul>
+        <li><a href="pjax/1.html" title="">111</a></li>
+        <li><a href="pjax/2.html" title="">222</a></li>
+        <li><a href="pjax/3.html" title="">333</a></li>
+    </ul>
+    <h1 id="number">1</h1>
+    <a id="forward" href="#num=2">Go forward!</a>
+    <script type="text/javascript">
+    var useHash = false;
+    var hashExp = /#([0-9]+)/;
+
+    if(!history.pushState) {
+        useHash = true;
+    }
+
+    var link = document.getElementById('forward');
+    var num = document.getElementById('number');
+
+    link.addEventListener('click', function(e) {
+        e.preventDefault();
+        var myNum = parseInt(num.innerHTML, 10);
+        num.innerHTML = ++myNum;
+        history.pushState({count:myNum}, null, '#num=' + myNum);//state对象 标题  url
+        document.title = Number(myNum);
+    });
+
+    window.addEventListener('popstate', function (e) {
+        if( e.state && e.state.count ) {
+            num.innerHTML = e.state.count;
+            document.title = 'Number ' + e.state.count;
+        } else {
+            setNumFromUrl();
+        }
+    })
+
+
+    /*function setNumFromUrl() {
+        if(location.search) {
+            var match = location.search.match(/num=([0-9]+)/);
+            if(match) {
+                document.getElementById('number').innerHTML = match[1];
+                document.title = 'Number ' + match[1];
+            }
+        } else {
+            document.getElementById('number').innerHTML = 1;
+            document.title = 'Number 1';
+        }
+    }*/
+
+setNumFromUrl()
+    function setNumFromUrl() {
+
+        //There is a query string, so handle that
+        if(location.search) {
+
+            var match = location.search.match(/num=([0-9]+)/);
+            if(match) {
+
+                //if pushState doesn't work, we need to
+                //scrub the query string and redirect to the hash version
+                if(useHash) {
+                    location = 'history.HTML#' + match[1];
+
+                } else {
+                    document.getElementById('number').innerHTML = match[1];
+                    document.title = 'Number ' + match[1];
+                }
+            }
+
+        //No query string, but there is a hash, so we should use that
+        }else if (location.hash) {
+
+            var match = location.hash.match(hashExp);
+
+
+            document.getElementById('number').innerHTML = match[1];
+            document.title = 'Number ' + location.hash;
+
+            //if the user can use push state, but came with a hash url,
+            //we can upgrade the url with replaceState.
+            if(!useHash) {
+                history.replaceState({count:match[1]}, null, 'history.HTML#num=' + match[1]);
+            }
+
+        //The default state
+        } else {
+            document.getElementById('number').innerHTML = 1;
+            document.title = 'Number 1';
+        }
+    }
+
+
+    //consolidate the update into one place
+    function handleStateChange(count) {
+        num.innerHTML = count;
+        document.title = 'Number ' + count;
+        link.href = '#num=' + (parseInt(count,10) + 1);
+    }
+    </script>
+</body>
+</html>

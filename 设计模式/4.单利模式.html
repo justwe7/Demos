@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    </body>
+    <script type="text/javascript">
+        var CreateDiv = (function(){
+            var instance;
+            var CreateDiv = function( html ){
+                if ( instance ){
+                    return instance;
+                }
+                this.html = html;
+                this.init();
+                return instance = this;
+            };
+            CreateDiv.prototype.init = function(){
+                var div = document.createElement( 'div' );
+                div.innerHTML = this.html;
+                document.body.appendChild( div );
+            };
+            return CreateDiv;
+        })();
+
+        var a = new CreateDiv( 'sven1' );
+        var b = new CreateDiv( 'sven2' );
+        // alert ( a === b ); // true
+
+var getSingle = function( fn ){
+        var result;
+        return function(){
+            return result || ( result = fn .apply(this, arguments ) );
+        }
+    };
+
+        var bindEvent = getSingle(function(){
+        document.getElementById( 'div1' ).onclick = function(){
+            alert ( 'click' );
+        }
+        return true;
+    });
+    var render = function(){
+        console.log( '开始渲染列表' );
+        bindEvent();
+    };
+    render();
+    render();
+    render();
+    </script>
+</html>

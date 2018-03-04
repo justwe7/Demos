@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+    </body>
+    <script type="text/javascript">
+/**
+ * 数据结构 Map
+ */
+
+// -----------------------------------------------------
+/**
+ * 字典：是用来存储不重复key的Hash结构。不同于集合(Set)的是，字典使用的是[键，值]的形式来储存数据的。
+ *
+ * JavaScript 的对象（Object:{}）只能用字符串当作键。这给它的使用带来了很大的限制。
+ *
+ * 为了解决这个问题，ES6提供了Map数据结构。它类似于对象，也是键值对的集合，但是“键”的范围不限于字符串，各种类型的值（包括对象）都可以当作键。也就是说，Object结构提供了“字符串—值”的对应，Map结构提供了“值—值”的对应，是一种更完善的Hash结构实现。如果你需要“键值对”的数据结构，Map比Object更合适。。
+ */
+        const map = new Map([
+            ['a', 1],
+            ['b', 2]
+        ])
+        console.log(map, typeof map)
+
+        console.log(map.size)
+
+        map.set('c', 3).set('d', 4).set('b', 222); //设置键值，可以覆盖修改
+        console.log(map)
+
+        console.log(map.get('b'),map.get('f'))
+
+        console.log(map.delete('a'),map,map.delete('a'))// 3 delete(key)删除某个键，返回true。如果删除失败，返回false。
+
+
+        console.log(map.has('b'),map.has('z')) //是否包含属性
+
+        // console.log(map.clear(),map) // 清空属性
+
+        console.log(map.keys(),map.values()) //返回键名 键值
+
+        console.log(map.entries()) //返回键值对
+
+        map.forEach(function (value,key,self) {//值不能修改   值/键/本身
+            console.log(value,key,self)
+            key = 1;
+            value = 1;
+            self = 1;
+        })
+
+        /*Map 在使用过程中的一些注意事项：*/
+
+        map.set(NaN, 10).set(NaN, 100);
+
+        console.log(map);
+
+        map.set({}, 'x').set({}, 'y');
+
+        console.log(map);
+
+        console.log({} === {});
+
+        console.log(map.get('{}'))
+    </script>
+</html>

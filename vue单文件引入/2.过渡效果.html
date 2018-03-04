@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link href="https://unpkg.com/animate.css@3.5.1/animate.min.css" rel="stylesheet" type="text/css">
+        <style type="text/css" media="screen">
+          .demo-enter-active, .demo-leave-active {
+            transition: opacity .5s
+          }
+          .demo-enter, .demo-leave-active {
+            opacity: 0
+          }
+
+          .slide-fade-enter-active {
+            /*显示的开始加的状态  结束之后会被移除*/
+            transition: all .3s ease;
+          }
+          .slide-fade-leave-active {
+            /*隐藏的开始加的状态   结束之后会被移除*/
+            transition: all 1s cubic-bezier(1.0, 0.5, 0.8, 1.0);
+          }
+          .slide-fade-enter, .slide-fade-leave-active {
+            /*过渡的状态*/
+            transform: translateX(10px);
+            opacity: 0;
+          }
+
+          .bounce-enter-active {
+            animation: bounce-in .5s;
+          }
+          .bounce-leave-active {
+            animation: bounce-out .5s;
+          }
+          @keyframes bounce-in {
+            0% {
+              transform: scale(0);
+            }
+            50% {
+              transform: scale(1.5);
+            }
+            100% {
+              transform: scale(1);
+            }
+          }
+          @keyframes bounce-out {
+            0% {
+              transform: scale(1);
+            }
+            50% {
+              transform: scale(1.5);
+            }
+            100% {
+              transform: scale(0);
+            }
+          }
+        </style>
+    </head>
+    <body>
+      <div id="demo">
+        <button v-on:click="show = !show">
+          Toggle
+        </button>
+        <transition name="demo">
+          <p v-if="show">hello</p>
+        </transition>
+      </div>
+
+
+      <div id="example-1">
+        <button @click="show = !show">
+          Toggle render
+        </button>
+        <transition name="slide-fade">
+          <p v-if="show">hello</p>
+        </transition>
+      </div>
+      <br><br>
+      <div id="example-2">
+        <button @click="show = !show">Toggle show</button>
+        <transition name="bounce">
+          <p v-if="show">Look at me!</p>
+        </transition>
+      </div>
+      <br><br>
+      <div id="example-3" style="margin-left: 50px;">
+        <button @click="show = !show">
+          Toggle render
+        </button>
+        <transition
+          name="custom-classes-transition"
+          enter-active-class="animated tada"
+          leave-active-class="animated bounceOutLeft"
+        >
+          <p v-if="show">hello</p>
+
+        </transition>
+      </div>
+
+      <br><br>
+      <div id="example-4">
+        <button @click="show = !show">
+          Toggle
+        </button>
+<transition
+  v-on:before-enter="beforeEnter"
+  v-on:enter="enter"
+  v-on:leave="leave"
+  v-bind:css="false"
+>
+  <p v-if="show">
+    Demo
+  </p>
+</transition>
+
+        <!-- 多种条件渲染的写法 -->
+        <transition>
+          <button v-bind:key="isEditing" @click="isEditing = !isEditing">
+            {{ isEditing ? 'Save' : 'Edit' }}
+          </button>
+        </transition>
+
+          <!-- <button v-bind:key="docState">
+            {{ buttonMessage }}
+          </button> -->
+      </div>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/velocity/1.2.3/velocity.min.js"></script>
+      <script src="js/vue.js"></script>
+      <script type="text/javascript">
+      new Vue({
+        el: '#demo',
+        data: {
+          show: true
+        }
+      })
+
+new Vue({
+  el: '#example-1',
+  data: {
+    show: true
+  }
+})
+
+new Vue({
+  el: '#example-2',
+  data: {
+    show: true
+  }
+})
+
+new Vue({
+  el: '#example-3',
+  data: {
+    show: true
+  }
+})
+
+new Vue({
+  el: '#example-4',
+  data: {
+    show: false,
+    isEditing: false,
+    docState: 'saved'
+  },
+  computed: {
+    buttonMessage: function () {
+      console.log(docState)
+      switch (docState) {
+        case 'saved': return 'Edit'
+        case 'edited': return 'Save'
+        case 'editing': return 'Cancel'
+      }
+    }
+  },
+  methods: {
+    beforeEnter: function (el) {
+      el.style.opacity = 0
+      el.style.transformOrigin = 'left'
+    },
+    enter: function (el, done) {
+      Velocity(el, { opacity: 1, fontSize: '1.4em' }, { duration: 300 })
+      Velocity(el, { fontSize: '1em' }, { complete: done })
+    },
+    leave: function (el, done) {
+      Velocity(el, { translateX: '15px', rotateZ: '50deg' }, { duration: 600 })
+      Velocity(el, { rotateZ: '100deg' }, { loop: 2 })
+      Velocity(el, {
+        rotateZ: '45deg',
+        translateY: '30px',
+        translateX: '30px',
+        opacity: 0
+      }, { complete: done })
+    }
+  }
+})
+
+      </script>
+    </body>
+</html>

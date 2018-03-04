@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+      <div id="example">
+        {{a}}
+        {{b}}
+      </div>
+
+
+      <div id="example2">{{message}}
+      <example></example>
+      </div>
+      <script src="https://cdn.bootcss.com/jquery/3.2.1/jquery.min.js"></script>
+      <script src="js/vue.js"></script>
+      <script type="text/javascript">
+
+        // 创建根实例
+        var vm = new Vue({
+          el: '#example',
+          data: {
+            a: '啊啊啊啊',
+            b: 'd'
+          }
+        })
+
+        // Vue.set(vm._data, 'b', 2)
+
+        /*vm.$set(this.data,'a',{ a: 1, b: 2 })*/
+
+        // vm._data = Object.assign({}, vm._data, { a: 1, b: 2 })  es6语法  深拷贝
+
+        // vm.data = Object.assign({}, this.data, { c: 1, d: 2 })
+
+        // vm.a = '咔咔咖'
+
+
+        var vm2 = new Vue({
+          el: '#example2',
+          data: {
+            message: '123'
+          },
+          components: {
+            'example': {
+              template: '<span @click="updateMessage">{{ message }}</span>',
+              data: function () {
+                return {
+                  message: 'not updated'
+                }
+              },
+              methods: {
+                updateMessage: function () {
+                  this.message = 'updated'
+                  console.log(this.$el.textContent) // => '没有更新'
+                  this.$nextTick(function () {
+                    console.log(this.$el.textContent) // => '更新完成'
+                  })
+                }
+              }
+            }
+          }
+        })
+        // vm2.message = 'new message' // 更改数据
+
+
+        // vm2.$el.textContent === 'new message' // false
+
+
+        Vue.nextTick(function () {
+          vm2.$el.textContent === 'new message' // true
+        })
+
+        // Vue.component()
+      </script>
+    </body>
+</html>

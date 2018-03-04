@@ -1,0 +1,13 @@
+{
+  "xzks":
+  [
+    {
+      "DeptNum":"1",
+      "DeptName":"全科"
+    },
+    {
+      "DeptNum":"2",
+      "DeptName":"妇科"
+    }
+  ]
+}

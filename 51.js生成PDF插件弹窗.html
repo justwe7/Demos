@@ -1,0 +1,248 @@
+
+<!DOCTYPE>
+<html>
+  <head>
+    <title>
+      html2canvas example
+    </title>
+      <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+      <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+      <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+  <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <style type="text/css">
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: white;
+      }
+      ul,li{
+        margin: 0;
+        padding: 0;
+      }
+      li{
+        /*margin-bottom: 10px;*/
+        height: 1412.8px;
+        list-style: none;
+      }
+      li:nth-child(odd){
+        background-color: #99a;
+      }
+      section{
+        margin: 0 auto;
+        width: 994px;
+        /*border: 1px solid #000;*/
+        background-color: white;
+      }
+      #renderPdf{
+        position: absolute;
+      }
+      .fff{
+        background-color: #fff !important;
+      }
+    </style>
+  </head>
+  <body>
+  <h2>创建模态框（Modal）</h2>
+    <!-- 按钮触发模态框 -->
+    <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+      开始演示模态框
+    </button>
+    <!-- 模态框（Modal） -->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content" id="pdfbox">
+          <div class="modal-header fff">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+              &times;
+            </button>
+            <h4 class="modal-title" id="myModalLabel">
+              模态框（Modal）标题
+            </h4>
+          </div>
+          <div class="modal-body fff">
+            在这里添加一些文本
+          </div>
+          <div class="modal-footer fff">
+            <button type="button" class="btn btn-default" data-dismiss="modal">关闭
+            </button>
+            <button type="button" class="btn btn-primary" id="saveaaa">
+              提交更改
+            </button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal -->
+    </div>
+    <section>
+            <button id="renderPdf">下载</button>
+            <ul>
+                <li>1creatElment 的第一个参数可以是String(HTML 标签名称) | Object(组件对象) | Function(函数), 这里传的就是个组件对象注意: 这种情况下, App 组件并不是根组件</li>
+                <li>2creatElment 的第一个参数可以是String(HTML 标签名称) | Object(组件对象) | Function(函数), 这里传的就是个组件对象注意: 这种情况下, App 组件并不是根组件</li>
+                <li>3creatElment 的第一个参数可以是String(HTML 标签名称) | Object(组件对象) | Function(函数), 这里传的就是个组件对象注意: 这种情况下, App 组件并不是根组件</li>
+                <li>3creatElment 的第一个参数可以是String(HTML 标签名称) | Object(组件对象) | Function(函数), 这里传的就是个组件对象注意: 这种情况下, App 组件并不是根组件</li>
+                <li>3creatElment 的第一个参数可以是String(HTML 标签名称) | Object(组件对象) | Function(函数), 这里传的就是个组件对象注意: 这种情况下, App 组件并不是根组件</li>
+                <li>3creatElment 的第一个参数可以是String(HTML 标签名称) | Object(组件对象) | Function(函数), 这里传的就是个组件对象注意: 这种情况下, App 组件并不是根组件</li>
+                <li>3creatElment 的第一个参数可以是String(HTML 标签名称) | Object(组件对象) | Function(函数), 这里传的就是个组件对象注意: 这种情况下, App 组件并不是根组件</li>
+            </ul>
+    </section>
+    <script type="text/javascript" src="js/html2canvas.js"></script>
+    <script type="text/javascript" src="js/jsPdf.debug.js"></script>
+    <script type="text/javascript">
+var a = {a:1}
+console.log(Object.assign(a,{a:2}))
+      var downPdf = document.getElementById("saveaaa");
+console.log(document.getElementsByTagName('section')[0])
+      downPdf.onclick = function() {
+
+          // html2canvas(document.getElementsByTagName('section')[0], {
+          html2canvas(document.getElementById('pdfbox'), {
+              onrendered:function(canvas) {
+
+                  var contentWidth = canvas.width;
+                  var contentHeight = canvas.height;
+
+                  //一页pdf显示html页面生成的canvas高度;
+                  var pageHeight = contentWidth / 592.28 * 841.89;
+                  //未生成pdf的html页面高度
+                  var leftHeight = contentHeight;
+                  //pdf页面偏移
+                  var position = 0;
+                  //a4纸的尺寸[595.28,841.89]，html页面生成的canvas在pdf中图片的宽高
+                  var imgWidth = 595.28;
+                  var imgHeight = 592.28/contentWidth * contentHeight;
+
+                  var pageData = canvas.toDataURL('image/jpeg', 1.0);
+
+                  var pdf = new jsPDF('', 'pt', 'a4');
+
+                  //有两个高度需要区分，一个是html页面的实际高度，和生成pdf的页面高度(841.89)
+                  //当内容未超过pdf一页显示的范围，无需分页
+                  if (leftHeight < pageHeight) {
+                      pdf.addImage(pageData, 'JPEG', 0, 0, imgWidth, imgHeight );
+                  } else {
+                      while(leftHeight > 0) {
+                          pdf.addImage(pageData, 'JPEG', 0, position, imgWidth, imgHeight)
+                          leftHeight -= pageHeight;
+                          position -= 841.89;
+                          //避免添加空白页
+                          if(leftHeight > 0) {
+                              pdf.addPage();
+                          }
+                      }
+                  }
+
+                  pdf.save('content.pdf');
+              }
+          })
+      }
+    </script>
+  </body>
+</html>
+
+<!--
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <style type="text/css">
+             body {
+        margin: 0;
+        padding: 0;
+        background-color: white;
+      }
+      header, section {
+          overflow: hidden;
+      }
+      ul {
+        margin: 0;
+        border: 0;
+        padding: 0;
+      }
+      li {
+        display: block; /* i.e., suppress marker */
+        color: black;
+        height: 4em;
+        width: 25%;
+        margin: 0;
+        float: left;
+        background-color: green;
+        text-align: center;
+        line-height: 4em;
+      }
+
+      aside {
+        width: 20%;
+        float: left;
+        text-align: center;
+      }
+
+      aside a {
+        display: block;
+        height: 4em;
+        color: blue;
+      }
+
+      article {
+        padding: 2em 0;
+        width: 80%;
+        float: left;
+      }
+        </style>
+    </head>
+    <body>
+    <button id="renderPdf">生成PDF</button>
+        <ul>
+
+            <li>0000001</li>
+            <li>0000002</li>
+            <li>0000003</li>
+        </ul>
+
+    </body>
+    <script src="js/html2canvas.js"></script>
+    <script src="js/jsPdf.debug.js"></script>
+    <script type="text/javascript">
+    var downPdf = document.getElementById("renderPdf");
+
+      downPdf.onclick = function() {
+          html2canvas(document.body, {
+              onrendered:function(canvas) {
+
+                  var contentWidth = canvas.width;
+                  var contentHeight = canvas.height;
+
+                  //一页pdf显示html页面生成的canvas高度;
+                  var pageHeight = contentWidth / 592.28 * 841.89;
+                  //未生成pdf的html页面高度
+                  var leftHeight = contentHeight;
+                  //pdf页面偏移
+                  var position = 0;
+                  //a4纸的尺寸[595.28,841.89]，html页面生成的canvas在pdf中图片的宽高
+                  var imgWidth = 595.28;
+                  var imgHeight = 592.28/contentWidth * contentHeight;
+
+                  var pageData = canvas.toDataURL('image/jpeg', 1.0);
+
+                  var pdf = new jsPDF('', 'pt', 'a4');
+
+                  //有两个高度需要区分，一个是html页面的实际高度，和生成pdf的页面高度(841.89)
+                  //当内容未超过pdf一页显示的范围，无需分页
+                  if (leftHeight < pageHeight) {
+                      pdf.addImage(pageData, 'JPEG', 0, 0, imgWidth, imgHeight );
+                  } else {
+                      while(leftHeight > 0) {
+                          pdf.addImage(pageData, 'JPEG', 0, position, imgWidth, imgHeight)
+                          leftHeight -= pageHeight;
+                          position -= 841.89;
+                          //避免添加空白页
+                          if(leftHeight > 0) {
+                              pdf.addPage();
+                          }
+                      }
+                  }
+
+                  pdf.save('content.pdf');
+              }
+          })
+      }
+    </script>
+</html> -->
